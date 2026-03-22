@@ -1,0 +1,53 @@
+---
+title: "Chart Controls"
+description: "Fine-tune AI-generated visual insights."
+---
+
+While the AI automatically selects the best visualization for your data, **Chart Controls** allow users to manually override and adjust specific chart settings.
+
+---
+
+## Available Controls
+
+<CardGroup cols={2}>
+  <Card title="Visualization Type" icon="shapes">
+    Instantly swap between Bar, Line, Pie, Area, or Table views.
+  </Card>
+  <Card title="Axis Configuration" icon="arrows-up-down-left-right">
+    Swap X and Y axes, or change groupings.
+  </Card>
+  <Card title="Sorting" icon="arrow-down-a-z">
+    Sort measures in Ascending or Descending order.
+  </Card>
+  <Card title="Aggregation" icon="calculator">
+    Change the math logic (e.g., from `SUM(Revenue)` to `AVG(Revenue)`).
+  </Card>
+</CardGroup>
+
+---
+
+## Example Interaction
+
+**User Request:**
+> *"Change this line chart to a bar chart."*
+
+**System Response:**
+*(Prov AI understands the context and instantly rerenders the DOM component as a Bar Chart without re-running the heavy SQL query.)*
+
+<Frame>
+  ![Chart Options Preview](/chart-controls-ui.png)
+</Frame>
+
+---
+
+## Best Practices & Warnings
+
+<Warning>
+**Important Notes on Editing:**
+- **Incorrect Chart Types:** Forcibly changing a time-series trend from a Line Chart to a Pie Chart will completely obscure the insight.
+- **Aggregation Risks:** Changing an aggregation (like `SUM` to `COUNT`) fundamentally alters what the data means. Always check axes labels!
+</Warning>
+
+- Trust the AI's initial chart selection; it is optimized based on the data shape.
+- Keep visualization adjustments simple to maintain clarity.
+- Validate your changes by checking the data table view if you are uncertain.

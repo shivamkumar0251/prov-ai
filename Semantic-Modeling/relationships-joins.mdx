@@ -1,0 +1,49 @@
+---
+title: "Relationships & Joins"
+description: "Define how your data tables connect together."
+---
+
+**Relationships** define how separate tables in your database are connected to one another. Properly configuring joins is what allows the Prov AI engine to answer complex, cross-functional business questions seamlessly.
+
+<Info>
+If your database already has Foreign Keys strictly defined, Prov AI will attempt to auto-detect these relationships! However, defining them explicitly in the Semantic Layer guarantees flawless join execution.
+</Info>
+
+---
+
+## Types of Relationships
+
+Prov AI supports the standard relational logic paradigms used in modern data warehousing:
+
+<Steps>
+  <Step title="One-to-One (1:1)">
+    A record in Table A relates to exactly one record in Table B.
+    *Example:* `Employees` table connected to an `Employee_Details` table.
+  </Step>
+  <Step title="One-to-Many (1:N)">
+    A single record in Table A relates to multiple records in Table B. **(Most Common)**
+    *Example:* A single `Customer` can have many `Orders`.
+  </Step>
+  <Step title="Many-to-One (N:1)">
+    Multiple records in Table A relate to a single record in Table B.
+    *Example:* Multiple `Orders` point to a single `Product`.
+  </Step>
+</Steps>
+
+---
+
+## Configuring a Relationship
+
+To teach the AI how to traverse your database, you establish the primary and foreign keys:
+
+```text
+Table: Customers (Primary)
+Column: id
+
+         ↓ (One-to-Many) ↓
+
+Table: Sales (Foreign)
+Column: customer_id
+```
+
+When a user types: *"Show me the names of customers who bought more than $500 last week"*, the AI knows to `JOIN Sales ON Customers.id = Sales.customer_id` automatically!

@@ -1,0 +1,786 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Workflows, Tools & Tool Categories API",
+    "description": "APIs for workflow lifecycle (create, get, list, update, delete), tool management, and tool category management.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "{api_base_url}",
+      "description": "The base URL for the API. Replace {api_base_url} with your actual API base URL.",
+      "variables": {
+        "api_base_url": {
+          "default": "https://api.example.com",
+          "description": "Actual base URL of the API"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/api/workflows/create": {
+      "post": {
+        "summary": "Create Workflow",
+        "description": "Create a new workflow.",
+        "operationId": "createWorkflow",
+        "tags": ["Workflows Management"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/WorkflowCreateUpdate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/WorkflowResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/workflows/get/{workflow_id}": {
+      "get": {
+        "summary": "Get Workflow",
+        "description": "Get a workflow by ID.",
+        "operationId": "getWorkflow",
+        "tags": ["Workflows Management"],
+        "parameters": [
+          {
+            "name": "workflow_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/WorkflowResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/workflows/list": {
+      "get": {
+        "summary": "Get All Workflows",
+        "description": "List workflows with pagination.",
+        "operationId": "listWorkflows",
+        "tags": ["Workflows Management"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": { "type": "integer", "default": 1 }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "schema": { "type": "integer", "default": 10 }
+          },
+          {
+            "name": "sort_order",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["asc", "desc"], "default": "desc" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/WorkflowResponse" }
+                    },
+                    "total": { "type": "integer" },
+                    "page": { "type": "integer" },
+                    "page_size": { "type": "integer" },
+                    "total_pages": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/workflows/update/{workflow_id}": {
+      "put": {
+        "summary": "Update Workflow",
+        "description": "Update a workflow by ID.",
+        "operationId": "updateWorkflow",
+        "tags": ["Workflows Management"],
+        "parameters": [
+          {
+            "name": "workflow_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/WorkflowCreateUpdate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/WorkflowResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/workflows/delete/{workflow_id}": {
+      "delete": {
+        "summary": "Delete Workflow",
+        "description": "Delete a workflow by ID.",
+        "operationId": "deleteWorkflow",
+        "tags": ["Workflows Management"],
+        "parameters": [
+          {
+            "name": "workflow_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "workflow_id": { "type": "string", "format": "uuid" }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tools/create": {
+      "post": {
+        "summary": "Create Tool",
+        "description": "Create a new tool.",
+        "operationId": "createTool",
+        "tags": ["Tools"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ToolCreate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ToolResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tools/get/{tool_id}": {
+      "get": {
+        "summary": "Get Tool",
+        "description": "Get a tool by ID.",
+        "operationId": "getTool",
+        "tags": ["Tools"],
+        "parameters": [
+          {
+            "name": "tool_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ToolResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tools/list": {
+      "get": {
+        "summary": "Get All Tools",
+        "description": "List tools with pagination and optional filters.",
+        "operationId": "listTools",
+        "tags": ["Tools"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": { "type": "integer", "default": 1 }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "schema": { "type": "integer", "default": 10 }
+          },
+          {
+            "name": "sort_order",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["asc", "desc"], "default": "desc" }
+          },
+          {
+            "name": "parent",
+            "in": "query",
+            "schema": { "type": "string", "nullable": true }
+          },
+          {
+            "name": "sub_parent",
+            "in": "query",
+            "schema": { "type": "string", "nullable": true }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/ToolResponse" }
+                    },
+                    "total": { "type": "integer" },
+                    "page": { "type": "integer" },
+                    "page_size": { "type": "integer" },
+                    "total_pages": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tools/update/{tool_id}": {
+      "put": {
+        "summary": "Update Tool",
+        "description": "Update a tool by ID.",
+        "operationId": "updateTool",
+        "tags": ["Tools"],
+        "parameters": [
+          {
+            "name": "tool_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ToolUpdate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ToolResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tools/delete/{tool_id}": {
+      "delete": {
+        "summary": "Delete Tool",
+        "description": "Delete a tool by ID.",
+        "operationId": "deleteTool",
+        "tags": ["Tools"],
+        "parameters": [
+          {
+            "name": "tool_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tools/list-by-category-workflow": {
+      "post": {
+        "summary": "Get Tools By Category And Workflow",
+        "description": "List tools filtered by tool category and workflow with pagination.",
+        "operationId": "listToolsByCategoryWorkflow",
+        "tags": ["Tools"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tool_category_id": { "type": "string", "format": "uuid" },
+                  "workflow_id": { "type": "string", "format": "uuid" },
+                  "page": { "type": "integer", "default": 1 },
+                  "page_size": { "type": "integer", "default": 10 },
+                  "sort_order": { "type": "string", "enum": ["asc", "desc"], "default": "desc" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/ToolResponse" }
+                    },
+                    "total": { "type": "integer" },
+                    "page_size": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tool-categories/create": {
+      "post": {
+        "summary": "Create Tool Category",
+        "description": "Create a new tool category.",
+        "operationId": "createToolCategory",
+        "tags": ["Tool Categories"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ToolCategoryCreateUpdate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ToolCategoryResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tool-categories/get/{category_id}": {
+      "get": {
+        "summary": "Get Tool Category",
+        "description": "Get a tool category by ID.",
+        "operationId": "getToolCategory",
+        "tags": ["Tool Categories"],
+        "parameters": [
+          {
+            "name": "category_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ToolCategoryResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tool-categories/list": {
+      "get": {
+        "summary": "Get All Tool Categories",
+        "description": "List all tool categories.",
+        "operationId": "listToolCategories",
+        "tags": ["Tool Categories"],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ToolCategoryResponse" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tool-categories/update/{category_id}": {
+      "put": {
+        "summary": "Update Tool Category",
+        "description": "Update a tool category by ID.",
+        "operationId": "updateToolCategory",
+        "tags": ["Tool Categories"],
+        "parameters": [
+          {
+            "name": "category_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ToolCategoryCreateUpdate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ToolCategoryResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tool-categories/delete/{category_id}": {
+      "delete": {
+        "summary": "Delete Tool Category",
+        "description": "Delete a tool category by ID.",
+        "operationId": "deleteToolCategory",
+        "tags": ["Tool Categories"],
+        "parameters": [
+          {
+            "name": "category_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ValidationError" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WorkflowCreateUpdate": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "graph": { "type": "object", "additionalProperties": true }
+        }
+      },
+      "WorkflowResponse": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "graph": { "type": "object", "additionalProperties": true },
+          "id": { "type": "string", "format": "uuid" },
+          "tenant_id": { "type": "string", "format": "uuid" },
+          "created_by": { "type": "string", "format": "uuid" },
+          "updated_by": { "type": "string", "format": "uuid" },
+          "updated_at": { "type": "string", "format": "date-time" },
+          "execution_status": { "type": "string" }
+        }
+      },
+      "ToolCreate": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "tool_path": { "type": "string" },
+          "config_schema": { "type": "object", "additionalProperties": true },
+          "is_active": { "type": "boolean" },
+          "tool_category_id": { "type": "string", "format": "uuid" },
+          "workflow_id": { "type": "string", "format": "uuid" },
+          "system_settings": {}
+        }
+      },
+      "ToolUpdate": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "tool_path": { "type": "string" },
+          "config_schema": { "type": "object", "additionalProperties": true },
+          "is_active": { "type": "boolean" },
+          "tool_category_id": { "type": "string", "format": "uuid" },
+          "workflow_id": { "type": "string", "format": "uuid" },
+          "system_settings": {}
+        }
+      },
+      "ToolResponse": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "tool_path": { "type": "string" },
+          "config_schema": { "type": "object", "additionalProperties": true },
+          "is_active": { "type": "boolean" },
+          "tool_category_id": { "type": "string", "format": "uuid" },
+          "workflow_id": { "type": "string", "format": "uuid" },
+          "system_settings": {},
+          "id": { "type": "string", "format": "uuid" },
+          "tenant_id": { "type": "string", "format": "uuid" },
+          "created_at": { "type": "string", "format": "date-time" },
+          "updated_at": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ToolCategoryCreateUpdate": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "base_config": { "type": "object", "additionalProperties": true },
+          "tool_path": { "type": "string" },
+          "parent": { "type": "string" },
+          "sub_parent": { "type": "string" },
+          "is_active": { "type": "boolean" }
+        }
+      },
+      "ToolCategoryResponse": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "tenant_id": { "type": "string", "format": "uuid" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "base_config": { "type": "object", "additionalProperties": true },
+          "tool_path": { "type": "string" },
+          "parent": { "type": "string" },
+          "sub_parent": { "type": "string" },
+          "is_active": { "type": "boolean" },
+          "created_at": { "type": "string", "format": "date-time" },
+          "updated_at": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ValidationError": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "loc": { "type": "array", "items": {} },
+                "msg": { "type": "string" },
+                "type": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "API key or Bearer token"
+      }
+    }
+  }
+}

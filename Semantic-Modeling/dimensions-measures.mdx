@@ -1,0 +1,63 @@
+---
+title: "Dimensions & Measures"
+description: "Understanding the building blocks of analytical modeling."
+---
+
+In data analytics, every piece of information is structured into two fundamental categories: **Dimensions** and **Measures**. Correctly classifying these fields in Prov AI allows the AI engine to generate accurate charts and SQL groupings.
+
+---
+
+## Dimensions (The 'What')
+
+Dimensions are descriptive attributes of your data. They provide the context, giving you the ability to "slice and dice" your metrics.
+
+**Used to:** Group data, filter results, and define the X-axis of your charts.
+
+<CardGroup cols={3}>
+  <Card title="Categorical" icon="tags">
+    Product Category, Customer Segment, Order Status
+  </Card>
+  <Card title="Geographical" icon="earth-americas">
+    Region, Country, City, Zip Code
+  </Card>
+  <Card title="Temporal" icon="calendar-days">
+    Purchase Date, Subscription Month
+  </Card>
+</CardGroup>
+
+---
+
+## Measures (The 'How Much')
+
+Measures are the quantitative numeric values used for mathematical calculations and aggregations (SUM, AVG, COUNT, MIN, MAX).
+
+**Used to:** Quantify performance, calculate trends, and define the Y-axis of your charts.
+
+<CardGroup cols={3}>
+  <Card title="Financial" icon="dollar-sign">
+    Gross Revenue, Net Profit, Operational Costs
+  </Card>
+  <Card title="Volume" icon="boxes-stacked">
+    Quantity Sold, Units in Stock, Page Views
+  </Card>
+  <Card title="Ratios" icon="percent">
+    Conversion Rate, Churn Rate, Profit Margin
+  </Card>
+</CardGroup>
+
+---
+
+## How They Work Together
+
+When a user asks:
+> *"Show me Revenue by Region"*
+
+The AI Engine instantly knows how to formulate the SQL:
+
+```sql
+SELECT 
+    Region,          -- Dimension (Used for GROUP BY)
+    SUM(Revenue)     -- Measure (Aggregated to show total)
+FROM sales_data
+GROUP BY Region;
+```

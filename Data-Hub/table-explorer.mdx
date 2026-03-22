@@ -1,0 +1,51 @@
+---
+title: "Table Explorer"
+description: "Browse and inspect your datasets before writing queries."
+---
+
+The **Table Explorer** provides a comprehensive interface for users to browse and understand available datasets connected to the platform. 
+
+<Tip>
+Think of it as a dictionary for your database. Exploring tables first helps you understand what questions the AI can actually answer.
+</Tip>
+
+---
+
+## Core Features
+
+- **View all synced tables** across your database schema.
+- **Inspect column details** including data types and descriptions.
+- **Preview data rows** directly in the browser.
+- **Check relationships** and foreign keys connecting different tables.
+
+---
+
+## User Interface Layout
+
+The explorer is divided into an intuitive three-pane layout:
+
+<CardGroup cols={3}>
+  <Card title="1. Table List" icon="list">
+    The left panel shows all accessible schemas and tables.
+  </Card>
+  <Card title="2. Column Details" icon="circle-info">
+    The center shows the schema structure, data types, and metadata.
+  </Card>
+  <Card title="3. Data Preview" icon="eye">
+    The right panel executes a live preview of the actual records.
+  </Card>
+</CardGroup>
+
+---
+
+## Example View Structure
+
+```text
+Table: Orders
+-------------
+Columns:
+ 🔑 order_id      [Integer]
+ 🔗 customer_id   [Integer]
+ 📊 amount        [Float]
+ 📅 created_at    [Timestamp]
+```

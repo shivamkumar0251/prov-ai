@@ -1,0 +1,45 @@
+---
+title: "Explain SQL"
+description: "Transparency and trust through visible SQL."
+---
+
+Every AI-generated response in Prov AI includes a distinct toggle to view the underlying SQL query. We believe in absolute transparency.
+
+<Tip>
+The AI handles the heavy lifting of generating complex SQL, but you always retain the ability to inspect exactly how it arrived at its conclusion.
+</Tip>
+
+---
+
+## Why is it important?
+
+<CardGroup cols={3}>
+  <Card title="Builds Trust" icon="shield-check">
+    Users can trust the AI because the logic is never hidden in a black box.
+  </Card>
+  <Card title="Allows Validation" icon="check-double">
+    Data teams can quickly audit queries to ensure they match internal definitions.
+  </Card>
+  <Card title="Enables Editing" icon="pen-to-square">
+    Advanced analysts can take the generated SQL, edit it, and use it elsewhere.
+  </Card>
+</CardGroup>
+
+---
+
+## Example
+
+**User Query:**
+> *"Revenue by region"*
+
+**Generated SQL:**
+The system generates a highly-optimized query specifically structured for your data warehouse dialect (e.g., Snowflake, BigQuery):
+
+```sql
+SELECT 
+    region, 
+    SUM(revenue) AS total_revenue
+FROM sales_data
+GROUP BY region
+ORDER BY total_revenue DESC;
+```

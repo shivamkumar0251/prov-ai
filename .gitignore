@@ -1,0 +1,25 @@
+# OS generated files
+._DS_Store
+.DS_Store
+
+# Python
+.venv
+__pycache__/
+
+# AI Agent Context
+CLAUDE.md
+AGENTS.md
+
+# Mintlify specific
+.mint/
+
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# Migration Scripts (Optional)
+build_structure.js
+replace.js

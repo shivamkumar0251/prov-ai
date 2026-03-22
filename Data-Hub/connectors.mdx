@@ -1,0 +1,70 @@
+---
+title: "Connectors"
+description: "How Prov AI bridges the gap to your external data systems."
+---
+
+Connectors define how the Prov AI platform integrates with your different data systems. They act as the secure bridge between your raw data sources and the AI analytics engine.
+
+---
+
+## Types of Connectors
+
+<CardGroup cols={3}>
+  <Card title="1. Native Connectors" icon="database">
+    Pre-built, deeply integrated connections for cloud warehouses.
+    - Snowflake
+    - BigQuery
+    - PostgreSQL
+  </Card>
+  <Card title="2. API-Based Connectors" icon="cloud">
+    Used for connecting directly to SaaS tools and external APIs.
+  </Card>
+  <Card title="3. File Uploads" icon="file-csv">
+    Drag & drop interface for static flat files (CSV, Excel).
+  </Card>
+</CardGroup>
+
+---
+
+## Connector Capabilities
+
+All supported connectors provide the following advanced features automatically:
+- **Schema Discovery:** Instantly reads and maps tables and columns.
+- **Auto-Refresh:** Keeps schema metadata up to date.
+- **Authentication Handling:** Securely stores credentials.
+- **Query Execution:** Dispatches optimized SQL natively to the source.
+
+---
+
+## Configuration & Data Sync
+
+Each connector requires a standard setup: specific credentials, connection name, database/dataset selection, and sync settings.
+
+<AccordionGroup>
+  <Accordion title="Real-time (Live Query)" icon="bolt">
+    Queries are executed directly against your database at the exact moment the user asks a question. **Recommended for production.**
+  </Accordion>
+  <Accordion title="Scheduled Sync" icon="clock">
+    Data/metadata is periodically synced (e.g., hourly, daily) into a cache for faster performance on static data.
+  </Accordion>
+  <Accordion title="Manual Refresh" icon="arrows-rotate">
+    Users trigger a sync manually. Useful for flat file uploads.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<Warning>
+**Important Considerations:**
+- **Schema changes can break AI queries:** Always re-sync metadata after altering tables in your database.
+- **API limitations:** API-based connectors are subject to the rate limits of the external SaaS system.
+- **File uploads are static:** CSV/Excel uploads are not real-time. Data must be re-uploaded to reflect updates.
+</Warning>
+
+---
+
+## Best Practices
+
+- Use **native connectors** for optimal performance and security.
+- Set **refresh schedules** based strictly on business needs to avoid unnecessary load.
+- Always **validate data** after the initial sync.

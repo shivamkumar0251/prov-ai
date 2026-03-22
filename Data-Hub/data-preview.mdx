@@ -1,0 +1,47 @@
+---
+title: "Data Preview"
+description: "Quickly inspect and validate your data directly in the platform."
+---
+
+**Data Preview** allows you to see a live sample of your data to help you understand its structure and content before generating insights or building semantic models.
+
+<Info>
+Previewing data helps verify that your connector is configured correctly and that the table contains the expected information.
+</Info>
+
+---
+
+## What You See
+
+When you trigger a Data Preview, Prov AI securely fetches and displays:
+- **Sample rows** (e.g., the first 50 rows)
+- **Null value presence** (to identify sparse columns quickly)
+- **Data distribution** summary
+
+---
+
+## Capabilities
+
+<CardGroup cols={3}>
+  <Card title="Row-Level Preview" icon="table-rows">
+    View actual records exactly as they exist in your database.
+  </Card>
+  <Card title="Column Statistics" icon="chart-bar">
+    Basic summary stats to understand the shape of your data.
+  </Card>
+  <Card title="Type Detection" icon="magnifying-glass">
+    Automatic detection of dates, integers, strings, and booleans.
+  </Card>
+</CardGroup>
+
+---
+
+## Example View
+
+```text
+Region | Revenue | Date
+-------|---------|-----------
+US     | 1000    | 2024-01-01
+EU     | 800     | 2024-01-01
+APAC   | 1450    | 2024-01-02
+```

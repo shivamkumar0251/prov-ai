@@ -1,0 +1,79 @@
+---
+title: "Quick Start"
+description: "Get up and running with your first AI-powered insight in minutes."
+---
+
+<Steps>
+
+  <Step title="Connect Your Data">
+    Go to **Data Hub → Data Sources**.
+
+    Supported sources include:
+    - Snowflake
+    - BigQuery
+    - PostgreSQL
+    - CSV / Excel uploads
+
+    Select your source and provide the necessary connection credentials.
+    <Warning>Ensure that the service account you provide has read-only access to prevent accidental data modification.</Warning>
+  </Step>
+
+  <Step title="Explore Your Data">
+    Navigate to **Data Hub → Table Explorer**. 
+    
+    Here you can:
+    - View all available tables
+    - Preview sample data
+    - Understand your underlying schema automatically inferred by Prov AI
+  </Step>
+
+  <Step title="Define Basic Metrics (Recommended)">
+    Go to **Semantic Modeling**. 
+    
+    Establish your ground truth to ensure consistent and accurate insights:
+    - `Revenue = Price × Quantity`
+    - Date hierarchy: `Year → Month → Day`
+    
+    <Info>
+      Defining a semantic layer guarantees that the AI will always calculate metrics exactly the way your business does.
+    </Info>
+  </Step>
+
+  <Step title="Ask Your First Question">
+    Go to **Home / AI Analyst** and type a natural language prompt:
+    
+    > *"Total sales last month by region"*
+  </Step>
+
+  <Step title="View Results">
+    The system will immediately:
+    - Generate the exact SQL
+    - Query your data warehouse
+    - Display an auto-selected optimal visualization (e.g. Bar Chart)
+
+    You can manually switch the chart type, apply filters, and view the generated SQL for full transparency.
+  </Step>
+
+  <Step title="Ask Follow-Up Questions">
+    You don't need to write the entire query again. Just ask a follow-up!
+    
+    > *"Break this down by product category"*
+    
+    <Tip>The Prov AI system maintains conversation context, automatically updating the SQL and results based on the previous context.</Tip>
+  </Step>
+
+  <Step title="Save or Share">
+    Once you find an interesting insight, you can:
+    - **Save** as a dashboard widget
+    - **Export** as a PDF/CSV report
+    - **Share** with your team via a secure link
+    - **Schedule** recurring email/Slack reports
+  </Step>
+
+</Steps>
+
+---
+
+## 🎉 You're Done!
+
+You’ve successfully connected data, queried it using conversational AI, and generated actionable insights. Next step: explore advanced features like custom dashboard generation.

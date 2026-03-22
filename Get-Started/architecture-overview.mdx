@@ -1,0 +1,42 @@
+---
+title: "Architecture Overview"
+description: "A high-level view of how Prov AI connects to your data securely."
+---
+
+This platform is built as a modular AI-driven analytics system that never trains models on your raw database records.
+
+<Card title="Security First" icon="lock">
+  We process metadata, not raw row data! The Large Language Models only ever see schema definitions, sample headers, and your semantic metrics—never your sensitive raw records.
+</Card>
+
+---
+
+## High-Level Architecture
+
+The flow of information maps out securely from the user intent to the final visualization.
+
+<Frame>
+```mermaid
+sequenceDiagram
+    participant User as User (Chat UI)
+    participant AI as AI Query Engine
+    participant SQL as SQL Generator
+    participant DB as Data Source (DWH)
+    participant Chart as Visualization Engine
+
+    User->>AI: "Show sales by region"
+    AI->>SQL: Synthesizes intent + Semantic Layer
+    SQL->>DB: Executes safe, optimized SELECT query
+    DB-->>SQL: Returns final aggregated results
+    SQL-->>Chart: Passes aggregate data
+    Chart-->>User: Auto-renders best graph
+```
+</Frame>
+
+### Key Architectural Layers
+
+1. **User Interface (Chat / Dashboard)**: Clean, intuitive frontend.
+2. **AI Query Engine**: The intelligence layer powered by LLMs + context handling.
+3. **SQL Generation Layer**: Transforms AI output into deterministic, dialect-specific SQL (e.g. Postgres, Snowflake).
+4. **Data Sources**: Your actual Data Warehouse or Database where the execution safely happens.
+5. **Visualization Engine**: Automatically maps data sets to interactive React-based charts.

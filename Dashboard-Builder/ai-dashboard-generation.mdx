@@ -1,0 +1,51 @@
+---
+title: "AI Dashboard Generation"
+description: "Create complete dashboards instantly using natural language."
+---
+
+**AI Dashboard Generation** allows users to spawn entire, multi-chart dashboards from a single natural language prompt. 
+
+Instead of manually building charts one by one and dragging them onto a canvas, users simply describe their high-level reporting requirements, and the Prov AI system generates a fully structured, interactive dashboard on the fly.
+
+---
+
+## How it Works
+
+Generating a complete dashboard requires deep orchestration behind the scenes:
+
+<Steps>
+  <Step title="User Prompts the AI">
+    > *"Create a sales dashboard with revenue trends, top products, and regional performance."*
+  </Step>
+  <Step title="Metric Selection">
+    The AI decomposes the prompt and matches the requests to defined metrics in the Semantic Layer.
+  </Step>
+  <Step title="Chart Generation">
+    The system executes multiple parallel SQL queries and selects the optimal visualizations (e.g., Line chart for trends, Bar chart for rankings, Map for regions).
+  </Step>
+  <Step title="Layout Creation">
+    The AI dynamically arranges these insights into a cohesive, responsive grid layout.
+  </Step>
+</Steps>
+
+---
+
+## Example Output
+
+Based on the prompt above, the generated dashboard would automatically assemble:
+
+<CardGroup cols={3}>
+  <Card title="Revenue Trend" icon="chart-line">
+    A line chart showing revenue over the last 12 months.
+  </Card>
+  <Card title="Top Products" icon="chart-bar">
+    A horizontal bar chart ranking products by sales volume.
+  </Card>
+  <Card title="Regional Performance" icon="earth-americas">
+    A geographic heat map or clustered bar chart.
+  </Card>
+</CardGroup>
+
+<Tip>
+Once the dashboard is auto-generated, you are not locked in! You can immediately use the **Manual Editing** tools to resize, remove, or add new charts to perfectly suit your needs.
+</Tip>

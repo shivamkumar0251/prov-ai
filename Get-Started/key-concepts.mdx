@@ -1,0 +1,88 @@
+---
+title: "Key Concepts"
+description: "Master the foundational concepts behind Prov AI's Generative BI."
+---
+
+Understanding these core concepts will help you build trust with the AI and use the platform effectively.
+
+<AccordionGroup>
+  <Accordion title="1. Generative BI" icon="brain">
+    Generative BI allows users to interact with enterprise data using natural language instead of SQL. 
+    
+    **Example:**
+    > *"Show revenue growth over last 6 months"*
+    
+    The system translates this into a deterministic SQL query and returns insights instantly.
+  </Accordion>
+
+  <Accordion title="2. Natural Language Query (NLQ)" icon="comment-dots">
+    Users type or speak queries in plain English. The Prov AI system:
+    - Interprets the business intent
+    - Maps the terminology to the underlying schema
+    - Generates 100% syntactically correct SQL
+  </Accordion>
+
+  <Accordion title="3. Semantic Layer" icon="layer-group">
+    A critically structured layer that defines the "ground truth" of your business logic:
+    - **Metrics:** Revenue, Profit
+    - **Dimensions:** Region, Date
+    - **Relationships:** Table joins
+    
+    <Info>The Semantic Layer is what ensures consistency across queries. E.g., if two people ask for "Revenue", the AI always uses the exact formula defined here.</Info>
+  </Accordion>
+
+  <Accordion title="4. AI Query Engine" icon="engine">
+    The core intelligent engine responsible for:
+    - Understanding user queries
+    - Generating SQL
+    - Optimizing execution paths
+    
+    It combines powerful Large Language Models (LLMs) with your metadata (schema, metrics) and conversational context to produce the correct query.
+  </Accordion>
+
+  <Accordion title="5. Conversational Analytics" icon="messages">
+    Users can ask follow-up questions seamlessly as if analyzing data with a human colleague.
+    
+    **Example flow:**
+    1. *"Sales by region"*
+    2. *"Only for Q4"*
+    3. *"Top 5 regions"*
+    
+    The system maintains context across all queries in a thread.
+  </Accordion>
+
+  <Accordion title="6. Visualization Engine" icon="chart-simple">
+    The platform automatically comprehends the returned dataset and selects the best chart:
+    - **Bar charts** for clear comparisons
+    - **Line charts** for temporal trends
+    - **Tables** for detailed tabular data
+    
+    *Users can trivially modify these charts via the UI or by issuing follow-up commands.*
+  </Accordion>
+
+  <Accordion title="7. Explainable SQL" icon="code">
+    <Tip>Transparency is key to trust in AI.</Tip>
+    
+    Every AI-generated answer includes the exact **SQL query** generated and a **logic explanation** in plain English. This builds trust and allows data analysts to audit or edit the code manually.
+  </Accordion>
+
+  <Accordion title="8. Dashboards & Reports" icon="dashboard">
+    - Combine multiple individual insights into one view
+    - Auto-generate complete dashboards from a single AI prompt
+    - Create narrative data stories instead of just grids of charts
+  </Accordion>
+
+  <Accordion title="9. Automation & Alerting" icon="robot">
+    Turn static insights into active monitors.
+    - Schedule recurring reports to Slack or Email
+    - Set automatic threshold alerts
+    - Utilize AI-driven anomaly detection on critical KPIs
+  </Accordion>
+
+  <Accordion title="10. Governance & Security" icon="shield-check">
+    Prov AI is designed for the enterprise.
+    - **Role-based access control (RBAC)** across the platform
+    - **Row & Column-level security** inherited from the database
+    - **Comprehensive Audit Logs** to track all generated queries
+  </Accordion>
+</AccordionGroup>
