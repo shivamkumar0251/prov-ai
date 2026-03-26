@@ -125,10 +125,10 @@
                       {
                         "group": "Integrations",
                         "pages": [
-                          "integrations/embedded-threads",
-                          "integrations/slack",
-                          "integrations/spreadsheet",
-                          "integrations/dbt"
+                          "Integrations/embedded-threads",
+                          "Integrations/slack",
+                          "Integrations/spreadsheet",
+                          "Integrations/dbt"
                         ],
                         "expanded": false
                       },
