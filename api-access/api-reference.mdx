@@ -1,8 +1,53 @@
 ---
-title: "Api Reference"
-description: "Documentation for Api Reference"
+title: "API Reference"
+description: "Detailed documentation for Prov AI's REST API endpoints"
 ---
 
-# Api Reference
+The Prov AI API allows you to interact with your data modeling projects, manage threads, and generate SQL or charts programmatically.
 
-Add content here.
+---
+
+## Base URL
+
+All API requests should be made to the following base URL:
+
+```text
+https://api.prov.ai/api/v1
+```
+
+---
+
+## Authentication
+
+Prov AI uses **Bearer Token** authentication. Include your Project or Organization API Key in the `Authorization` header of every request.
+
+```bash
+Authorization: Bearer <YOUR_API_KEY>
+```
+
+---
+
+## Core Endpoints
+
+| Endpoint | Method | Description |
+| :--- | :--- | :--- |
+| `/projects/{id}/ask` | `POST` | Ask a natural language question. |
+| `/projects/{id}/threads`| `GET/POST`| Manage persistent conversation threads. |
+| `/projects/{id}/models` | `GET` | Retrieve the current project schema (MDL). |
+| `/org/billing` | `GET` | Monitor organization credit consumption. |
+
+---
+
+## Security Headers
+
+When using RLS or CLS, you must provide the user's context via the session properties header:
+
+| Header | Value |
+| :--- | :--- |
+| **X-Prov-Session-Properties** | JSON string of property key-value pairs. |
+
+---
+
+<Note>
+  For detailed parameter definitions and response schemas, please refer to the interactive **API Reference** tab in the top navigation bar.
+</Note>
