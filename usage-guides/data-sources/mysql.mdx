@@ -1,0 +1,51 @@
+---
+title: "MySQL"
+description: "Connecting Prov AI to your MySQL database"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+## IP Whitelist for Prov AI Cloud
+
+Prov AI needs to access your MySQL database via its outbound IP address. Please add the Prov AI service IP to your MySQL database's firewall.
+
+<Tip>
+  Scroll to the bottom of the data source connection page in Prov AI to find the IP address for your instance.
+</Tip>
+
+To add a MySQL connection, select the **MySQL** option in the "Connect a data source" section.
+
+---
+
+## Connect
+
+Fill in the following connection settings:
+
+### MySQL Version
+Prov AI supports **MySQL 8.0 and above** only.
+
+### Connection Details
+- **Display Name**: The display name for the database in Prov AI.
+- **Host**: Your MySQL database's IP address or domain name.
+- **Port**: Your MySQL database port (default: `3306`).
+- **Username**: The database username for the account you want to use.
+- **Password**: The password for the username specified above.
+- **Database Name**: The name of the specific database you want to connect to.
+
+---
+
+## Select Tables
+
+All tables in your connected MySQL database will be listed. Select the tables you want to use in Prov AI. Each selected table will be created as a **Data Model**.
+
+---
+
+## Define Relationships
+
+Define the relationships among selected tables. Prov AI will suggest relationships based on existing primary and foreign keys in your MySQL schema.
+
+<Card title="Relationships Reference" icon="diagram-project" href="/modeling/relationships">
+  Learn more about defining relationships between your tables.
+</Card>

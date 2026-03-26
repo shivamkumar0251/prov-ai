@@ -1,0 +1,64 @@
+---
+title: "Slack Integration"
+description: "Asking questions and generating charts directly in Slack with Prov AI"
+---
+
+<Info>
+  **Plan Support**: Slack Integration is available in **Essential / Business Plan** and above.
+</Info>
+
+Connect your Slack workspace to Prov AI to ask questions in natural language, generate charts, and view reasoning — all without leaving your Slack channel.
+
+---
+
+## Installation
+
+1. Go to **Settings → Slack Integration**.
+2. Click **Add to Slack** and complete the authorization process.
+3. Once setup is complete, your Slack workspace name will appear on the integration page.
+
+<Note>
+  **Slack App Review**: The Prov AI Slack app is currently under review for the official Slack Marketplace. You may see a disclaimer about the app not being approved during this process.
+</Note>
+
+---
+
+## Project & Channel Mapping
+
+Project and channel mapping allows you to assign different Prov AI projects to different Slack channels to ensure contextually relevant answers.
+
+### Mapping Steps
+- **Set a Default Project**: This project will be used for any channel not explicitly mapped.
+- **Map Specific Channels**: (Optional) Assign individual Slack channels to specific projects to restrict access or focus results.
+
+---
+
+## Using Prov AI in Slack
+
+### Asking Questions
+1. **Mention**: `@Prov AI` in any mapped channel.
+2. **Direct Message**: Send a DM to Prov AI without mentioning.
+3. **Language**: Ask in any language; Prov AI responds in a thread.
+
+### AI Capabilities
+
+| Action | Command / Usage |
+| :--- | :--- |
+| **Follow-up** | Continue the conversation in the same thread. |
+| **Generate Chart**| Type `Generate chart` as a follow-up message. |
+| **See Reasoning** | Use the "See reasoning" button to view SQL logic. |
+
+---
+
+## FAQ
+
+| Question | Answer |
+| :--- | :--- |
+| **Multiple Orgs?** | No. Each Slack workspace connects to one Prov AI organization. |
+| **Image Too Large?**| Occurs when results exceed Slack's image rendering limits. Use the Prov AI dashboard for full visualization. |
+| **How is usage charged?** | Each Slack question counts as an "Ask Question" (/api/v1/ask) API credit. |
+| **RLS Support?** | Not currently supported in Slack; planned for a future release. |
+
+<Warning>
+  **AI Disclaimer**: AI-generated responses may occasionally contain hallucinations. Please verify critical outputs before making business decisions.
+</Warning>

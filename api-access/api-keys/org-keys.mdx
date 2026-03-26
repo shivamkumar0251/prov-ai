@@ -1,0 +1,38 @@
+---
+title: "Organization API Keys"
+description: "Managing administrative API access for your Prov AI organization"
+---
+
+**Organization API Keys** are used for administrative tasks across your entire Prov AI organization. These keys allow you to manage multiple projects, billing, and member access.
+
+---
+
+## Capabilities
+
+| Action | Supported | Description |
+| :--- | :--- | :--- |
+| **Manage Billing** | Yes | Update plans and view credit consumption. |
+| **Invite Members** | Yes | Add or remove users from the organization. |
+| **Create Projects** | Yes | Automate the setup of new data modeling projects. |
+| **Org Settings** | Yes | Update organization name, timezone, and language. |
+| **Query Data** | No | Organization keys cannot be used to ask natural language questions. |
+
+---
+
+## Generating an Org Key
+
+1. Navigate to **Settings > Organization > API Access**.
+2. Click **Generate New Key**.
+3. Provide a descriptive name (e.g., "Internal-Billing-Audit").
+4. Click **Create**.
+5. **Copy the Key**: This is the only time the full key will be shown. Store it securely.
+
+<Warning>
+  **Security Risk**: Organization keys have broad administrative privileges. Never embed these keys in frontend code or shared scripts. Use them only in secure backend environments.
+</Warning>
+
+---
+
+<Note>
+  Only **Organization Administrators** have the permissions required to generate or rotate Organization API Keys.
+</Note>

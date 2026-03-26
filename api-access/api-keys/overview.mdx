@@ -1,0 +1,37 @@
+---
+title: "API Keys Overview"
+description: "Understanding the difference between Project and Organization API Keys in Prov AI"
+---
+
+Prov AI provides two types of API keys, each scoped to a different level of access within your account.
+
+---
+
+## Comparison Table
+
+| Key Type | Scope | Primary Use Case |
+| :--- | :--- | :--- |
+| **Project Key** | Single Project | Querying data, managing models, and Slack/App integrations. |
+| **Organization Key**| All Projects | Billing management, user invites, and org-level settings. |
+
+---
+
+## Security Best Practices
+
+To protect your data and credits, follow these security guidelines:
+
+- **Environment Isolation**: Use separate keys for staging and production environments.
+- **Backend Only**: Never expose API keys in client-side code (JavaScript).
+- **Rotation**: Rotate your keys every 90 days or immediately if you suspect a leak.
+- **Descriptive Names**: Use names like `customer-portal-prod` to easily identify keys in audit logs.
+
+### Key Rotation
+To rotate a key, generate a new one first, update your application, and then delete the old key once the transition is verified.
+
+---
+
+<Note>
+  All API requests must be made over **HTTPS**. Unsecured HTTP requests will be rejected by the Prov Engine.
+</Note>
+
+[Learn more about Project Keys](/api-access/api-keys/project-keys)

@@ -1,0 +1,98 @@
+---
+title: "Amazon Athena (Spark)"
+description: "Connecting Prov AI to Amazon Athena using the Apache Spark engine"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+## IP Whitelist for Prov AI Cloud
+
+Prov AI needs to access your Athena database via its outbound IP address. If you have network access controls on Athena, please add the Prov AI service IP to your allowlist.
+
+<Tip>
+  Scroll to the bottom of the data source connection page in Prov AI to find the specific IP address for your instance.
+</Tip>
+
+## Query Engine Support
+
+Amazon Athena supports two open-source query engines: **Apache Spark** and **Trino**. This guide covers the **Apache Spark** engine. If you are using the Trino engine, please refer to the [Athena (Trino)](/usage-guides/data-sources/athena-trino) guide instead.
+
+To add an Amazon Athena connection, select the **Athena (Spark)** option in the "Connect a data source" section.
+
+---
+
+## Prerequisites
+
+### AWS Account and Permissions
+You'll need an AWS account with appropriate permissions to access Amazon Athena. The user or role you use should have the following permissions:
+
+- `AmazonAthenaFullAccess` policy and `AWSGlueServiceRole`, or at minimum:
+- Permissions to run Athena queries.
+- Full access to the S3 bucket where query results are stored.
+- Read access to metadata from AWS Glue Data Catalog.
+
+### Athena Spark Workgroup
+You must have an existing Athena Spark workgroup configured in your AWS account. Athena Spark workgroups use Apache Spark as the query engine and are distinct from standard Athena (Trino) workgroups.
+
+**To create a Spark workgroup:**
+1. Open the Amazon Athena console.
+2. Navigate to **Workgroups** and click **Create workgroup**.
+3. Select **Apache Spark** as the analytics engine.
+4. Configure the workgroup settings (name, IAM role, S3 results location, etc.).
+5. Click **Create workgroup**.
+
+<Note>
+  For more details, refer to the [AWS documentation on Athena Spark workgroups](https://docs.aws.amazon.com/athena/latest/ug/notebooks-spark.html).
+</Note>
+
+---
+
+## Connect
+
+Fill in the following connection settings:
+
+### Display Name
+The display name for the database in the Prov AI interface.
+
+### Workgroup
+The name of the Athena Spark workgroup to use for running queries (e.g., `spark-workgroup`). The workgroup **must** be configured with Apache Spark as the analytics engine. Standard Trino workgroups are not compatible with this connection type.
+
+### AWS Region
+The AWS region where your Athena service is located (e.g., `us-east-1`, `eu-west-1`).
+
+### AWS Credentials
+Enter your **AWS Access Key ID** and **Secret Access Key**. These credentials must have sufficient permissions to run queries, manage workgroups, and access the specified S3 staging location.
+
+---
+
+## Select Tables
+
+All tables in your connected Athena database will be listed. Select the tables you want to use. Each selected table will be created as a **Data Model**. 
+
+<Card title="What are Data Models?" icon="diagram-project" href="/modeling/overview">
+  Learn more about how Prov AI structures your data for AI analysis.
+</Card>
+
+---
+
+## Define Relationships
+
+Define the relationships among selected tables. If you have primary and foreign keys defined in Athena, Prov AI will automatically suggest relationships. 
+
+**Properties in a relationship:**
+- **From**: Select the left-side table and column.
+- **To**: Select the right-side table and column.
+- **Relationship Type**: One-to-one or one-to-many.
+
+<Tip>
+  You can also skip this step and define relationships later in the Modeling page.
+</Tip>
+
+---
+
+## Known Issues
+
+### Spark Session Cold Start
+Athena Spark sessions may take additional time to initialize during the first query or after a period of inactivity. This "cold start" delay is expected behavior. Subsequent queries within the same session will execute significantly faster.

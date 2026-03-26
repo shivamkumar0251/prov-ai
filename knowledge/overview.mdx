@@ -1,0 +1,45 @@
+---
+title: "Knowledge Overview"
+description: "Enhancing Prov AI's data understanding with semantics and instructions"
+---
+
+The **Knowledge** layer is the brain of Prov AI. It is where you refine the raw database schema into a high-context "Business Semantic Layer" that the AI can truly understand.
+
+---
+
+## Core Pillars of Knowledge
+
+| Pillar | Description | How to Configure |
+| :--- | :--- | :--- |
+| **Semantics** | Natural language descriptions for models and columns. | **Modeling > Metadata Edit** |
+| **Relationships** | Logical connections (joins) between tables. | **Modeling > Relationship Add** |
+| **Instructions** | Global rules for reasoning and SQL generation. | **Modeling > Custom Instructions** |
+| **Calculated Fields**| Predefined metrics and formulas (formulas). | **Modeling > Calculated Field** |
+
+---
+
+## Why Knowledge Matters
+
+Without knowledge, an AI looks at a column named `tx_amt` and guesses. With knowledge, Prov AI knows:
+- `tx_amt` means **Transaction Amount**.
+- It should be formatted as **Currency**.
+- It relates directly to the **Finance** model via `txn_id`.
+
+### The Feedback Loop
+As your team uses Prov AI, you can continuously improve the knowledge layer:
+1. **Analyze**: Review query history to see where the AI struggled.
+2. **Refine**: Add a **Custom Instruction** or a more detailed **Description**.
+3. **Deploy**: Update the models to propagate the fix to all users.
+
+---
+
+## Knowledge Workflow
+
+1. **Import Schema**: Start with raw table metadata.
+2. **AI Assist**: Use the **Modeling AI Assistant** to generate initial semantics.
+3. **Refine**: Manually tweak descriptions and define business-specific instructions.
+4. **Iterate**: Use **Thread Tracing** to identify knowledge gaps.
+
+<Tip>
+  Start small. Document your most frequently asked tables first, then expand your knowledge layer as your team scales.
+</Tip>

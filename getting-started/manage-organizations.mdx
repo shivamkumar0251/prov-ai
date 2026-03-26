@@ -1,0 +1,111 @@
+---
+title: "Manage Organizations"
+description: "Setting up and administering organizations within Prov AI"
+---
+
+<img src="/images/manage-org-1.png" alt="Manage Organizations UI" />
+
+<Info>
+  **Important Note**: Each organization is independent and will be counted as a separate entity for billing purposes. You can create multiple organizations through the navigation bar.
+</Info>
+
+---
+
+<img src="/images/manage-org-2.png" alt="Create Organization" />
+
+Once an organization is created, a **default project** is automatically generated for you. This project will always appear at the top of your list.
+
+### Connect an External Data Source
+
+You can connect a wide range of data sources to your project:
+
+- **Cloud Data Warehouses**: BigQuery, Snowflake, Redshift, Athena, Databricks.
+- **Relational Databases**: PostgreSQL, MySQL, Oracle, SQL Server.
+- **OLAP & Big Data**: ClickHouse, Trino, Spark (EMR/Athena).
+- **Files**: CSV Upload.
+
+---
+
+## Organization Settings
+
+As an **Organization Admin**, you have access to manage billing, member access, and the overall organization status.
+
+---
+
+## General Settings
+
+### Update Organization Name
+You can modify the display name of your organization through the **General** tab. 
+
+<img src="/images/manage-org-3.png" alt="Update Organization Name" />
+
+---
+
+## Members & Access Control
+
+The **Members** section lists all users in the organization and their roles. Admins can invite, remove, and modify member roles.
+
+### Invite People
+1. Click the **Invite People** button.
+2. Enter the user's email and assign a role.
+3. **Roles**:
+   - **Organization Admin**: Access to all projects and the ability to create new ones.
+   - **Organization Member**: Must be added to at least one specific project.
+
+<Tip>
+  You can also add invited users to multiple projects simultaneously during the onboarding step.
+</Tip>
+
+<CardGroup cols={2}>
+  <Card title="Invite Admin" icon="user-plus">
+    <img src="/images/manage-org-4.png" alt="Invite Admin" />
+  </Card>
+  <Card title="Invite Member" icon="users">
+    <img src="/images/manage-org-5.png" alt="Invite Member" />
+  </Card>
+</CardGroup>
+
+---
+
+### Managing Invitations
+Once sent, check invitation status and links on the **Members** page. 
+
+<Warning>
+  **Expirations**: Invitations expire after **3 days** if not accepted.
+</Warning>
+
+<img src="/images/manage-org-6.png" alt="Members Page" />
+
+---
+
+### Update or Remove Members
+- **Update Role**: Use the **Role** dropdown menu. Note: You cannot modify your own role—another Admin must do this for you.
+- **Remove Member**: Click **Remove** to revoke all permissions for that user.
+
+<CardGroup cols={2}>
+  <Card title="Update Role" icon="pen-to-square">
+    <img src="/images/manage-org-7.png" alt="Update Role" />
+  </Card>
+  <Card title="Remove Member" icon="user-minus">
+    <img src="/images/manage-org-8.png" alt="Remove Member" />
+  </Card>
+</CardGroup>
+
+---
+
+## Danger Zone
+
+<Warning>
+  **Delete Organization**: This action is **irreversible**. All projects within the organization will be permanently lost for all users.
+</Warning>
+
+- **Leave Organization**: Members can leave at any time. If you are the last Admin, you must delete the organization instead.
+
+<CardGroup cols={2}>
+  <Card title="Leave Organization" icon="right-from-bracket">
+    <img src="/images/manage-org-9.png" alt="Leave Organization" />
+  </Card>
+  <Card title="Delete Organization" icon="trash-can">
+    <img src="/images/manage-org-10.png" alt="Delete Organization" />
+  </Card>
+</CardGroup>

@@ -1,0 +1,37 @@
+---
+title: "Google Ads"
+description: "Analyzing Google Ads performance in Prov AI Cloud (Legacy)"
+---
+
+<Warning>
+  **Retire Plan Notice**: This feature is only available in Prov AI Cloud (Essential Plan and above). It is no longer available to new users effective immediately. Service for existing users will end in **March 2026**.
+</Warning>
+
+The Google Ads boilerplate provides pre-configured models and semantics for analyzing ad performance directly in Prov AI Cloud.
+
+---
+
+## Prerequisites
+
+- **GCP BigQuery Dataset** with Google Ads data. Follow the [Google Ads Transfer documentation](https://cloud.google.com/bigquery/docs/google-ads-transfer) to set this up.
+
+---
+
+## Setup Steps
+
+1. Select **Google Ads** in the "Start with a Data Boilerplate" section.
+2. Provide **BigQuery Data Viewer** permissions to the Prov AI service account principal address.
+3. Enter your **GCP Project ID** and **Dataset ID**.
+4. Click **Continue**.
+
+<Info>
+  Granting the **Viewer** role allows Prov AI Cloud to explore your schema and generate queries without modifying any data.
+</Info>
+
+---
+
+## Review Fields
+
+The modeling page will display all models and metrics from the Google Ads boilerplate. Visual markers help you distinguish between boilerplate models and custom views.
+
+[Learn more about views](/modeling/views)

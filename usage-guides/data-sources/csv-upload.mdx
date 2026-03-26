@@ -1,0 +1,93 @@
+---
+title: "CSV Upload"
+description: "Analyzing CSV files with Prov AI without a database connection"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+To add a CSV file as a data source, select the **CSV Upload** option in the "Connect an external data source" section.
+
+---
+
+## Prerequisites
+
+- **File Size**: Individual CSV files must be less than **100MB**.
+- **Format**: Files should be properly formatted with headers.
+- **Extensions**: Only `.csv` files are supported.
+
+---
+
+## Upload CSV Files
+
+1. Click the **Upload** button to select your CSV file(s).
+2. Wait for the upload process to complete.
+3. If successful, click **Continue** to proceed to modeling.
+
+<Tip>
+  If you encounter errors during upload, hover over the error icon to see specific details (e.g., column delimiter issues or file size limits).
+</Tip>
+
+---
+
+## Review Data Models
+
+After a successful upload, Prov AI will automatically generate a list of data models based on your CSV structure. Review the following:
+
+- **Model Name**: Ensure it reflects the entity (e.g., `customers.csv` → `Customers`).
+- **Field Names and Types**: Verify that numeric, date, and boolean fields are correctly identified.
+
+---
+
+## Supported Column Data Types
+
+### Standard Types
+- **Boolean**: `true/false`, `t/f`, `yes/no`, `y/n`.
+- **Date**: `YYYY-MM-DD`.
+- **Time**: `HH:MM:SS[.SSSSSS]`.
+
+### Datetime / Timestamp
+Format: `{YYYY/MM/DD or YYYY-MM-DD}{T or space}{HH:MM[:SS[.SSSSSS]]}[Z or UTC offset]`
+
+**Format Breakdown:**
+- **Date part**: Use slashes (`2025/08/06`) or hyphens (`2025-08-06`).
+- **Separator**: Literal `T` (e.g., `2025-08-06T14:35:22`) or a blank space.
+- **Time part**: `HH:MM` is required; seconds (`:SS`) and fractional seconds (`.SSSSSS`) are optional.
+- **Timezone**: `Z` for UTC or a UTC offset (e.g., `+05:00`, `-08:00`).
+
+<Note>
+  Types not supported by auto-detection (like `geography`, `json`, or `interval`) will be loaded as **STRING**.
+</Note>
+
+---
+
+## Additional Operations
+
+### Upload More Files
+To add new CSV files to an existing project:
+1. Go to the **Modeling** page.
+2. Click the **Upload** button in the sidebar.
+
+### Override Existing CSV Files
+To replace the data for an existing model:
+1. Go to the **Modeling** page.
+2. Click the **More icon (⋮)** on the model card.
+3. Select **Override CSV file** and upload the new version.
+
+<Warning>
+  Overriding a CSV file will replace all existing data for that model. Ensure you have a backup if the data is not easily reproducible.
+</Warning>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Modeling Overview" icon="diagram-project" href="/modeling/overview">
+    Learn how to build your semantic layer.
+  </Card>
+  <Card title="Calculated Fields" icon="calculator" href="/modeling/calculated-fields">
+    Add custom logic on top of your CSV data.
+  </Card>
+</CardGroup>

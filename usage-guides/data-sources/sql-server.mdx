@@ -1,0 +1,48 @@
+---
+title: "Microsoft SQL Server"
+description: "Connecting Prov AI to your SQL Server database"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+## IP Whitelist for Prov AI Cloud
+
+Prov AI needs to access your SQL Server database via its outbound IP address. Please add the Prov AI service IP to your SQL Server database's firewall.
+
+<Tip>
+  Scroll to the bottom of the data source connection page in Prov AI to find the specific IP address for your instance.
+</Tip>
+
+To add a Microsoft SQL Server connection, select the **SQL Server** option in the "Connect a data source" section.
+
+---
+
+## Connect
+
+Fill in the following connection settings:
+
+### Connection Details
+- **Display Name**: The identifier for this connection in Prov AI.
+- **Host**: Your SQL Server database's IP address or domain name.
+- **Port**: Standard SQL Server port (default: `1433`).
+- **Username**: The database username for the account you want to use.
+- **Password**: The password for the username specified above.
+- **Database Name**: The name of the specific database you want to connect to.
+
+---
+
+## Select Tables
+
+All tables in your connected SQL Server database will be listed. Select the tables you want to use in Prov AI. Each selected table will be created as a **Data Model**.
+
+---
+
+## Define Relationships
+
+Define the relationships among selected tables. Prov AI will suggest relationships based on existing primary and foreign keys in your SQL Server schema.
+
+<Card title="Working with Data Models" icon="diagram-project" href="/modeling/overview">
+  Learn more about data models and relationships in Prov AI.
+</Card>

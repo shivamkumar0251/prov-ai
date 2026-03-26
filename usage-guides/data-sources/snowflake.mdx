@@ -1,0 +1,77 @@
+---
+title: "Snowflake"
+description: "Connecting Prov AI to your Snowflake account"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+## IP Whitelist for Prov AI Cloud
+
+Prov AI needs to access your Snowflake database via its outbound IP address. Please add the Prov AI service IP to your Snowflake network policy.
+
+<Tip>
+  Scroll to the bottom of the data source connection page in Prov AI to find the specific IP address for your instance.
+</Tip>
+
+To add a Snowflake connection, select the **Snowflake** option in the "Connect a data source" section.
+
+---
+
+## Connect
+
+### Connection Details
+
+- **Display Name**: The display name for this connection in Prov AI.
+- **Account**: Your Snowflake account name in the format `organization-account`.
+- **Database**: The specific Snowflake database you want to connect to.
+- **Schema**: The schema containing your tables.
+- **Warehouse**: The virtual warehouse for query execution.
+- **User**: Your Snowflake database username.
+
+### Authentication Methods
+
+Prov AI supports two authentication methods for Snowflake:
+
+#### 1. Password Authentication
+- **User**: Your Snowflake database username.
+- **Password**: Your database password.
+
+#### 2. Key Pair Authentication
+- **User**: Your Snowflake database username.
+- **Private Key**: Upload your **unencrypted RSA private key** file (`.p8` or `.pem`).
+
+<Warning>
+  **Authentication Update**: Username/Password authentication will be deprecated by Snowflake in late 2025. We recommend using **Key Pair Authentication** for new connections.
+</Warning>
+
+---
+
+## Troubleshooting
+
+### Encrypted Private Key Error
+If you see the error "Failed to load private key: Password was not given...", your private key is encrypted and needs to be decrypted.
+
+**To create an unencrypted version:**
+1. Run the following command (you will be prompted for your passphrase):
+   ```bash
+   openssl pkcs8 -inform PEM -in rsa_key.p8 -out rsa_key_unencrypted.p8
+   ```
+2. Use the resulting `rsa_key_unencrypted.p8` file in the Prov AI connection form.
+
+---
+
+## Select Tables
+
+All tables in your connected Snowflake dataset will be listed. Select the tables you want to use in Prov AI. Each selected table will be created as a **Data Model**.
+
+---
+
+## Define Relationships
+
+Define the relationships among selected tables. Prov AI will suggest relationships based on existing primary and foreign keys in your Snowflake schema.
+
+<Card title="Relationships Reference" icon="diagram-project" href="/modeling/relationships">
+  Learn more about defining relationships between your tables.
+</Card>

@@ -1,0 +1,65 @@
+---
+title: "Backup & Restore"
+description: "Managing data backups and restoration for Prov AI Self-Hosted"
+---
+
+<Info>
+  **Compatibility**: This guide applies only to the **Prov AI Self-Hosted** version.
+</Info>
+
+Ensuring regular backups of your Prov AI environment is critical for maintaining project metadata, user accounts, and data models in the event of hardware failure or accidental deletion.
+
+---
+
+## Backup Strategy
+
+Prov AI stores all metadata in a PostgreSQL database separate from your data warehouse. You can back up this metadata using standard database tools or the Prov CLI.
+
+| Target | Content | Frequency |
+| :--- | :--- | :--- |
+| **MDL Files** | Model definitions, relationships, and expressions. | Daily |
+| **Database** | User accounts, project history, and configs. | Hourly |
+| **Config Items** | Environment variables and secret keys. | Weekly |
+
+---
+
+## 1. Automated Backups
+
+If you are running Prov AI via Docker Compose, you can schedule a script to export the metadata database:
+
+```bash
+docker exec -t prov-db-service pg_dumpall -c -U prov_user > prov_backup_$(date +%Y%m%d).sql
+```
+
+---
+
+## 2. Manual Export (MDL)
+
+You can manually export your Model Definition Language (MDL) file from the dashboard:
+1. Navigate to **Settings > Project > General**.
+2. Click **Export MDL**.
+3. This creates a `.json` file containing all your models and relationships.
+
+---
+
+## 3. Restoration Procedure
+
+### Restore Metadata Database
+1. Stop the Prov AI services.
+2. Run the PostgreSQL import command:
+   ```bash
+   psql -U prov_user -f prov_backup_YYYYMMDD.sql
+   ```
+3. Restart the Prov AI services.
+
+### Restore Model From MDL
+1. Create a new project in Prov AI.
+2. Navigate to **Modeling**.
+3. Select **Import MDL** and upload your saved `.json` file.
+4. **Deploy** models to synchronize the Prov Engine.
+
+---
+
+<Note>
+  **Proactive Restoration**: We recommend performing a "Dry Run" restoration on a staging environment every quarter to verify your backup integrity.
+</Note>

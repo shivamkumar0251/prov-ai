@@ -1,6 +1,5 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
   "name": "Prov AI Docs",
   "colors": {
     "primary": "#0060FF",
@@ -21,183 +20,168 @@
           {
             "language": "en",
             "default": true,
-            "href": "Get-Started/introduction",
+            "href": "overview/welcome-to-prov",
             "dropdowns": [
               {
-                "dropdown": "Use Prov AI",
+                "dropdown": "Documentation",
                 "icon": "book-open",
                 "pages": [
                   {
-                    "group": " ",
+                    "group": "Overview",
                     "pages": [
+                      "overview/welcome-to-prov"
+                    ]
+                  },
+                  {
+                    "group": "Getting Started",
+                    "pages": [
+                      "getting-started/get-started-playbook",
+                      "getting-started/manage-organizations",
+                      "getting-started/manage-projects",
+                      "getting-started/sample-dataset",
+                      "getting-started/best-practice"
+                    ]
+                  },
+                  {
+                    "group": "Usage Guides",
+                    "pages": [
+                      "usage-guides/connect-data-sources",
                       {
-                        "group": "Get Started",
+                        "group": "Data Sources",
                         "pages": [
-                          "Get-Started/introduction",
-                          "Get-Started/quick-start",
-                          "Get-Started/key-concepts",
-                          "Get-Started/architecture-overview"
-                        ],
-                        "expanded": true
-                      },
-                      {
-                        "group": "Core Concepts",
-                        "pages": [
-                          "Core-Concepts/generative-bi",
-                          "Core-Concepts/natural-language-query",
-                          "Core-Concepts/semantic-layer",
-                          "Core-Concepts/ai-query-engine",
-                          "Core-Concepts/conversational-analytics"
-                        ],
-                        "expanded": false
-                      },
-                      {
-                        "group": "Data Hub",
-                        "pages": [
-                          "Data-Hub/data-sources",
-                          "Data-Hub/connectors",
-                          "Data-Hub/schema-mapping",
-                          "Data-Hub/table-explorer",
-                          "Data-Hub/data-preview"
-                        ],
-                        "expanded": false
-                      },
-                      {
-                        "group": "Semantic Modeling",
-                        "pages": [
-                          "Semantic-Modeling/overview",
-                          "Semantic-Modeling/dimensions-measures",
-                          "Semantic-Modeling/metrics-library",
-                          "Semantic-Modeling/relationships-joins",
-                          "Semantic-Modeling/calculated-fields"
+                          "usage-guides/data-sources/csv-upload",
+                          "usage-guides/data-sources/bigquery",
+                          "usage-guides/data-sources/postgresql",
+                          "usage-guides/data-sources/supabase-postgres",
+                          "usage-guides/data-sources/neon-postgres",
+                          "usage-guides/data-sources/mysql",
+                          "usage-guides/data-sources/sql-server",
+                          "usage-guides/data-sources/oracle",
+                          "usage-guides/data-sources/clickhouse",
+                          "usage-guides/data-sources/trino-starburst",
+                          "usage-guides/data-sources/snowflake",
+                          "usage-guides/data-sources/databricks",
+                          "usage-guides/data-sources/emr-spark",
+                          "usage-guides/data-sources/athena-trino",
+                          "usage-guides/data-sources/athena-spark",
+                          "usage-guides/data-sources/redshift"
                         ],
                         "expanded": false
                       },
                       {
-                        "group": "AI Analyst",
+                        "group": "Imported Data",
                         "pages": [
-                          "AI-Analyst/chat-interface",
-                          "AI-Analyst/query-examples",
-                          "AI-Analyst/follow-up-queries",
-                          "AI-Analyst/explain-sql",
-                          "AI-Analyst/prompt-guidelines"
+                          "usage-guides/imported-data/data-boilerplates",
+                          "usage-guides/imported-data/hubspot",
+                          "usage-guides/imported-data/ga4",
+                          "usage-guides/imported-data/woocommerce",
+                          "usage-guides/imported-data/facebook-marketing",
+                          "usage-guides/imported-data/google-ads",
+                          "usage-guides/imported-data/stripe",
+                          "usage-guides/imported-data/airtable",
+                          "usage-guides/imported-data/google-sheet"
                         ],
                         "expanded": false
                       },
                       {
-                        "group": "Insights",
+                        "group": "Querying",
                         "pages": [
-                          "Insights/generated-insights",
-                          "Insights/visualizations",
-                          "Insights/dashboards",
-                          "Insights/reports",
-                          "Insights/storytelling"
+                          "usage-guides/querying/asking-questions",
+                          "usage-guides/querying/know-your-answers",
+                          "usage-guides/querying/generate-chart",
+                          "usage-guides/querying/dashboard",
+                          "usage-guides/querying/dashboard-cache",
+                          "usage-guides/querying/adjust-results",
+                          "usage-guides/querying/prov-sql"
                         ],
                         "expanded": false
                       },
                       {
-                        "group": "Dashboard Builder",
+                        "group": "Data Security",
                         "pages": [
-                          "Dashboard-Builder/ai-dashboard-generation",
-                          "Dashboard-Builder/manual-editing",
-                          "Dashboard-Builder/chart-controls",
-                          "Dashboard-Builder/filters-drilldowns"
+                          "data-security/overview",
+                          "data-security/row-level-security",
+                          "data-security/rls-examples",
+                          "data-security/column-level-security",
+                          "data-security/cls-examples",
+                          "data-security/access-control",
+                          "data-security/session-management",
+                          "data-security/api-security",
+                          "data-security/multi-tenancy"
                         ],
                         "expanded": false
                       },
                       {
-                        "group": "Automation & Monitoring",
+                        "group": "Collaboration",
                         "pages": [
-                          "Automation-Monitoring/scheduled-reports",
-                          "Automation-Monitoring/alerts",
-                          "Automation-Monitoring/anomaly-detection",
-                          "Automation-Monitoring/data-freshness"
-                        ],
-                        "expanded": false
-                      },
-                      {
-                        "group": "Admin & Governance",
-                        "pages": [
-                          "Admin-Governance/roles-permissions",
-                          "Admin-Governance/row-level-security",
-                          "Admin-Governance/audit-logs",
-                          "Admin-Governance/usage-analytics",
-                          "Admin-Governance/compliance"
+                          "collaboration/overview",
+                          "collaboration/members-roles",
+                          "collaboration/folders",
+                          "collaboration/permissions",
+                          "collaboration/thread-tracing"
                         ],
                         "expanded": false
                       },
                       {
                         "group": "Integrations",
                         "pages": [
-                          "Integrations/api-overview",
-                          "Integrations/embedding",
-                          "Integrations/sdk-guide",
-                          "Integrations/slack-integration",
-                          "Integrations/email-reports"
+                          "integrations/embedded-threads",
+                          "integrations/slack",
+                          "integrations/spreadsheet",
+                          "integrations/dbt"
                         ],
                         "expanded": false
                       },
                       {
-                        "group": "Advanced Configuration",
+                        "group": "Bring Your Own LLM",
                         "pages": [
-                          "Advanced-Configuration/llm-settings",
-                          "Advanced-Configuration/prompt-templates",
-                          "Advanced-Configuration/custom-agents",
-                          "Advanced-Configuration/query-limits",
-                          "Advanced-Configuration/performance-tuning"
+                          "bring-your-own-llm/overview",
+                          "bring-your-own-llm/openai",
+                          "bring-your-own-llm/azure-openai",
+                          "bring-your-own-llm/aws-bedrock",
+                          "bring-your-own-llm/vertex-ai"
                         ],
                         "expanded": false
                       },
                       {
-                        "group": "User Guides",
+                        "group": "Modeling",
                         "pages": [
-                          "User-Guides/business-users",
-                          "User-Guides/data-analysts",
-                          "User-Guides/product-managers",
-                          "User-Guides/executives"
+                          "modeling/overview",
+                          "modeling/ai-assistant",
+                          "modeling/models",
+                          "modeling/metadata",
+                          "modeling/calculated-fields",
+                          "modeling/expressions",
+                          "modeling/relationships",
+                          "modeling/views",
+                          "modeling/schema-changes"
                         ],
                         "expanded": false
                       },
                       {
-                        "group": "Use Cases",
+                        "group": "Knowledge",
                         "pages": [
-                          "Use-Cases/sales-analytics",
-                          "Use-Cases/marketing-analytics",
-                          "Use-Cases/finance",
-                          "Use-Cases/operations",
-                          "Use-Cases/customer-analytics"
+                          "knowledge/overview",
+                          "knowledge/question-sql",
+                          "knowledge/instructions"
                         ],
                         "expanded": false
                       },
                       {
-                        "group": "Tutorials",
+                        "group": "Account Settings",
                         "pages": [
-                          "Tutorials/build-first-dashboard",
-                          "Tutorials/ask-your-first-query",
-                          "Tutorials/connect-database",
-                          "Tutorials/create-metric"
+                          "account-settings/user-account",
+                          "account-settings/credits",
+                          "account-settings/project-language",
+                          "account-settings/timezone"
                         ],
                         "expanded": false
                       },
                       {
-                        "group": "Reference",
+                        "group": "Others",
                         "pages": [
-                          "Reference/sql-generation",
-                          "Reference/supported-databases",
-                          "Reference/chart-types",
-                          "Reference/limitations",
-                          "Reference/faq"
-                        ],
-                        "expanded": false
-                      },
-                      {
-                        "group": "System Design",
-                        "pages": [
-                          "System-Design/architecture-diagram",
-                          "System-Design/query-flow",
-                          "System-Design/llm-integration",
-                          "System-Design/caching-strategy",
-                          "System-Design/scalability"
+                          "others/backup-restore",
+                          "others/data-privacy"
                         ],
                         "expanded": false
                       }
@@ -209,8 +193,25 @@
                 "dropdown": "API Reference",
                 "icon": "rectangle-terminal",
                 "pages": [
-                  "api-reference/introduction",
-                  "api-reference/endpoints"
+                  {
+                    "group": "API Access",
+                    "pages": [
+                      "api-access/overview",
+                      "api-access/quickstart",
+                      {
+                        "group": "API Keys",
+                        "pages": [
+                          "api-access/api-keys/overview",
+                          "api-access/api-keys/org-keys",
+                          "api-access/api-keys/project-keys"
+                        ]
+                      },
+                      "api-access/api-history",
+                      "api-access/billing",
+                      "api-access/api-reference"
+                    ],
+                    "expanded": false
+                  }
                 ]
               }
             ]
@@ -224,887 +225,17 @@
       "copy"
     ]
   },
-  "redirects": [
-    {
-      "source": "/en/guides/knowledge-base/retrieval-test-and-citation",
-      "destination": "/en/use-dify/knowledge/test-retrieval"
-    },
-    {
-      "source": "/zh-hans/guides/knowledge-base/retrieval-test-and-citation",
-      "destination": "/zh/use-dify/knowledge/test-retrieval"
-    },
-    {
-      "source": "/ja-jp/guides/knowledge-base/retrieval-test-and-citation",
-      "destination": "/ja/use-dify/knowledge/test-retrieval"
-    },
-    {
-      "source": "/en/use-dify/knowledge/retrieval-test-and-citation",
-      "destination": "/en/use-dify/knowledge/test-retrieval"
-    },
-    {
-      "source": "/zh/use-dify/knowledge/retrieval-test-and-citation",
-      "destination": "/zh/use-dify/knowledge/test-retrieval"
-    },
-    {
-      "source": "/ja/use-dify/knowledge/retrieval-test-and-citation",
-      "destination": "/ja/use-dify/knowledge/test-retrieval"
-    },
-    {
-      "source": "/en/use-dify/build/variables#conversation-variables",
-      "destination": "/en/use-dify/getting-started/key-concepts#variables"
-    },
-    {
-      "source": "/zh/use-dify/build/variables#会话变量",
-      "destination": "/zh/use-dify/getting-started/key-concepts#变量"
-    },
-    {
-      "source": "/ja/use-dify/build/variables#会話変数",
-      "destination": "/ja/use-dify/getting-started/key-concepts#変数"
-    },
-    {
-      "source": "/en/guides/workflow/variables#conversation-variables",
-      "destination": "/en/use-dify/getting-started/key-concepts#variables"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/variables#会话变量",
-      "destination": "/zh/use-dify/getting-started/key-concepts#变量"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/variables#会話変数",
-      "destination": "/ja/use-dify/getting-started/key-concepts#変数"
-    },
-    {
-      "source": "/en/guides/workflow/node/start",
-      "destination": "/en/use-dify/getting-started/key-concepts#workflow"
-    },
-    {
-      "source": "/en/guides/workflow/node/user-input",
-      "destination": "/en/use-dify/nodes/user-input"
-    },
-    {
-      "source": "/en/guides/workflow/node/trigger",
-      "destination": "/en/use-dify/nodes/trigger/overview"
-    },
-    {
-      "source": "/en/guides/workflow/node/schedule-trigger",
-      "destination": "/en/use-dify/nodes/trigger/schedule-trigger"
-    },
-    {
-      "source": "/en/guides/workflow/node/webhook-trigger",
-      "destination": "/en/use-dify/nodes/trigger/webhook-trigger"
-    },
-    {
-      "source": "/en/guides/workflow/node/plugin-trigger",
-      "destination": "/en/use-dify/nodes/trigger/plugin-trigger"
-    },
-    {
-      "source": "/en/guides/workflow/node/knowledge-retrieval",
-      "destination": "/en/use-dify/nodes/knowledge-retrieval"
-    },
-    {
-      "source": "/en/guides/workflow/node/agent",
-      "destination": "/en/use-dify/nodes/agent"
-    },
-    {
-      "source": "/en/guides/workflow/node/question-classifier",
-      "destination": "/en/use-dify/nodes/question-classifier"
-    },
-    {
-      "source": "/en/guides/workflow/node/ifelse",
-      "destination": "/en/use-dify/nodes/ifelse"
-    },
-    {
-      "source": "/en/guides/workflow/node/iteration",
-      "destination": "/en/use-dify/nodes/iteration"
-    },
-    {
-      "source": "/en/guides/workflow/node/loop",
-      "destination": "/en/use-dify/nodes/loop"
-    },
-    {
-      "source": "/en/guides/workflow/node/code",
-      "destination": "/en/use-dify/nodes/code"
-    },
-    {
-      "source": "/en/guides/workflow/node/template",
-      "destination": "/en/use-dify/nodes/template"
-    },
-    {
-      "source": "/en/guides/workflow/node/variable-aggregator",
-      "destination": "/en/use-dify/nodes/variable-aggregator"
-    },
-    {
-      "source": "/en/guides/workflow/node/doc-extractor",
-      "destination": "/en/use-dify/nodes/doc-extractor"
-    },
-    {
-      "source": "/en/guides/workflow/node/variable-assigner",
-      "destination": "/en/use-dify/nodes/variable-assigner"
-    },
-    {
-      "source": "/en/guides/workflow/node/parameter-extractor",
-      "destination": "/en/use-dify/nodes/parameter-extractor"
-    },
-    {
-      "source": "/en/guides/workflow/node/http-request",
-      "destination": "/en/use-dify/nodes/http-request"
-    },
-    {
-      "source": "/en/guides/workflow/node/list-operator",
-      "destination": "/en/use-dify/nodes/list-operator"
-    },
-    {
-      "source": "/en/guides/workflow/node/tools",
-      "destination": "/en/use-dify/nodes/tools"
-    },
-    {
-      "source": "/en/guides/workflow/node/end",
-      "destination": "/en/use-dify/nodes/output"
-    },
-    {
-      "source": "/en/guides/workflow/node/llm",
-      "destination": "/en/use-dify/nodes/llm"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/start",
-      "destination": "/zh/use-dify/getting-started/key-concepts#工作流"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/user-input",
-      "destination": "/zh/use-dify/nodes/user-input"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/trigger",
-      "destination": "/zh/use-dify/nodes/trigger/overview"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/schedule-trigger",
-      "destination": "/zh/use-dify/nodes/trigger/schedule-trigger"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/webhook-trigger",
-      "destination": "/zh/use-dify/nodes/trigger/webhook-trigger"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/plugin-trigger",
-      "destination": "/zh/use-dify/nodes/trigger/plugin-trigger"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/knowledge-retrieval",
-      "destination": "/zh/use-dify/nodes/knowledge-retrieval"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/agent",
-      "destination": "/zh/use-dify/nodes/agent"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/question-classifier",
-      "destination": "/zh/use-dify/nodes/question-classifier"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/ifelse",
-      "destination": "/zh/use-dify/nodes/ifelse"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/iteration",
-      "destination": "/zh/use-dify/nodes/iteration"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/loop",
-      "destination": "/zh/use-dify/nodes/loop"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/code",
-      "destination": "/zh/use-dify/nodes/code"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/template",
-      "destination": "/zh/use-dify/nodes/template"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/variable-aggregator",
-      "destination": "/zh/use-dify/nodes/variable-aggregator"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/doc-extractor",
-      "destination": "/zh/use-dify/nodes/doc-extractor"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/variable-assigner",
-      "destination": "/zh/use-dify/nodes/variable-assigner"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/parameter-extractor",
-      "destination": "/zh/use-dify/nodes/parameter-extractor"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/http-request",
-      "destination": "/zh/use-dify/nodes/http-request"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/list-operator",
-      "destination": "/zh/use-dify/nodes/list-operator"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/tools",
-      "destination": "/zh/use-dify/nodes/tools"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/end",
-      "destination": "/zh/use-dify/nodes/output"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/llm",
-      "destination": "/zh/use-dify/nodes/llm"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/start",
-      "destination": "/ja/use-dify/getting-started/key-concepts#ワークフロー"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/user-input",
-      "destination": "/ja/use-dify/nodes/user-input"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/trigger",
-      "destination": "/ja/use-dify/nodes/trigger/overview"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/schedule-trigger",
-      "destination": "/ja/use-dify/nodes/trigger/schedule-trigger"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/webhook-trigger",
-      "destination": "/ja/use-dify/nodes/trigger/webhook-trigger"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/plugin-trigger",
-      "destination": "/ja/use-dify/nodes/trigger/plugin-trigger"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/knowledge-retrieval",
-      "destination": "/ja/use-dify/nodes/knowledge-retrieval"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/agent",
-      "destination": "/ja/use-dify/nodes/agent"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/question-classifier",
-      "destination": "/ja/use-dify/nodes/question-classifier"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/ifelse",
-      "destination": "/ja/use-dify/nodes/ifelse"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/iteration",
-      "destination": "/ja/use-dify/nodes/iteration"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/loop",
-      "destination": "/ja/use-dify/nodes/loop"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/code",
-      "destination": "/ja/use-dify/nodes/code"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/template",
-      "destination": "/ja/use-dify/nodes/template"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/variable-aggregator",
-      "destination": "/ja/use-dify/nodes/variable-aggregator"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/doc-extractor",
-      "destination": "/ja/use-dify/nodes/doc-extractor"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/variable-assigner",
-      "destination": "/ja/use-dify/nodes/variable-assigner"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/parameter-extractor",
-      "destination": "/ja/use-dify/nodes/parameter-extractor"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/http-request",
-      "destination": "/ja/use-dify/nodes/http-request"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/list-operator",
-      "destination": "/ja/use-dify/nodes/list-operator"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/tools",
-      "destination": "/ja/use-dify/nodes/tools"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/end",
-      "destination": "/ja/use-dify/nodes/output"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/llm",
-      "destination": "/ja/use-dify/nodes/llm"
-    },
-    {
-      "source": "/en/getting-started/dify-for-education",
-      "destination": "/en/use-dify/workspace/subscription-management#dify-for-education"
-    },
-    {
-      "source": "/zh-hans/getting-started/dify-for-education",
-      "destination": "/zh/use-dify/workspace/subscription-management#dify-for-education"
-    },
-    {
-      "source": "/ja-jp/getting-started/dify-for-education",
-      "destination": "/ja/use-dify/workspace/subscription-management#dify-for-education"
-    },
-    {
-      "source": "/plugins/schema-definition/model",
-      "destination": "/versions/legacy/en/plugins/schema-definition/model/model-designing-rules"
-    },
-    {
-      "source": "/plugins/schema-definition",
-      "destination": "/versions/legacy/en/plugins/schema-definition/manifest"
-    },
-    {
-      "source": "/zh-hans",
-      "destination": "/zh/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/introduction",
-      "destination": "/en/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/en/introduction",
-      "destination": "/en/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/zh-hans/introduction",
-      "destination": "/zh/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/ja-jp/introduction",
-      "destination": "/ja/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/getting-started/readme/features-and-specifications",
-      "destination": "/en/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/getting-started/readme/model-providers",
-      "destination": "/en/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/getting-started/install-self-hosted",
-      "destination": "/en/self-host/quick-start/docker-compose"
-    },
-    {
-      "source": "/getting-started/install-self-hosted/docker-compose",
-      "destination": "/en/self-host/quick-start/docker-compose"
-    },
-    {
-      "source": "/getting-started/install-self-hosted/local-source-code",
-      "destination": "/en/self-host/advanced-deployments/local-source-code"
-    },
-    {
-      "source": "/getting-started/install-self-hosted/bt-panel",
-      "destination": "/en/self-host/platform-guides/bt-panel"
-    },
-    {
-      "source": "/getting-started/install-self-hosted/start-the-frontend-docker-container",
-      "destination": "/en/self-host/advanced-deployments/start-the-frontend-docker-container"
-    },
-    {
-      "source": "/getting-started/install-self-hosted/environments",
-      "destination": "/en/self-host/configuration/environments"
-    },
-    {
-      "source": "/getting-started/install-self-hosted/faqs",
-      "destination": "/en/self-host/quick-start/faqs"
-    },
-    {
-      "source": "/getting-started/cloud",
-      "destination": "/en/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/getting-started/dify-premium",
-      "destination": "/en/self-host/platform-guides/dify-premium"
-    },
-    {
-      "source": "/zh-hans/guides/application-publishing/launch-your-webapp-quickly/readme",
-      "destination": "/zh/use-dify/publish/README"
-    },
-    {
-      "source": "/ja-jp/guides/application-publishing/launch-your-webapp-quickly/readme",
-      "destination": "/ja/use-dify/publish/README"
-    },
-    {
-      "source": "/en/guides/application-publishing/launch-your-webapp-quickly/readme",
-      "destination": "/en/use-dify/publish/README"
-    },
-    {
-      "source": "/plugins/:slug*",
-      "destination": "/en/develop-plugin/getting-started/getting-started-dify-plugin"
-    },
-    {
-      "source": "/plugins/quick-start",
-      "destination": "/en/develop-plugin/getting-started/getting-started-dify-plugin"
-    },
-    {
-      "source": "/plugins/quick-start/install-plugins",
-      "destination": "/en/develop-plugin/getting-started/getting-started-dify-plugin"
-    },
-    {
-      "source": "/plugins/quick-start/develop-plugins",
-      "destination": "/en/develop-plugin/dev-guides-and-walkthroughs/cheatsheet"
-    },
-    {
-      "source": "/plugins/quick-start/develop-plugins/initialize-development-tools",
-      "destination": "/en/develop-plugin/getting-started/cli"
-    },
-    {
-      "source": "/plugins/quick-start/develop-plugins/tool-plugin",
-      "destination": "/en/develop-plugin/features-and-specs/plugin-types/tool"
-    },
-    {
-      "source": "/plugins/quick-start/develop-plugins/model-plugin",
-      "destination": "/en/develop-plugin/features-and-specs/plugin-types/model-schema"
-    },
-    {
-      "source": "/plugins/quick-start/develop-plugins/model-plugin/create-model-providers",
-      "destination": "/en/develop-plugin/dev-guides-and-walkthroughs/creating-new-model-provider"
-    },
-    {
-      "source": "/en/guides/workflow/node/:slug*",
-      "destination": "/en/use-dify/nodes/:slug*"
-    },
-    {
-      "source": "/en/guides/workflow/debug-and-preview/:slug*",
-      "destination": "/en/use-dify/debug/:slug*"
-    },
-    {
-      "source": "/en/guides/application-publishing/launch-your-webapp-quickly/:slug*",
-      "destination": "/en/use-dify/publish/webapp/:slug*"
-    },
-    {
-      "source": "/en/guides/application-publishing/:slug*",
-      "destination": "/en/use-dify/publish/:slug*"
-    },
-    {
-      "source": "/en/guides/annotation/:slug*",
-      "destination": "/en/use-dify/monitor/:slug*"
-    },
-    {
-      "source": "/en/guides/monitoring/integrate-external-ops-tools/:slug*",
-      "destination": "/en/use-dify/monitor/integrations/:slug*"
-    },
-    {
-      "source": "/en/guides/monitoring/:slug*",
-      "destination": "/en/use-dify/monitor/:slug*"
-    },
-    {
-      "source": "/en/guides/knowledge-base/create-knowledge-and-upload-documents/import-content-data/:slug*",
-      "destination": "/en/use-dify/knowledge/create-knowledge/import-text-data/:slug*"
-    },
-    {
-      "source": "/en/guides/knowledge-base/create-knowledge-and-upload-documents/:slug*",
-      "destination": "/en/use-dify/knowledge/create-knowledge/:slug*"
-    },
-    {
-      "source": "/en/guides/knowledge-base/knowledge-and-documents-maintenance/:slug*",
-      "destination": "/en/use-dify/knowledge/manage-knowledge/:slug*"
-    },
-    {
-      "source": "/en/guides/knowledge-base/:slug*",
-      "destination": "/en/use-dify/knowledge/:slug*"
-    },
-    {
-      "source": "/en/guides/management/:slug*",
-      "destination": "/en/use-dify/workspace/:slug*"
-    },
-    {
-      "source": "/en/guides/model-configuration/:slug*",
-      "destination": "/en/use-dify/workspace/model-providers"
-    },
-    {
-      "source": "/en/workshop/basic/:slug*",
-      "destination": "/en/use-dify/tutorials/:slug*"
-    },
-    {
-      "source": "/en/workshop/intermediate/:slug*",
-      "destination": "/en/use-dify/tutorials/:slug*"
-    },
-    {
-      "source": "/en/workshop/:slug*",
-      "destination": "/en/use-dify/tutorials/:slug*"
-    },
-    {
-      "source": "/en/getting-started/install-self-hosted/:slug*",
-      "destination": "/en/self-host/dify-community/:slug*"
-    },
-    {
-      "source": "/en/guides/workflow/:slug*",
-      "destination": "/en/use-dify/build/:slug*"
-    },
-    {
-      "source": "/en/guides/application-orchestrate/app-toolkits/:slug*",
-      "destination": "/en/use-dify/nodes/tools"
-    },
-    {
-      "source": "/en/guides/application-orchestrate/:slug*",
-      "destination": "/en/use-dify/getting-started/quick-start"
-    },
-    {
-      "source": "/en/plugins/:slug*",
-      "destination": "/en/develop-plugin/0111-getting-started-dify-plugin"
-    },
-    {
-      "source": "/en/development/backend/:slug*",
-      "destination": "/api-reference/:slug*"
-    },
-    {
-      "source": "/en/development/:slug*",
-      "destination": "/en/develop-plugin/0111-getting-started-dify-plugin"
-    },
-    {
-      "source": "/en/learn-more/extended-reading/retrieval-augment/:slug*",
-      "destination": "/en/use-dify/knowledge/:slug*"
-    },
-    {
-      "source": "/en/learn-more/extended-reading/dify-docs-mcp",
-      "destination": "/en/use-dify/build/mcp"
-    },
-    {
-      "source": "/en/learn-more/:slug*",
-      "destination": "/en/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/en/guides/:slug*",
-      "destination": "/en/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/en/getting-started/:slug*",
-      "destination": "/en/use-dify/getting-started/:slug*"
-    },
-    {
-      "source": "/en/community/:slug*",
-      "destination": "/en/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/en/resources/:slug*",
-      "destination": "/en/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/en/policies/:slug*",
-      "destination": "/en/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/node/:slug*",
-      "destination": "/ja/use-dify/nodes/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/debug-and-preview/:slug*",
-      "destination": "/ja/use-dify/debug/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/application-publishing/launch-your-webapp-quickly/:slug*",
-      "destination": "/ja/use-dify/publish/webapp/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/application-publishing/:slug*",
-      "destination": "/ja/use-dify/publish/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/annotation/:slug*",
-      "destination": "/ja/use-dify/monitor/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/monitoring/integrate-external-ops-tools/:slug*",
-      "destination": "/ja/use-dify/monitor/integrations/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/monitoring/:slug*",
-      "destination": "/ja/use-dify/monitor/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/knowledge-base/create-knowledge-and-upload-documents/import-content-data/:slug*",
-      "destination": "/ja/use-dify/knowledge/create-knowledge/import-text-data/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/knowledge-base/create-knowledge-and-upload-documents/:slug*",
-      "destination": "/ja/use-dify/knowledge/create-knowledge/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/knowledge-base/knowledge-and-documents-maintenance/:slug*",
-      "destination": "/ja/use-dify/knowledge/manage-knowledge/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/knowledge-base/:slug*",
-      "destination": "/ja/use-dify/knowledge/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/management/:slug*",
-      "destination": "/ja/use-dify/workspace/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/model-configuration/:slug*",
-      "destination": "/ja/use-dify/workspace/model-providers"
-    },
-    {
-      "source": "/ja-jp/workshop/basic/:slug*",
-      "destination": "/ja/use-dify/tutorials/:slug*"
-    },
-    {
-      "source": "/ja-jp/workshop/intermediate/:slug*",
-      "destination": "/ja/use-dify/tutorials/:slug*"
-    },
-    {
-      "source": "/ja-jp/workshop/:slug*",
-      "destination": "/ja/use-dify/tutorials/:slug*"
-    },
-    {
-      "source": "/ja-jp/getting-started/install-self-hosted/:slug*",
-      "destination": "/ja/self-host/dify-community/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/workflow/:slug*",
-      "destination": "/ja/use-dify/build/:slug*"
-    },
-    {
-      "source": "/ja-jp/guides/application-orchestrate/app-toolkits/:slug*",
-      "destination": "/ja/use-dify/nodes/tools"
-    },
-    {
-      "source": "/ja-jp/guides/application-orchestrate/:slug*",
-      "destination": "/ja/use-dify/getting-started/quick-start"
-    },
-    {
-      "source": "/ja-jp/plugins/:slug*",
-      "destination": "/ja/use-dify/workspace/plugins"
-    },
-    {
-      "source": "/ja-jp/development/backend/:slug*",
-      "destination": "/api-reference/:slug*"
-    },
-    {
-      "source": "/ja-jp/development/models-integration/:slug*",
-      "destination": "/ja/use-dify/workspace/model-providers"
-    },
-    {
-      "source": "/ja-jp/development/:slug*",
-      "destination": "/api-reference/:slug*"
-    },
-    {
-      "source": "/ja-jp/learn-more/extended-reading/retrieval-augment/:slug*",
-      "destination": "/ja/use-dify/knowledge/:slug*"
-    },
-    {
-      "source": "/ja-jp/learn-more/extended-reading/dify-docs-mcp",
-      "destination": "/ja/use-dify/build/mcp"
-    },
-    {
-      "source": "/ja-jp/learn-more/faq/:slug*",
-      "destination": "/ja/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/ja-jp/learn-more/:slug*",
-      "destination": "/ja/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/ja-jp/guides/:slug*",
-      "destination": "/ja/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/ja-jp/getting-started/:slug*",
-      "destination": "/ja/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/ja-jp/community/:slug*",
-      "destination": "/ja/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/ja-jp/resources/:slug*",
-      "destination": "/ja/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/ja-jp/policies/:slug*",
-      "destination": "/ja/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/node/:slug*",
-      "destination": "/zh/use-dify/nodes/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/debug-and-preview/:slug*",
-      "destination": "/zh/use-dify/debug/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/application-publishing/launch-your-webapp-quickly/:slug*",
-      "destination": "/zh/use-dify/publish/webapp/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/application-publishing/:slug*",
-      "destination": "/zh/use-dify/publish/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/annotation/:slug*",
-      "destination": "/zh/use-dify/monitor/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/monitoring/integrate-external-ops-tools/:slug*",
-      "destination": "/zh/use-dify/monitor/integrations/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/monitoring/:slug*",
-      "destination": "/zh/use-dify/monitor/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/knowledge-base/create-knowledge-and-upload-documents/import-content-data/:slug*",
-      "destination": "/zh/use-dify/knowledge/create-knowledge/import-text-data/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/knowledge-base/create-knowledge-and-upload-documents/:slug*",
-      "destination": "/zh/use-dify/knowledge/create-knowledge/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/knowledge-base/knowledge-and-documents-maintenance/:slug*",
-      "destination": "/zh/use-dify/knowledge/manage-knowledge/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/knowledge-base/:slug*",
-      "destination": "/zh/use-dify/knowledge/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/management/:slug*",
-      "destination": "/zh/use-dify/workspace/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/model-configuration/:slug*",
-      "destination": "/zh/use-dify/workspace/model-providers"
-    },
-    {
-      "source": "/zh-hans/workshop/basic/:slug*",
-      "destination": "/zh/use-dify/tutorials/:slug*"
-    },
-    {
-      "source": "/zh-hans/workshop/intermediate/:slug*",
-      "destination": "/zh/use-dify/tutorials/:slug*"
-    },
-    {
-      "source": "/zh-hans/workshop/:slug*",
-      "destination": "/zh/use-dify/tutorials/:slug*"
-    },
-    {
-      "source": "/zh-hans/getting-started/install-self-hosted/:slug*",
-      "destination": "/zh/self-host/dify-community/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/workflow/:slug*",
-      "destination": "/zh/use-dify/build/:slug*"
-    },
-    {
-      "source": "/zh-hans/guides/application-orchestrate/app-toolkits/:slug*",
-      "destination": "/zh/use-dify/nodes/tools"
-    },
-    {
-      "source": "/zh-hans/guides/application-orchestrate/:slug*",
-      "destination": "/zh/use-dify/getting-started/quick-start"
-    },
-    {
-      "source": "/zh-hans/plugins/:slug*",
-      "destination": "/zh/use-dify/workspace/plugins"
-    },
-    {
-      "source": "/zh-hans/development/backend/:slug*",
-      "destination": "/api-reference/:slug*"
-    },
-    {
-      "source": "/zh-hans/development/models-integration/:slug*",
-      "destination": "/zh/use-dify/workspace/model-providers"
-    },
-    {
-      "source": "/zh-hans/development/:slug*",
-      "destination": "/api-reference/:slug*"
-    },
-    {
-      "source": "/zh-hans/learn-more/extended-reading/retrieval-augment/:slug*",
-      "destination": "/zh/use-dify/knowledge/:slug*"
-    },
-    {
-      "source": "/zh-hans/learn-more/extended-reading/dify-docs-mcp",
-      "destination": "/zh/use-dify/build/mcp"
-    },
-    {
-      "source": "/zh-hans/learn-more/faq/:slug*",
-      "destination": "/zh/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/zh-hans/learn-more/:slug*",
-      "destination": "/zh/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/zh-hans/guides/:slug*",
-      "destination": "/zh/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/zh-hans/getting-started/cloud",
-      "destination": "/zh/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/zh-hans/getting-started/dify-premium",
-      "destination": "/zh/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/zh-hans/community/:slug*",
-      "destination": "/zh/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/zh-hans/resources/:slug*",
-      "destination": "/zh/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/zh-hans/policies/:slug*",
-      "destination": "/zh/use-dify/getting-started/introduction"
-    },
-    {
-      "source": "/use-dify/:slug*",
-      "destination": "/en/use-dify/:slug*"
-    },
-    {
-      "source": "/self-host/:slug*",
-      "destination": "/en/self-host/:slug*"
-    },
-    {
-      "source": "/en/guides/model-configuration/load-balancing",
-      "destination": "/en/use-dify/workspace/model-providers#configure-model-load-balancing"
-    },
-    {
-      "source": "/guides/model-configuration/load-balancing",
-      "destination": "/en/use-dify/workspace/model-providers#configure-model-load-balancing"
-    },
-    {
-      "source": "/zh-hans/guides/model-configuration/load-balancing",
-      "destination": "/zh/use-dify/workspace/model-providers#配置模型负载均衡"
-    },
-    {
-      "source": "/ja-jp/guides/model-configuration/load-balancing",
-      "destination": "/ja/use-dify/workspace/model-providers#負荷分散の構成"
-    }
-  ],
   "navbar": {
     "links": [
       {
         "label": "Changelog",
-        "href": "https://github.com/langgenius/dify/releases"
+        "href": "https://github.com/langgenius/prov/releases"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Studio",
-      "href": "https://cloud.dify.ai"
+      "href": "https://cloud.prov.ai"
     }
   },
   "integrations": {
@@ -1114,9 +245,11 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/dify_ai",
-      "github": "https://github.com/langgenius/dify-docs",
+      "x": "https://x.com/prov_ai",
+      "github": "https://github.com/langgenius/prov-docs",
       "linkedin": "https://www.linkedin.com/company/langgenius"
     }
-  }
+  },
+  "theme": "mint",
+  "css": "custom.css"
 }

@@ -1,0 +1,86 @@
+---
+title: "Manage Members and Roles"
+description: "Role-based access control and member management in Prov AI"
+---
+
+<Info>
+  **Plan Support**: 
+  - **Free Plan**: Limited to 2 members (including Admin).
+  - **Starter Plan & Above**: Unlimited members.
+</Info>
+
+Prov AI provides role-based access control (RBAC) for projects, allowing you to manage who can access your project and what they can do within it. 
+
+---
+
+## Adding Members to Projects
+
+1. Go to **Settings → Project → Access Control**.
+2. Click **Add Member**.
+3. Select an organization member from the dropdown.
+4. Choose the appropriate role and click **Add**.
+
+<Note>
+  **Prerequisite**: Users must be members of your organization before they can be added to specific projects.
+</Note>
+
+---
+
+## Project Roles
+
+When adding members, you can assign one of three roles:
+
+### 1. Project Owner
+- Full control over settings, members, and all content.
+- Can update models, knowledge, dashboards, and spreadsheets.
+- Organization admins are automatically project owners.
+
+### 2. Project Contributor
+- Can perform most activities (creating threads, models, dashboards).
+- Cannot update project-level settings or manage members.
+
+### 3. Project Viewer
+- View-only access to most configurations.
+- Can create and modify their own dashboards and spreadsheets.
+
+---
+
+## Permissions Matrix
+
+| Function | Project Owner | Project Contributor | Project Viewer |
+| :--- | :--- | :--- | :--- |
+| Update Project Settings | Yes | No | No |
+| Manage Project Members | Yes | No | No |
+| Modeling | CRUD | RU | R |
+| Knowledge | CRUD | CRUD | R |
+| Dashboard | CRUD | CRUD | CRUD |
+| Spreadsheet | CRUD | CRUD | CRUD |
+| CSV Download | Yes | Yes | Yes |
+
+**Legend**:
+- **CRUD**: Create, Read, Update, Delete
+- **RU**: Read, Update (No Create/Delete)
+- **R**: Read Only
+
+---
+
+## Managing Members
+
+### Update Permissions
+1. Go to **Settings → Project → Access Control**.
+2. Find the member and click the **Permission** dropdown.
+3. Select the new role. Changes take effect immediately.
+
+### Remove Members
+1. Find the member in the Access Control list.
+2. Click **Remove** and confirm.
+
+<Warning>
+  **Irreversible Action**: Removed members lose all access immediately. This action cannot be undone.
+</Warning>
+
+---
+
+## Best Practices
+- **Principle of Least Privilege**: Start with **Viewer** access and upgrade only as needed.
+- **Regular Audits**: Periodically review your member list to ensure security compliance.

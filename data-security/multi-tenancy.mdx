@@ -1,0 +1,59 @@
+---
+title: "Multi-Tenancy"
+description: "Building multi-tenant architectures with Prov AI"
+---
+
+Prov AI supports multiple approaches to building multi-tenant architectures, allowing teams to choose the model that best fits their security, scalability, and operational requirements.
+
+---
+
+## Multi-Tenancy Models
+
+| Model | Isolated Boundary | Ideal For |
+| :--- | :--- | :--- |
+| **Project-Based** | One project per tenant. | Regulated, high-security, or custom schemas. |
+| **RLS-Based** | Shared schema with data-level isolation. | SaaS platforms with a large number of tenants. |
+
+---
+
+## 1. Project-Based Multi-Tenancy (Isolated)
+
+In this model, each tenant is isolated into its own Prov AI project.
+
+- **Isolation**: Strongest project boundary. Separate connections, history, and modeling.
+- **Workflow**: Create a new project for each tenant using the **Projects API**.
+- **Pros**: Full schema customization per tenant.
+- **Cons**: High operational overhead when pushing global schema updates.
+
+---
+
+## 2. RLS-Based Multi-Tenancy (Shared) - **Recommended**
+
+In this model, all tenants share the same tables and schema, while access is controlled through **Row-Level Security (RLS)**.
+
+- **Workflow**: Your application passes session properties (e.g., `org_id`) when calling the **Prov AI API**.
+- **Isolation**: Prov AI applies data policies that filter rows dynamically based on those properties.
+- **Pros**: Single source of truth. Easy to maintain at scale.
+
+---
+
+## Choosing the Right Approach
+
+| Requirement | Recommended Approach |
+| :--- | :--- |
+| **Strict Compliance / Data Sovereignity** | Project-Based |
+| **SaaS platform (100+ tenants)** | RLS-Based |
+| **Identical Schema across tenants** | RLS-Based |
+| **Unique Database Connections** | Project-Based |
+| **Low Operational Overhead** | RLS-Based |
+
+---
+
+## Best Practices
+
+1. **Schema Consistency**: Prefer RLS-based multi-tenancy when schemas are consistent across users.
+2. **Immutable Identifiers**: Use stable, immutable tenant IDs (e.g., UUIDs) for session properties.
+3. **Defense in Depth**: Combine Prov AI RLS with warehouse-level service accounts for the highest security.
+4. **Regular Audits**: Periodically review data policies to prevent unintended global access.
+
+[Learn more about RLS Implementation](/data-security/row-level-security)

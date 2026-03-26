@@ -1,0 +1,61 @@
+---
+title: "Quick Start with Google Cloud Vertex AI"
+description: "Connecting Google Gemini (Vertex AI) to Prov AI"
+---
+
+<Info>
+  **Plan Support**: This capability is available on the **Business Plan** for the Prov AI Self-Hosted Version.
+</Info>
+
+Ensure that your selected region supports the following default models:
+- `gemini-1.5-pro`
+- `gemini-1.5-flash`
+
+---
+
+## Prerequisites
+
+1.  **Enable Vertex AI API**: Go to the Google Cloud Console and enable the Vertex AI API.
+2.  **Service Account**: Create a service account with the **Vertex AI User** role.
+3.  **JSON Key**:
+    - Go to **IAM & Admin > Service Accounts**.
+    - Find your service account, go to **Keys**, and select **Add Key > Create New Key (JSON)**.
+    - Download and store the key securely.
+
+---
+
+## Setup Steps
+
+### 1. Initial Connection
+Select **Quick Setup** and choose **Google Gemini (Vertex AI)**. Enter your **Vertex Location** (Region), **Project ID**, and upload your service account JSON file.
+
+### 2. Test Connection
+In the **Embedding Model** section, click **Test Connection** to ensure Prov AI can reach your Vertex AI resource.
+
+### 3. Update Model Configuration
+While default configurations are provided, we recommend optimizing your settings:
+
+**Recommended Configuration**:
+```json
+{
+  "kwargs": {
+    "n": 1,
+    "timeout": 60,
+    "temperature": 0
+  },
+  "context_window_size": 1000000
+}
+```
+
+### 4. Pipeline Assignment
+Review the pipeline assignments. Prov AI provides defaults optimized for Gemini models:
+- **Advanced Capabilities**: `gemini-1.5-pro`
+- **Standard Tasks**: `gemini-1.5-flash`
+
+Click **Complete Setup** to finalize.
+
+---
+
+<Note>
+  Gemini 1.5 models offer large context windows (1M+ tokens), making them ideal for complex Prov AI analysis over large datasets.
+</Note>

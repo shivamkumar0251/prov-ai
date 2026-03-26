@@ -1,0 +1,54 @@
+---
+title: "Thread Tracing"
+description: "Monitoring AI accuracy and collecting user feedback in Prov AI"
+---
+
+<Info>
+  **Plan Support**: Available in **Starter Plan** and above.
+</Info>
+
+Prov AI provides a granular feedback loop to transform AI interactions into a bidirectional learning system. The **Thread Tracing** dashboard allows Project Owners to monitor accuracy and improve model performance over time.
+
+---
+
+## How it Works
+
+The feedback system captures context across two primary flows:
+
+- **AI Response**: Focuses on text logic, SQL generation, and instruction following.
+- **Chart Visualization**: Focuses on visual data accuracy and chart rendering.
+
+All feedback is aggregated in the **Thread Tracing** portal to help teams identify patterns in AI behavior and prioritize improvements.
+
+---
+
+## Sending Feedback (All Users)
+
+### AI Response Feedback
+1. Below any AI answer or chart, click **Thumbs-up** (Helpful) or **Thumbs-down** (Needs improvement).
+2. If Thumbs-down is selected, select relevant **Issues Tags** (e.g., "SQL generation failed").
+3. Provide optional context or describe the issue.
+4. If an "Instruction" tag is chosen, select the exact rule the AI missed from the dropdown.
+
+### Chart Feedback
+When reporting chart issues, you can select specific tags like "Incorrect chart data" or "Chart generation failed."
+
+---
+
+## Monitor Quality (Project Owners)
+
+Project Owners can review aggregated data in **Settings → Project → Thread Tracing**:
+
+- **Success Metrics**: Track positive vs. negative feedback rates over time.
+- **Failure Breakdown**: Use the bar chart to see common error categories (e.g., "Incorrect AI summary").
+- **Thread Table**: View all project threads. Filter by Thumbs-up/Thumbs-down to focus on explicitly reported issues.
+- **Deep Dive**: Expand a **Thread ID** to view trace details, timestamps, and suggested failure reasons.
+- **Trace Details**: Click **View** in the Action column to see full metadata, issue reports, and generated SQL.
+
+---
+
+## Best Practices
+
+- **Be Specific**: Selecting exact instructions from the dropdown is more actionable than choosing "Other."
+- **Data Privacy**: Feedback is stored securely within the project context and used only to improve accuracy for your specific models.
+- **Continuous Audits**: The failure breakdown updates in real-time, allowing for rapid iteration on modeling instructions.

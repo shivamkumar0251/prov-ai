@@ -1,0 +1,84 @@
+---
+title: "dbt Quick Start"
+description: "Syncing your dbt models with Prov AI using the CLI"
+---
+
+<Info>
+  **Plan Support**: dbt Integration is available in **Essential / Business Plan** and above.
+</Info>
+
+Learn how to create a new Prov AI project from your local dbt project and keep it in sync. We sync your analytics-ready dbt models (e.g., marts) — including model, column descriptions, and relationships — as Models, ready for natural-language querying.
+
+---
+
+## Supported Databases
+
+Prov AI supports the following data sources for dbt synchronization:
+
+| Database | Support Status |
+| :--- | :--- |
+| **PostgreSQL** | Supported |
+| **MySQL** | Supported |
+| **BigQuery** | Supported |
+| **Redshift** | Supported |
+| **Snowflake** | Supported |
+
+---
+
+## Setup Steps
+
+### 1. Install & Login
+Follow the [Installation and Login](/cli/installation) guide to set up the Prov CLI.
+- **Check Version**: `prov version`
+- **Check Status**: `prov auth status`
+
+### 2. Prepare Your dbt Project
+From your project directory:
+
+**(1) Build Your Models**
+```bash
+dbt build
+```
+This generates the `manifest.json` artifact used by Prov AI to understand your project resources.
+
+**(2) Generate Documentation**
+```bash
+dbt docs generate
+```
+This creates the `catalog.json` file in your `target/` directory, which Prov AI uses for column types.
+
+### 3. Sync to Prov AI
+Run the following command to create your project:
+```bash
+prov dbt create
+```
+This command will:
+- Parse your `profiles.yml`.
+- Build a Prov MDL (Model Definition Language) including columns and relationships.
+- Create the project in the Prov AI Cloud.
+- Store your project config in a `.provconfig` file.
+
+---
+
+## Filtering Models
+
+You can selectively sync specific models using regex filter patterns.
+
+| Goal | Command |
+| :--- | :--- |
+| **Include Specific** | `prov dbt create --include "marts_.*"` |
+| **Exclude Specific** | `prov dbt create --exclude "calculate_.*"` |
+| **Dry Run** | `prov dbt create --dry-run` |
+
+---
+
+## Updating Projects
+
+To sync your linked Prov AI project with the latest dbt changes:
+```bash
+prov dbt update --dbt-path /path/to/dbt-project
+```
+
+<Warning>
+  **Overwrite Notice**: The update command replaces the current MDL in Prov AI. Any manual changes made via the UI will be overwritten.
+</Warning>

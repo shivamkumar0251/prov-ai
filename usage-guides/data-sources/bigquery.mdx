@@ -1,0 +1,91 @@
+---
+title: "BigQuery"
+description: "Connecting Prov AI to Google BigQuery"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+## IP Whitelist for Prov AI Cloud
+
+Prov AI needs to access your BigQuery database via its outbound IP address. If you have network access controls applied, please add the Prov AI service IP to your allowed list.
+
+<Tip>
+  Scroll to the bottom of the data source connection page in Prov AI to find the IP address for your instance.
+</Tip>
+
+To add a BigQuery connection, select the **BigQuery** option in the "Connect a data source" section.
+
+---
+
+## Import Google Sheet to BigQuery
+
+To analyze Google Sheets via Prov AI, you must first import them into BigQuery:
+
+1. **Import to BigQuery**: Assign an 'ID' column with increasing numbers to help BigQuery auto-detect the schema.
+2. **Skip Leading Rows**: If the first row is a header, set "Skip leading rows" to 1.
+3. **IAM Permissions**: Ensure your service account has access to the Google Drive API.
+4. **Share Sheet**: Share the Google Sheet with your service account email address (Viewer role is sufficient).
+
+---
+
+## Prerequisites
+
+### Google Cloud Platform
+You'll need a GCP account and a project with the BigQuery API enabled. Ensure your project has a BigQuery dataset ready for connection.
+
+### Service Account and JSON Key
+Prov AI uses a service account JSON key for authentication.
+
+**To create a service account key:**
+1. **IAM & Admin**: Go to **Service Accounts** in your GCP console.
+2. **Create Account**: Click **+ CREATE SERVICE ACCOUNT**, name it, and add a description.
+3. **Grant Access**: Assign the following roles:
+   - `BigQuery Data Viewer`
+   - `BigQuery User`
+4. **Create Key**: Click on the new service account, go to the **Keys** tab, and select **Add Key > Create new key (JSON)**.
+
+<Warning>
+  The JSON file will download automatically. **You can only download this key once.** If lost, you must create a new one.
+</Warning>
+
+---
+
+## Connect
+
+Fill in the following connection settings:
+
+### Display Name
+The display name for the database in the Prov AI interface.
+
+### Region
+The geographic location where your BigQuery data resides (e.g., `us`, `eu`). This **must** match the region of the datasets you want to connect.
+
+### Billing Project ID
+The GCP project ID billed for query execution. This project must have BigQuery enabled and billing configured.
+
+### Data Project IDs (Optional)
+Add one or more project IDs to enable cross-project table selection. Leave this empty if you only need datasets from the billing project.
+
+### Credentials (JSON File)
+Upload the Service Account JSON key file you created in the prerequisites step.
+
+### Dataset IDs
+Select the BigQuery dataset(s) you want to connect.
+
+---
+
+## Select Tables
+
+All tables in your connected BigQuery datasets will be listed. Select the tables you want to use in Prov AI. Each selected table will be created as a **Data Model**.
+
+---
+
+## Define Relationships
+
+Define the relationships among selected tables. Prov AI will suggest relationships based on existing primary and foreign keys if available.
+
+<Card title="Relationships Overview" icon="diagram-project" href="/modeling/relationships">
+  Deep dive into how relationships work in Prov AI.
+</Card>

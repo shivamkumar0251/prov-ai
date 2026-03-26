@@ -1,0 +1,68 @@
+---
+title: "Models"
+description: "Creating and managing data models in Prov AI"
+---
+
+**Models** are the fundamental unit in Prov AI. They combine schemas, metadata, relationships, and calculated fields from your data source to help both people and the AI understand your data.
+
+---
+
+## Soft Limitation
+
+Each Prov AI project supports up to **200 models** by default. This is a soft limit; if your organization requires more, please contact our support team.
+
+---
+
+## Creating a Model
+
+### 1. During Connection
+When connecting a new data source, you'll be asked to select specific tables. These tables are automatically converted into data models.
+
+### 2. From the Modeling Page
+1. Click the **+** icon next to the **Models** section in the sidebar.
+2. Select a table from your data source.
+3. Choose the columns you want to include and move them to the "active" list using the **>** button.
+4. Select a **Primary Key** (optional but recommended).
+5. Click **Submit**.
+
+<Tip>
+  Prov AI allows you to connect only the necessary tables. You can always add or remove tables in Project Settings later.
+</Tip>
+
+---
+
+## Managing Models
+
+### Update Columns
+1. Click the **More icon (⋮)** on a model diagram.
+2. Select **Update Columns**.
+3. Add or remove columns to sync with the Prov Engine.
+
+### Update Primary Key
+1. Click the **More icon (⋮)** on the model diagram.
+2. Select **Update Primary Key**.
+
+### Delete a Model
+1. Click the **More icon (⋮)** on the model diagram.
+2. Select **Delete**.
+
+---
+
+## Model Lists & Navigation
+
+Access your full list of models in the sidebar:
+- **Expand**: Click the icon to see column details.
+- **Focus**: Click a model name to jump to its position on the Entity Relationship diagram.
+
+---
+
+## Important: Deploying Changes
+
+If you make modifications, an **Undeployed changes** notice will appear at the bottom of the page. 
+
+1. Click **Update Models Now** to sync with the Prov Engine.
+2. Status will show **Deploying...** and then **Synced**.
+
+<Note>
+  Project owners are automatically notified via the dashboard once model updates are completed.
+</Note>

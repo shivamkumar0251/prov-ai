@@ -1,0 +1,76 @@
+---
+title: "Modeling AI Assistant"
+description: "Automating semantics and relationship discovery in Prov AI"
+---
+
+**Semantics** enable Prov AI to comprehend your data structure and provide more precise answers to user inquiries. The **Modeling AI Assistant** automates the creation of semantics and relationships, significantly improving the AI's data understanding. 
+
+---
+
+## Overview
+
+The Modeling AI Assistant offers two primary automation features:
+
+| Feature | Description |
+| :--- | :--- |
+| **Generate Semantics** | Automatically creates detailed descriptions for models and columns based on your schema. |
+| **Generate Relationships** | Automatically identifies and suggests logical connections between your models. |
+
+---
+
+## Accessing the Assistant
+
+1. Navigate to the **Modeling** page.
+2. Locate the **Modeling AI Assistant** button in the top-right corner.
+3. Click or hover to select a feature from the dropdown menu.
+
+---
+
+## Generate Semantics
+
+Well-defined descriptions allow Prov AI to interpret your data accurately. 
+
+### Steps
+1. Select **Generate Semantics** from the dropdown.
+2. Choose the specific models you want to process.
+3. In the **User Prompt** field, provide a concise description of your dataset's purpose.
+   - *Example*: "This dataset includes historical e-commerce pricing, discount rates, and promotional activities for dynamic pricing analysis."
+4. Review the generated descriptions for both the model and its columns.
+5. Click **Save**.
+
+<Important>
+  **Deploy Required**: You must deploy your changes for the new semantics to take effect.
+</Important>
+
+---
+
+## Generate Relationships
+
+Discover potential connections between models automatically to save time on manual configuration.
+
+### Steps
+1. Select **Generate Relationships** from the dropdown.
+2. Allow the AI to process your data schema.
+3. Examine the proposed connections in the results table:
+
+| Field | Description |
+| :--- | :--- |
+| **From** | The originating field of the relationship. |
+| **To** | The destination field of the relationship. |
+| **Type** | The nature of the relationship (e.g., Many-to-one). |
+| **Description** | A brief explanation of the relationship's purpose. |
+
+4. For each suggestion, you can **Edit**, **Delete**, or **Save**.
+5. Click **Save** to preserve the relationships.
+
+---
+
+## Relationship Types
+
+Prov AI identifies the following relationship patterns:
+
+| Type | Definition | Example |
+| :--- | :--- | :--- |
+| **One-to-one** | Each record in one model corresponds to exactly one record in another. | User ↔ Profile |
+| **One-to-many** | A single record in the first model relates to multiple records in the second. | Organization ↔ Projects |
+| **Many-to-one** | Several records in the first model associate with a single record in the second. | Projects ↔ Organization |

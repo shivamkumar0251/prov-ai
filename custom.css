@@ -1,0 +1,11 @@
+/* Sidebar Group margins to reduce extra space (mt-8 to mt-2) */
+.mt-6, .lg\:mt-8 {
+  margin-top: 0.5rem !important;
+}
+
+/* Push sidebar group chevrons to the right edge */
+#sidebar-content button {
+  display: flex !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}

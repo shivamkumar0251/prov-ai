@@ -1,0 +1,78 @@
+---
+title: "Sample Dataset"
+description: "Explore Prov AI with pre-configured datasets"
+---
+
+<img src="/images/sample-dataset-1.png" alt="Sample Dataset" />
+
+This guide introduces sample datasets designed to help you explore the capabilities of **Prov AI** without initially connecting your own data sources. These datasets provide a diverse range of data points that you can use to practice querying, analyzing, and visualizing data within the Prov AI platform.
+
+---
+
+## E-commerce Dataset (Olist)
+This dataset is adapted from the Brazilian E-Commerce Public Dataset on Kaggle. It covers the full lifecycle of an online store:
+- **Scope**: Customers, orders, shipping, and product reviews.
+- **Period**: 2016 to 2018.
+- **Key Note**: Product categories are in Portuguese, but an English translation column is provided.
+
+---
+
+## Card Transaction Dataset
+<img src="/images/sample-dataset-2.png" alt="Card Dataset" />
+
+A comprehensive financial dataset combining transaction records, customer info, and card data. 
+- **Use Case**: Spend pattern analysis, fraud detection, and customer demographics.
+- **Period**: 2010s.
+- **Exclusion Note**: Includes `train_fraud_labels.csv` to identify fraudulent transactions.
+
+---
+
+## Hotel Rating Dataset
+A synthetic dataset designed to emulate a major hotel platform’s booking and review data.
+- **Use Case**: Customer satisfaction, booking behavior, and hotel performance.
+- **Period**: 2020 to 2025.
+- **Core Table**: `reviews.csv` links users and hotels via `user_id` and `hotel_id`.
+
+---
+
+## Human Resource Dataset
+<img src="/images/sample-dataset-3.png" alt="HR Dataset" />
+
+A classic relational database perfect for practicing joins and aggregations.
+- **Scope**: Demographic and employment details for a large company.
+- **Period**: 1950 to 2002.
+- **Key Note**: Uses `9999-01-01` to signify current salary or department assignments.
+
+---
+
+## Supply Chain Dataset
+Details the end-to-end supply chain for a fashion and beauty startup.
+- **Scope**: Manufacturing, suppliers, sales, and shipping.
+- **Key Feature**: Includes performance metrics like defect rates and inspection results.
+
+---
+
+## How to use Sample Datasets
+
+<img src="/images/sample-dataset-4.png" alt="Setup Sample Dataset" />
+
+When creating a new project, simply select a dataset from the **‘Start with a sample dataset’** section.
+
+---
+
+## Explore the Data
+
+Once your project is ready, start asking questions! You can view the SQL plan, data preview, and the generated SQL statement for every query.
+
+<img src="/images/sample-dataset-5.png" alt="Query Example" />
+
+### Next Steps 
+
+<CardGroup cols={2}>
+  <Card title="Adjusting Results" icon="sliders" href="/usage-guides/querying/adjust-results">
+    Learn how to refine your AI-generated answers.
+  </Card>
+  <Card title="Data Models" icon="diagram-project" href="/modeling/overview">
+    Explore the Entity Relationship Diagram (ERD) on the modeling page.
+  </Card>
+</CardGroup>

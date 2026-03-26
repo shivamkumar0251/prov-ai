@@ -1,0 +1,81 @@
+---
+title: "Embedded Threads"
+description: "Bringing Prov AI analysis directly into your own applications"
+---
+
+<Info>
+  **Plan Support**: Beta feature — available in **Enterprise Plan** and above.
+</Info>
+
+**Embedded Threads** allow you to bring natural language data exploration directly to your users. Choose from two embedding options depending on your security requirements.
+
+---
+
+## Embedding Modes
+
+| Mode | Security Level | Ideal For |
+| :--- | :--- | :--- |
+| **Public Mode** | Open Access | Blogs, marketing sites, and public datasets. |
+| **Identity Verification**| Secure Access | Internal dashboards and user-specific analytics. |
+
+---
+
+## 1. Public Mode
+
+Public Mode requires no backend signing. Use it for non-sensitive data insights.
+
+### Implementation
+Navigate to **Settings → Project → Embedded Threads**. Configure your appearance and grab the iframe snippet from the **Public Access** tab.
+
+```html
+<iframe
+  src="https://cloud.prov.ai/iframe/your-unique-id"
+  width="100%"
+  height="600px"
+  style="border: none;"
+></iframe>
+```
+
+---
+
+## 2. Identity Verification (Secure)
+
+Identity Verification ensures that every request is signed by your server, proving the user's identity to Prov AI. 
+
+### How It Works
+1. **Secret Key**: Your backend signs a JSON Web Token (JWT) using a **Shared Secret Key**.
+2. **Personalization**: The JWT can include `userId` and `sessionProperties` (e.g., department, role) to enforce RLS/CLS rules.
+3. **Security**: Your Secret Key remains on your server and is never exposed to the frontend.
+
+### Backend Implementation Example (Node.js)
+
+```javascript
+const jwt = require('jsonwebtoken');
+
+// Get "Shared Secret Key" from Prov AI settings
+const secret = process.env.PROVAI_EMBED_SECRET;
+
+const payload = {
+  userId: user.id, // Required (UUID format)
+  email: user.email,
+  name: user.name,
+  sessionProperties: [
+    { key: 'department', value: 'finance' }
+  ]
+};
+
+// Sign using the HS256 algorithm
+const provaiToken = jwt.sign(payload, secret, { algorithm: 'HS256' });
+```
+
+---
+
+## Customization & Security
+
+- **Branding**: Customize buttons, logos, and colors in the Prov AI dashboard.
+- **Critical Security**: Never expose your **Shared Secret Key** in your frontend code. Always sign tokens on the backend.
+- **Usage Monitoring**: Keep track of API credits in the **Usage Limits** section to ensure threads remain active.
+
+<Tip>
+  Use `sessionProperties` in your JWT to dynamically apply Row-Level Security for each embedded user.
+</Tip>

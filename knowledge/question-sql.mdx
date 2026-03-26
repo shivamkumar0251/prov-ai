@@ -1,0 +1,47 @@
+---
+title: "Trusted Questions (SQL)"
+description: "Mapping specific questions to verified SQL statements in Prov AI"
+---
+
+**Trusted Questions (SQL)** allow you to map known inquiries directly to verified SQL statements. This bypasses the AI generation phase, ensuring 100% accuracy for your most critical business questions.
+
+---
+
+## How It Works
+
+When a user asks a question, the Prov Engine first checks the **Knowledge Base** for a "Trusted Match." 
+
+| Match Type | Execution Path |
+| :--- | :--- |
+| **Precise Match** | Executes the **Verified SQL** immediately. |
+| **Similar Match** | Suggests the trusted question to the user. |
+| **No Match** | Passes the query to the **LLM** for fresh SQL generation. |
+
+---
+
+## Creating Trusted Questions
+
+1. Navigate to **Modeling > Knowledge**.
+2. Select **Add Trusted Question**.
+3. Define the following:
+   - **Question**: The natural language phrase (e.g., "What was our total revenue last month?").
+   - **SQL**: The verified, manually-written SQL query that returns the correct answer.
+4. **Deploy** your changes.
+
+### Mapping via Threads
+You can also mark an AI-generated answer as "Trusted" directly from the **Home** page.
+1. Click the **Checkmark (Mark as Trusted)** icon on an answer.
+2. Review the SQL.
+3. Click **Confirm**.
+
+---
+
+## Best Practices
+
+- **Use Common Phrasing**: Add multiple trusted questions for the same SQL if your team uses different terms (e.g., "Total Revenue" vs. "Total Sales").
+- **Audit Regularly**: Update the SQL if your database schema changes to ensure trusted results remain functional.
+- **Link to Views**: Use **Views** for complex, multi-join results that are requested frequently.
+
+<Important>
+  **Branding Tip**: Trusted Questions are visible to all project members. Use clear, professional phrasing for your questions.
+</Important>

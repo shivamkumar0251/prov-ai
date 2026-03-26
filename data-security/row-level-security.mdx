@@ -1,0 +1,56 @@
+---
+title: "Row-Level Security (RLS)"
+description: "Data-level isolation and privacy enforcement in Prov AI"
+---
+
+<Info>
+  **Plan Support**: Data Security features are available in **Enterprise Plan** and above.
+</Info>
+
+**Row-Level Security (RLS)** ensures that users only see the specific rows they are authorized to view. This supports data isolation, multi-tenant environments, and least-privilege access.
+
+---
+
+## How RLS Works
+
+RLS makes the same query return different rows for different users, based on their identity and assigned permissions.
+
+| Component | Description |
+| :--- | :--- |
+| **Applied Models** | The tables or models where the policy is enforced. |
+| **Policy Condition** | A SQL predicate (e.g., `org_id = @user_org_id`) that filters rows. |
+| **Session Properties** | User context values (e.g., `user_id`, `role`) passed at runtime. |
+| **Enforcement** | The Prov Engine automatically attaches the condition to generated queries. |
+
+---
+
+## Defining a Policy
+
+### 1. Create a Policy
+Navigate to **Data Security → Row-Level Security → Add Policy**. Enter a name and select the models you want to protect.
+
+### 2. Choose Session Properties
+Select from existing properties or create new ones. Refer to these in your policy condition using the `@` prefix.
+
+<Note>
+  **Required Properties**: If a property is marked as **Required**, users lacking that property will encounter errors when querying protected models.
+</Note>
+
+### 3. Define the SQL Condition
+Write your filter condition using standard SQL syntax and session properties.
+- **Example**: `org_id = @user_org_id`
+
+### 4. Preview and Save
+Use the **Policy Preview** tool to test your logic with simulated user properties. Click **Save** and remember to **Deploy Models** to apply the changes.
+
+---
+
+## Applying to Users
+
+### 1. Assign Properties
+Navigate to **Data Security → Session Properties**. Select **Assign to Users** or **Assign to Groups** to set the values that will drive the policy.
+
+### 2. Verify in Home
+Ask a question in the **Home** thread. The result set will now automatically filter based on the user's role and property values.
+
+[Explore RLS Examples](/data-security/rls-examples)

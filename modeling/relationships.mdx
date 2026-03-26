@@ -1,0 +1,59 @@
+---
+title: "Working with Relationships"
+description: "Defining and managing associations between data models in Prov AI"
+---
+
+Relationships enable efficient querying and analysis of interconnected data by specifying how data in one table relates to another.
+
+---
+
+## Creating a Relationship
+
+### 1. During Connection
+You can define initial relationships among selected tables as an additional step during the data source connection process.
+
+### 2. From the Modeling Page
+1.  Go to the diagram of the model where you want to add a relationship.
+2.  Click the **+** icon next to the **Relationships** section.
+3.  Define the following properties:
+
+| Property | Description |
+| :--- | :--- |
+| **From** | Select the origin table and column. |
+| **To** | Select the destination table and column. |
+| **Type** | Choose the relationship type (Many-to-one, One-to-many, One-to-one). |
+
+4. Click **Save**.
+
+---
+
+## Relationship Limitations
+
+When creating relationships in Prov AI, the following scenarios are not permitted:
+- **Self-Referential**: A model cannot relate to itself.
+- **Duplication**: You cannot define identical relationships multiple times.
+
+---
+
+## Managing Relationships
+
+### Update Relationship
+1. Click the **More icon (⋮)** next to the relationship on the model diagram.
+2. Choose **Edit**.
+3. Update the **Type** and click save.
+
+### Delete Relationship
+1. Click the **More icon (⋮)** next to the relationship.
+2. Choose **Delete**.
+
+---
+
+## Relationship Details
+
+Hover over any relationship line in the ER diagram to view information such as:
+- **Key Fields**: Origin and destination columns.
+- **Cardinality**: Visual indicators for One-to-Many or Many-to-One flow.
+
+<Important>
+  **Deploy Changes**: Remember to press the **Deploy** button on the navigation bar after creating or modifying relationships.
+</Important>

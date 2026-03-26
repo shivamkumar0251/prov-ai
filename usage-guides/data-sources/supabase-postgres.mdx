@@ -1,0 +1,39 @@
+---
+title: "Supabase Postgres"
+description: "Connecting Prov AI to your Supabase project"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+Direct connection to Supabase is handled via the **PostgreSQL** connector in Prov AI.
+
+---
+
+## Find Connection Information
+
+1. Navigate to the **Connect** page in your Supabase project dashboard.
+2. Open the page to view your database connection information.
+
+<Warning>
+  Currently, Prov AI supports only **IPv4-compatible** endpoints. If you are on Supabase's free plan, you must connect using the **Transaction Pooler**.
+</Warning>
+
+---
+
+## Connect
+
+### Connection Breakdown
+
+Fill in the following details based on your Supabase dashboard:
+- **Display Name**: The identifier for this database in Prov AI.
+- **Host**: Your Supabase hostname (ensure it is the IPv4 pooler).
+- **Port**: The default port is `5432`.
+- **Username**: Your database user (default: `postgres`).
+- **Password**: The password you set during Supabase project creation.
+- **Database**: The specific database name (default: `postgres`).
+
+<Note>
+  All further steps, such as **Selecting Tables** and **Defining Relationships**, are identical to the standard [PostgreSQL guide](/usage-guides/data-sources/postgresql).
+</Note>

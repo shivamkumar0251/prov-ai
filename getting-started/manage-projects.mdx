@@ -1,0 +1,113 @@
+---
+title: "Manage Projects"
+description: "Creating and configuring projects within your organization"
+---
+
+<img src="/images/manage-project-1.png" alt="Manage Projects UI" />
+
+<Info>
+  **Plan Support**: 
+  - **Free Plan**: Limited to 2 projects.
+  - **Starter Plan and above**: Unlimited projects.
+</Info>
+
+As an Organization Admin, you can create and manage multiple projects within your organization via the navigation bar.
+
+---
+
+<img src="/images/manage-project-2.png" alt="Create Project" />
+
+Once a project is created, you can set up a data source connection and start asking questions. 
+
+<Note>
+  **Data Sync**: Synchronization can take some time. Please wait for the initial sync to complete to ensure accurate results.
+</Note>
+
+### Supported Data Sources
+
+- **Cloud Data Warehouses**: BigQuery, Snowflake, Redshift, Athena, Databricks.
+- **Relational Databases**: PostgreSQL, MySQL, Oracle, SQL Server.
+- **OLAP & Big Data**: ClickHouse, Trino, Spark (EMR/Athena).
+- **Files**: CSV Upload.
+
+---
+
+## Project Settings
+
+### General
+As a **Project Owner**, you can modify the project’s display name and response language in the **General** settings.
+
+<CardGroup cols={2}>
+  <Card title="Update Name" icon="pen-to-square">
+    <img src="/images/manage-project-3.png" alt="Update Project Name" />
+  </Card>
+  <Card title="Update Language" icon="language">
+    <img src="/images/manage-project-4.png" alt="Update Language" />
+  </Card>
+</CardGroup>
+
+---
+
+## Access Control
+
+Manage user permissions within your project. **Project Owners** have full control. Prov AI supports three roles:
+1. **Project Owner**: Full access to all settings and data.
+2. **Project Contributor**: Can edit models and instructions.
+3. **Project Viewer**: Can only ask questions and view results.
+
+### Add Member
+To add a member, they must first be invited to your organization. Select the member and assign their project role.
+
+<img src="/images/manage-project-5.png" alt="Add Member" />
+
+---
+
+### Update or Remove Members
+- **Update Permission**: Use the **Permission** dropdown menu. Note: You cannot modify your own role.
+- **Remove Member**: Revokes all project access. Note: Organization Admins cannot be removed from projects.
+
+<CardGroup cols={2}>
+  <Card title="Update Role" icon="user-gear">
+    <img src="/images/manage-project-6.png" alt="Update Role" />
+  </Card>
+  <Card title="Remove Member" icon="user-xmark">
+    <img src="/images/manage-project-7.png" alt="Remove Member" />
+  </Card>
+</CardGroup>
+
+---
+
+## Data Source
+
+Manage your data connection in the **Data Source** tab. You can create a new connection or edit an existing one.
+
+<CardGroup cols={2}>
+  <Card title="Setup Connection" icon="plug">
+    <img src="/images/manage-project-8.png" alt="Data Source Setup" />
+  </Card>
+  <Card title="Edit Connection" icon="sliders">
+    <img src="/images/manage-project-9.png" alt="Data Source Edit" />
+  </Card>
+</CardGroup>
+
+---
+
+## Danger Zone
+
+### Reset Project
+<Warning>
+  **Reset Project**: This action is **permanent**. It deletes all settings, metadata (Modeling page), and question history.
+</Warning>
+
+<img src="/images/manage-project-10.png" alt="Reset Project" />
+
+### Delete Project
+<Danger>
+  **Delete Project**: Once deleted, all questions and results are lost forever. This action cannot be undone.
+</Danger>
+
+<img src="/images/manage-project-11.png" alt="Delete Project" />
+
+<Note>
+  You cannot delete a project if it is your last accessible project in the organization.
+</Note>

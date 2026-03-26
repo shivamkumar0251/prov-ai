@@ -1,0 +1,191 @@
+---
+title: "Best Practices"
+description: "Strategies for building a reliable and scalable semantic layer with Prov AI"
+---
+
+<img src="/images/best-practice-1.png" alt="Best Practice" />
+
+## Project Scoping & Domain Boundaries
+
+Avoid the **“One Giant Graph”** Trap!
+
+<Tip>
+  **Best Practice**: Create separate Prov AI projects per business use case or domain, instead of building one massive, mixed graph for the entire company.
+</Tip>
+
+### Why separate projects?
+
+- **Terminology Alignment**: Different domains often have different definitions for the same term (e.g., “Revenue” in Finance vs. “Revenue” in Marketing).
+- **Reduced Hallucinations**: A single giant graph with mixed semantics makes it easier for the AI to pick the wrong tables or mix conflicting definitions.
+- **Focused Context**: Smaller projects provide cleaner semantic layers, clearer Instructions, and specific Question-SQL Pairs.
+- **Easier Governance**: Testing and permissions are simpler to manage at the domain level.
+
+---
+
+## How to Scope Projects
+
+Use separate projects for distinct business areas:
+
+- **Marketing & Growth**: Campaigns, channels, attribution, CAC, ROAS.
+- **Product Analytics**: Events, feature usage, funnels, retention.
+- **Sales & Revenue**: Pipeline, bookings, MRR, ARR.
+- **Operations & Logistics**: Lead times, yield, utilization, defects.
+
+<Note>
+  **Rule of Thumb**: If a domain has its own stakeholders and its own unique metric definitions, it almost always deserves its own Prov AI project.
+</Note>
+
+---
+
+## Define Your “First 20 Questions”
+
+Don’t start by modeling everything. Start by modeling what people actually ask.
+
+1.  **Survey Stakeholders**: List 10–20 questions they ask weekly (e.g., daily checks, board reports).
+2.  **Identify Core Metrics**: MRR, AOV, LTV, Churn, CAC, etc.
+3.  **Categorize Questions**:
+    - **Simple Retrieval**: Counts, sums, basic grouping.
+    - **Business Metric**: Specific, calculated formulas.
+    - **Complex Analysis**: Window functions, multi-table joins.
+
+Use this list to decide what must be clear in **Semantics**, what needs **Instructions**, and what deserves **Question-SQL Pairs**.
+
+---
+
+## Step 0: Preprocess the Data
+
+Create analytics-friendly reporting tables or views per domain to simplify complex business logic *before* you model semantics.
+
+### Why this matters
+- **LLM Reliability**: AI is much more reliable with explicit columns (booleans, fiscal periods) than with complex string parsing.
+- **Error Prevention**: Prevents inconsistent definitions (e.g., forgetting to exclude test accounts) across different natural language questions.
+
+### Best Practices for Preprocessing
+- **Boolean Flags**: Add fields like `is_partner`, `is_test_account`, or `is_valid_revenue`.
+- **Pre-join Dimensions**: Connect fiscal calendars or accounts early. Add `fiscal_quarter` or `fiscal_year` columns.
+- **Flatten Data**: Denormalize frequently-used joins into a single "reporting" model to reduce join complexity for the AI.
+
+---
+
+### Examples for Preprocessing
+
+#### Example: “Net Revenue last quarter” (exclude refunds/canceled/test/internal)
+
+**Before (Raw tables, easy to miss rules):**
+```sql
+SELECT SUM(amount) AS revenue
+FROM payments
+WHERE paid_at >= '2025-10-01' AND paid_at < '2026-01-01'
+  AND status = 'paid';
+```
+
+**Common problems with this raw approach:**
+- It doesn't exclude refunds or chargebacks.
+- It might include canceled orders or internal test accounts.
+- “Last quarter” might need fiscal quarter logic, not just calendar dates.
+
+---
+
+**Step 0 Preprocessing (Create a reporting-ready view):**
+The best way is to encode flags and fiscal fields once in your data layer:
+
+```sql
+CREATE OR REPLACE VIEW finance_revenue_facts AS
+SELECT
+  p.payment_id,
+  p.amount,
+  /* Business rules as booleans */
+  (p.status = 'paid') AS is_paid,
+  (p.refund_amount IS NOT NULL AND p.refund_amount > 0) AS is_refunded,
+  (c.is_test_account = TRUE) AS is_test,
+  /* Net amount calculation */
+  (p.amount - COALESCE(p.refund_amount, 0)) AS net_amount,
+  fc.fiscal_year_quarter
+FROM payments p
+JOIN customers c ON p.customer_id = c.customer_id
+JOIN fiscal_calendar fc ON DATE(p.paid_at) = fc.calendar_date;
+```
+
+**After (Prov AI queries become simple + consistent):**
+```sql
+SELECT SUM(net_amount) AS net_revenue
+FROM finance_revenue_facts
+WHERE fiscal_year_quarter = '2025Q4'
+  AND is_paid = TRUE
+  AND is_refunded = FALSE
+  AND is_test = FALSE;
+```
+
+**Why this is better:**
+- The “Net revenue” logic is encoded once (not re-invented per question).
+- Fiscal quarters are always correct.
+- Exclusions are harder to forget, leading to zero "looks right but is wrong" mistakes.
+
+---
+
+## Step 1: Speak Your Business Language
+
+The semantic layer is where you tell Prov AI what the data represents: entities, metrics, and relationships.
+
+### 1.1 Business-First Descriptions
+Describe tables as real-world objects, not technical storage:
+- **Avoid**: `daily_report` – "production table".
+- **Use**: "Daily actual production status per machine" – helps the AI distinguish between "Goals" and "Actuals".
+
+### 1.2 Mark Measures and Dimensions
+- **Measures/Metrics**: Numeric fields for summing/averaging. In descriptions, use "Total X" or "Amount of Y".
+- **Dimensions**: Dates, categories, and IDs used for filtering. Explicitly mention "Date for..." or "Category of...".
+- **Entity Identifiers**: Mark IDs as entity keys (e.g., "Unique identifier for customer"). This helps the AI infer `COUNT(DISTINCT customer_id)` when asked for "number of customers".
+
+### 1.3 Define Relationships
+Explicitly declare **one-to-one** or **one-to-many** relationships in the UI. Don't rely on the LLM to "discover" joins at the SQL level.
+
+---
+
+## Step 2: Set Universal Rules with Instructions
+
+Instructions are reusable rules that shape SQL generation and chart behavior.
+
+### 2.1 Global Instructions
+Configure these for every project:
+- **Exclusion Rules**: "Exclude orders with status 'canceled' from revenue calculations."
+- **Date Defaults**: "When a question mentions 'orders last week', default to the `order_created_at` field."
+- **Formatting**: "Round monetary metrics to 2 decimal places" or "Format rates as percentages."
+
+### 2.2 Question-Matching Instructions
+Use these for tricky domain concepts like "late delivery" or "churned customer."
+
+---
+
+## Step 3: Capture Question-SQL Pairs
+
+Encode the exact SQL for high-stakes metrics (MRR, Churn, etc.).
+
+<CardGroup cols={2}>
+  <Card title="AOV Definition" icon="calculator">
+    `ROUND(SUM(price + freight) / COUNT(DISTINCT order_id), 2)`
+  </Card>
+  <Card title="VIP Customers" icon="crown">
+    Includes complex filters for revenue > $100k over 3 consecutive months.
+  </Card>
+</CardGroup>
+
+---
+
+## Step 4: Human-in-the-Loop Iteration
+
+Treat Prov AI as a living system. When a user asks a question:
+- If correct → **Save to Knowledge**.
+- If almost right but missing a filter → **Add an Instruction**.
+- If wrong → **Refine the Semantics**.
+
+---
+
+<CardGroup>
+  <Card title="Data Modeling" icon="database" href="/modeling/overview">
+    Deep dive into building your semantic layer.
+  </Card>
+  <Card title="Global Instructions" icon="gavel" href="/usage-guides/global-instructions">
+    Learn to set the rules of the house.
+  </Card>
+</CardGroup>

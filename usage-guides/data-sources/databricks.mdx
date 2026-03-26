@@ -1,0 +1,61 @@
+---
+title: "Databricks"
+description: "Connecting Prov AI to your Databricks SQL Warehouse"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+To add a Databricks connection, select the **Databricks** option in the "Connect a data source" section.
+
+## Before You Begin
+
+Before connecting Prov AI with Databricks, log in to your Databricks UI and ensure your **SQL Warehouse** is running.
+
+---
+
+## Connect
+
+### Connection Details
+
+- **Display Name**: The display name for the Databricks connection in Prov AI.
+- **Server Hostname**: Your Databricks workspace URL (without `https://` or trailing slashes).
+- **HTTP Path**: The HTTP path of the SQL warehouse you will use to run queries.
+
+<Tip>
+  **Find your connection info**: Navigate to **Databricks → SQL Warehouses → Connection details** to find your Server Hostname and HTTP Path.
+</Tip>
+
+### Authentication Methods
+
+Prov AI supports two authentication methods for Databricks:
+
+#### 1. Personal Access Token (PAT)
+- **Access Token**: A PAT generated from the Databricks UI. 
+- **Setup**: Go to **User Settings → Developer → Access Tokens** in Databricks to create a token.
+
+#### 2. Service Principal
+- **Client ID**: The application ID of your Databricks Service Principal.
+- **Client Secret**: The secret associated with the Service Principal.
+- **Setup**: Create and manage service principals in the Databricks UI under **Service Principals**.
+
+---
+
+## Select Tables
+
+All tables from your connected Databricks warehouse will be listed. Select the tables you want to use. 
+
+<Note>
+  **Unity Catalog Sync**: Prov AI syncs metadata (table names, column types, and comments) directly from **Unity Catalog** via `INFORMATION_SCHEMA`.
+</Note>
+
+---
+
+## Define Relationships
+
+Define the relationships among selected tables. If you have primary and foreign keys defined in Databricks, Prov AI will suggest them automatically.
+
+<Card title="Relationships Documentation" icon="link" href="/modeling/relationships">
+  Learn more about defining and managing relationships in Prov AI.
+</Card>

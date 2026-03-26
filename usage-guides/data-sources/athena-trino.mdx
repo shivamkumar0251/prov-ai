@@ -1,0 +1,81 @@
+---
+title: "Amazon Athena (Trino)"
+description: "Connecting Prov AI to Amazon Athena using the Apache Trino engine"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+## IP Whitelist for Prov AI Cloud
+
+Prov AI needs to access your Athena database via its outbound IP address. If you have network access controls on Athena, please add the Prov AI service IP to your allowlist.
+
+<Tip>
+  Scroll to the bottom of the data source connection page in Prov AI to find the specific IP address for your instance.
+</Tip>
+
+## Query Engine Support
+
+Amazon Athena supports two open-source query engines: **Apache Spark** and **Trino**. This guide covers the **Apache Trino** engine. If you are using the Spark engine, please refer to the [Athena (Spark)](/usage-guides/data-sources/athena-spark) guide instead.
+
+To add an Amazon Athena connection, select the **Athena** option in the "Connect a data source" section.
+
+---
+
+## Prerequisites
+
+### AWS Account and Permissions
+You'll need an AWS account with appropriate permissions to access Amazon Athena. The user or role you use should have the following permissions:
+
+- `AmazonAthenaFullAccess` policy, or at minimum:
+- Permissions to run Athena queries.
+- Full access to the S3 bucket where query results are stored.
+- Read access to metadata from AWS Glue Data Catalog.
+
+---
+
+## Connect
+
+Fill in the following connection settings:
+
+### Display Name
+The display name for the database in the Prov AI interface.
+
+### Database (Schema)
+The Athena database (also called schema) that contains the tables you want to query.
+
+### S3 Staging Directory
+The S3 path where Athena stores query results and metadata (e.g., `s3://athena-results-bucket/folder/`). You can find this in the Athena console under **Settings > Query result location**.
+
+### AWS Region
+The AWS region where your Athena service is located (e.g., `us-east-1`, `eu-west-1`).
+
+### AWS Credentials
+Enter your **AWS Access Key ID** and **Secret Access Key**. These credentials must have sufficient permissions to run queries and access the specified S3 staging location.
+
+---
+
+## Select Tables
+
+All tables in your connected Athena database will be listed. Select the tables you want to use. Each selected table will be created as a **Data Model**.
+
+---
+
+## Define Relationships
+
+Define the relationships among selected tables. If you have primary and foreign keys defined in Athena, Prov AI will automatically suggest relationships.
+
+<Card title="Working with Relationships" icon="link" href="/modeling/relationships">
+  Learn more about defining relationships between your tables.
+</Card>
+
+---
+
+## Known Issues
+
+### Query Timeout
+Athena queries may timeout for complex operations or extremely large datasets. Consider optimizing your queries or using partitioning to improve performance.
+
+### Data Type Limitations
+Some Athena data types may not be fully supported. If you encounter issues, consider casting them to standard types (e.g., `VARCHAR`, `INTEGER`) in your views.

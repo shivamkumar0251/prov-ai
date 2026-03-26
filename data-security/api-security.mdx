@@ -1,0 +1,31 @@
+---
+title: "API Security"
+description: "Using the Prov AI API with session properties and data security"
+---
+
+<Info>
+  **Plan Support**: Data Security features are available in **Enterprise Plan** and above.
+</Info>
+
+You can provide **Session Properties** directly when calling the Prov AI API. These properties are evaluated in real-time by **Row-Level Security (RLS)** and **Column-Level Security (CLS)** policies during query execution.
+
+---
+
+## How to Send Session Properties
+
+To pass user context to the API, include the `X-Prov-Session-Properties` header in your request. Properties are passed as a comma-separated list of `key=value` pairs.
+
+### Example Header
+
+```http
+X-Prov-Session-Properties: user_org_id=123, user_region=US, user_role=finance
+```
+
+---
+
+## Security Best Practices
+
+- **Validate Input**: Ensure that the values passed via API reflect the authenticated session in your application.
+- **Use Required Properties**: If a policy depends on a property, mark it as **Required** in the Prov AI dashboard to prevent accidental wide-access queries.
+
+[Learn more about session properties](/data-security/session-management)

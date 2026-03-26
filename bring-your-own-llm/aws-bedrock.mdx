@@ -1,0 +1,71 @@
+---
+title: "Quick Start with AWS Bedrock"
+description: "Connecting AWS Bedrock models to Prov AI"
+---
+
+<Info>
+  **Plan Support**: This capability is available on the **Business Plan** for the Prov AI Self-Hosted Version.
+</Info>
+
+We recommend using **Anthropic Claude 3.5 Sonnet** on Bedrock for strong reasoning and tool-use capabilities.
+
+---
+
+## Prerequisites
+
+- **AWS Account**: Bedrock must be enabled in your target region.
+- **Model Access**: Ensure access to models (e.g., Anthropic Claude) is granted in the Bedrock console.
+- **API Credentials**: Generate a long-term AWS API key with the necessary Bedrock permissions.
+
+---
+
+## Reference Configurations
+
+If you use an **Amazon Bedrock Inference Profile** to track usage, include the `model_id` (Inference Profile ARN) in your Prov AI configuration.
+
+### Embedding Model Configuration
+```json
+{
+  "kwargs": {
+    "timeout": 600,
+    "model_id": "arn:aws:bedrock:region:account:inference-profile/profile-id"
+  },
+  "dimension": 1536
+}
+```
+
+### LLM Model Configuration
+```json
+{
+  "kwargs": {
+    "n": 1,
+    "seed": 0,
+    "timeout": 600,
+    "max_tokens": 4096,
+    "temperature": 0,
+    "model_id": "arn:aws:bedrock:region:account:inference-profile/profile-id"
+  },
+  "context_window_size": 200000
+}
+```
+
+---
+
+## Setup Steps (Quick Setup)
+
+1. **Onboarding**: Select **Quick Setup** and then **AWS Bedrock**.
+2. **Region & Key**: Enter your AWS Region and API Key.
+3. **Add Embedding Model**:
+   - Go to Bedrock Console > Model Catalog.
+   - Search for "Titan Text Embedding V2" and copy its **Model ID**.
+   - In Prov AI, click **Add Embedding Model** and paste the ID.
+   - Click **Test Connection**.
+4. **Add LLM Model**:
+   - Go to Bedrock Console > Cross-Region Inference.
+   - Select **Claude 3.5 Sonnet** and copy the **Inference Profile ID**.
+   - In Prov AI, click **Add Model** and paste the ID.
+5. **Assign Pipelines**: Assign the new models to relevant pipelines and click **Complete Setup**.
+
+<Tip>
+  Using Inference Profile IDs instead of raw Model IDs allows for better cross-region performance and monitoring.
+</Tip>

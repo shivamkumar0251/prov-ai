@@ -1,0 +1,52 @@
+---
+title: "Custom Instructions"
+description: "Guiding Prov AI's reasoning and SQL generation with custom rules"
+---
+
+Custom Instructions allow you to globalize specific business logic, terminology, or data handling rules. This ensures that every team member receives consistent answers tailored to your organization's unique requirements.
+
+---
+
+## How It Works
+
+Instructions are injected into the Prov Engine's reasoning chain. They act as "Guardrails" for the AI, similar to a System Prompt but specifically focused on your data models and domain.
+
+### Accessing Instructions
+1. Navigate to **Modeling > Modeling AI Assistant**.
+2. Select **Custom Instructions**.
+3. You can define instructions for the **Entire Project** or for **Specific Models**.
+
+---
+
+## Instruction Examples
+
+Use the following table to inspire your custom rules:
+
+| Category | Instruction Goal | Example Rule |
+| :--- | :--- | :--- |
+| **Terminology** | Define internal acronyms. | *"Always treat 'GMV' as Gross Merchandise Volume (sales - returns)."* |
+| **Exclusions** | Filter out test data. | *"Always exclude rows where `is_test_user` is true in all queries."* |
+| **Time Logic** | Standardize fiscal years. | *"Our fiscal year starts in April. Use `DATE_ADD` for FY calculations."* |
+| **Formatting** | Regional currency. | *"Always display monetary values with the prefix '$' and two decimals."* |
+
+---
+
+## Scoping Instructions
+
+| Scope | Application | Best For |
+| :--- | :--- | :--- |
+| **Global** | Applies to every thread in the project. | Corporate terminology, global filters. |
+| **Model-Specific**| Applies only when the model is referenced. | Specific data quirks of a single table. |
+
+---
+
+## Best Practices
+
+1. **Be Concise**: Instead of "Whenever a user asks for revenue...", use "Revenue = `sales_price * quantity`."
+2. **Context Matters**: Specify *when* the rule applies.
+3. **Avoid Conflicts**: Ensure global instructions don't contradict model-specific ones.
+4. **Test & Refine**: Use the **Preview** tool to see how your instructions affect SQL generation in real-time.
+
+<Tip>
+  If your underlying database uses complex join logic that the AI misses, add a specific instruction: *"Always join `orders` with `customers` using `customer_uuid`."*
+</Tip>

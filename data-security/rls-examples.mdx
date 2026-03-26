@@ -1,0 +1,59 @@
+---
+title: "RLS Examples"
+description: "Practical Row-Level Security scenarios for Prov AI"
+---
+
+<Info>
+  **Plan Support**: Data Security features are available in **Enterprise Plan** and above.
+</Info>
+
+This page provides practical **Row-Level Security (RLS)** examples. Each example includes the use case, required session properties, and the policy condition.
+
+---
+
+## Common Use Cases
+
+| Goal | Session Properties | Policy Condition |
+| :--- | :--- | :--- |
+| **Org Isolation** | `@user_org_id` (string) | `org_id = @user_org_id` |
+| **Owner Access** | `@user_id` (string) | `owner_user_id = @user_id` |
+| **Team Membership** | `@team_ids` (csv) | `team_id IN (SELECT value FROM SPLIT(@team_ids, ','))` |
+| **Region Lock** | `@region_ids` (csv) | `region_id IN (SELECT value FROM SPLIT(@region_ids, ','))` |
+| **RBAC Access** | `@role_ids` (csv) | `required_role IN (SELECT value FROM SPLIT(@role_ids, ','))` |
+
+---
+
+## Detailed Scenarios
+
+### 1. Multi-Tenant Organization Isolation
+Ensures each organization only views its own data. This is the most common use case for SaaS platforms.
+
+- **Query Before RLS**: `SELECT * FROM orders;`
+- **Compiled Query** (with `@user_org_id = 'org_123'`):
+```sql
+SELECT * FROM orders WHERE org_id = 'org_123';
+```
+
+### 2. Team Membership (Using `SPLIT`)
+Allows access if the user belongs to a specific team. This uses the `SPLIT` function to handle comma-separated lists from your application.
+
+- **Policy Condition**:
+```sql
+owner_user_id = @user_id OR team_id IN (SELECT value FROM SPLIT(@team_ids, ','))
+```
+
+### 3. Region-Based Restrictions
+Restricts data access to specific geographical regions (e.g., US, CA).
+
+- **Compiled Query** (with `@region_ids = 'US,CA'`):
+```sql
+SELECT * FROM customers WHERE region_id IN (SELECT value FROM SPLIT('US,CA', ','));
+```
+
+---
+
+## Preview and Verify
+
+<Tip>
+  Use the **Policy Preview** tool in the Prov AI dashboard to test your SQL predicates against sample data before deploying.
+</Tip>

@@ -1,0 +1,50 @@
+---
+title: "CLS Examples"
+description: "Practical Column-Level Security scenarios for Prov AI"
+---
+
+<Info>
+  **Plan Support**: Data Security features are available in **Enterprise Plan** and above.
+</Info>
+
+This page shows practical **Column-Level Security (CLS)** policies you can set up in minutes. Each example includes the goal, the selected columns, and the access rule.
+
+---
+
+## Common Use Cases
+
+| Goal | Target Model/Columns | Access Rule |
+| :--- | :--- | :--- |
+| **HR Salary Gate** | `employees` → `salary` | `@group = 'hr'` |
+| **Region-Locked Pricing** | `order_items` → `price` | `@country = 'US'` |
+| **Finance Only Costs** | `products` → `internal_cost` | `@role = 'finance'` |
+| **Exec PII Access** | `customers` → `email`, `phone` | `@role IN ('finance', 'exec')` |
+| **Internal User Only** | `customers` → `email` | `@is_internal = true` |
+
+---
+
+## Detailed Examples
+
+### Example 1: HR Department Lock
+**Target**: `employees` → `salary`
+**Condition**: Only users in the HR department can query salary. 
+**Result**: Others see a "Restricted by policy" message if their query references the salary field.
+
+### Example 2: Region-Based Visibility
+**Target**: `order_items` → `price`
+**Condition**: Users with `@country = 'US'` can access Price.
+**Default Logic**: If no country is provided, access is denied (Default baseline).
+
+### Example 3: Multiple Roles
+**Target**: `orders` → `unit_cost`, `profit_margin`
+**Condition**: Access allowed if `@role` is 'finance' OR 'executive'.
+
+---
+
+## Preview and Verify
+
+Before saving your policy, use the **Policy Preview** tool in the Prov AI dashboard to simulate session property values. 
+
+<Tip>
+  Ask a question in the home page after saving to verify. If a user tries to query a blocked column, the UI will display a clear "Restricted by policy" error.
+</Tip>

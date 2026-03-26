@@ -1,0 +1,59 @@
+---
+title: "PostgreSQL"
+description: "Connecting Prov AI to your PostgreSQL database"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+## IP Whitelist for Prov AI Cloud
+
+Prov AI needs to access your PostgreSQL database via its outbound IP address. Please add the Prov AI service IP to your PostgreSQL database's firewall.
+
+<Tip>
+  Scroll to the bottom of the data source connection page in Prov AI to find the specific IP address for your instance.
+</Tip>
+
+To add a PostgreSQL connection, select the **PostgreSQL** option in the "Connect a data source" section.
+
+---
+
+## Required Permissions
+
+To ensure full stability, the PostgreSQL user account used by Prov AI requires the following permissions on your target database:
+
+- `SELECT` on tables and views.
+- `CREATE TEMPORARY VIEW`
+- `DROP VIEW`
+
+Prov AI automatically creates and drops temporary views during query execution to support advanced analytics and modeling features. These views use unique, system-generated names and will not conflict with your existing views.
+
+---
+
+## Connect
+
+### Connection Details
+
+- **Display Name**: The display name for the database in Prov AI.
+- **Host**: Your PostgreSQL database's IP address or domain name.
+- **Port**: Standard PostgreSQL port (default: `5432`).
+- **Username**: The database username for the account you want to use.
+- **Password**: The password for the username specified above.
+- **Database Name**: The specific database you want to connect to.
+
+---
+
+## Select Tables
+
+All tables in your connected PostgreSQL database will be listed. Select the tables you want to use in Prov AI. Each selected table will be created as a **Data Model**.
+
+---
+
+## Define Relationships
+
+Define the relationships among selected tables. Prov AI will suggest relationships based on existing primary and foreign keys in your PostgreSQL schema.
+
+<Card title="Relationships Documentation" icon="link" href="/modeling/relationships">
+  Learn more about defining relationships between your tables.
+</Card>

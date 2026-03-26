@@ -1,0 +1,40 @@
+---
+title: "Bring Your Own LLM Overview"
+description: "Connecting your custom LLM providers to Prov AI"
+---
+
+<Info>
+  **Plan Support**: This capability is available on the **Business Plan** for the Prov AI Self-Hosted Version.
+</Info>
+
+Prov AI empowers you to use your own LLM provider. During onboarding (or later in Settings), you can connect one or more providers and route different parts of the AI pipeline to your preferred models.
+
+---
+
+## Setup Modes
+
+### 1. Quick Setup
+Use pre-configured templates for popular providers. This is the fastest way to get started with production-ready defaults.
+- **Optimized Selections**: Pre-configured model and pipeline mapping.
+- **Guided Secret Management**: Securely configure your keys.
+- **Auto-Validation**: Built-in testing for connection stability.
+
+#### Supported Providers
+- **OpenAI**
+- **Azure OpenAI**
+- **Google Vertex AI**
+- **AWS Bedrock** (Recommended: Anthropic Claude models)
+
+### 2. Manual Configuration
+Full control over model selection, parameters, and pipeline routing. Ideal for custom setups or specific research requirements.
+- **Infinite Combinations**: Choose any mix of models for different tasks.
+- **Custom Model Support**: Integrate third-party or internal API endpoints.
+- **Fine-Tuning**: Adjust context windows and temperature parameters.
+
+---
+
+## How Pipelines Work
+
+Prov AI divides AI tasks into distinct **Pipelines** (e.g., SQL Generation, Visualization, Indexing). You can assign different models to different pipelines to balance cost and performance.
+
+[Explore Setup Guides](/bring-your-own-llm/openai)

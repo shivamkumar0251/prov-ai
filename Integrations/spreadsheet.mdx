@@ -1,0 +1,59 @@
+---
+title: "AI Spreadsheet"
+description: "Using natural language to clean, filter, and enrich your data in Prov AI"
+---
+
+<Info>
+  **Plan Support**: 
+  - **Free Plan**: Limited to 3 spreadsheets per project.
+  - **Starter Plan & Above**: Unlimited spreadsheets.
+</Info>
+
+The **AI Spreadsheet** enables continuous data preparation using natural language. Unlike one-off questions, you can continuously refine your dataset and save it for future access.
+
+---
+
+## Getting Started
+
+1. **Import Data**: Start with existing Models, Views, or custom SQL.
+2. **Refine**: Use the AI Assistant to transform your spreadsheet.
+3. **Save**: Saving a spreadsheet creates a persistent **View**, making it available for future querying.
+
+---
+
+## AI Assistant Features
+
+Use natural language commands to transform your data.
+
+| Feature | Goal | Example |
+| :--- | :--- | :--- |
+| **Filter** | Focus on specific data subsets. | *"Show me orders from North America"* |
+| **Cleaning** | Handle duplicates or missing values. | *"Remove duplicate orders"* |
+| **Grouping**| Aggregate information by columns. | *"Group by region to see sales total"* |
+| **Enrichment**| Add new calculated columns. | *"Extract company name from email address"* |
+
+---
+
+## Managing Changes
+
+### Version Control
+- **Undo / Redo**: Revert or reapply recent unsaved modifications.
+- **Discard**: Use the **Discard Changes** button to clear the current draft.
+- **History Panel**: View a detailed log of all changes made to the spreadsheet. 
+
+### Saved Versions
+The **Saved Versions** section allows you to rollback to previous versions of your spreadsheet, ensuring no data logic is lost during exploration.
+
+---
+
+## Metadata
+
+| Field | Description |
+| :--- | :--- |
+| **Creator** | The user who created the spreadsheet. |
+| **Last Updated** | Timestamp of the most recent save. |
+| **Matched Question**| The corresponding question used to generate the view. |
+
+<Tip>
+  Refine your dataset with joined properties (e.g., total order count) to create a perfect "Customer Profile" view.
+</Tip>

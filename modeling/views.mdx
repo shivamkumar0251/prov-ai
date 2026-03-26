@@ -1,0 +1,55 @@
+---
+title: "Views"
+description: "Using Trusted Results and virtual tables in Prov AI"
+---
+
+**Views** are virtual tables that present data from underlying models. In Prov AI, the "View" feature specifically represents **"Trusted Results"** — saved SQL statements that provide consistent, non-regenerated data.
+
+---
+
+## How it Works
+
+When you save an answer as a view:
+- The question and its corresponding SQL are stored.
+- When the same question is asked later, Prov AI uses the saved view immediately instead of using the LLM to regenerate SQL.
+- This ensures **consistent answers** and **faster results**.
+
+---
+
+## Creating a View
+
+Currently, views are created via the **Save as View** option on the **Home** page:
+
+1. Ask a question and get an answer.
+2. Click the **Save as View** button in the answer area.
+3. Provide a name for the view.
+
+---
+
+## Managing Views
+
+### View List
+Access your views in the **Views** section of the Modeling sidebar:
+- **Expand**: See column details.
+- **Focus**: Click the name to jump to the view block on the ER diagram.
+
+### Preview Metadata
+Click a view diagram to see:
+- **SQL Statement**: The exact SQL stored for this view.
+- **Preview Data**: View up to **100 rows** of the result set.
+
+### Delete a View
+1. Click the **More icon (⋮)** on the view diagram.
+2. Choose **Delete**.
+
+---
+
+## Visual Distinction
+
+On the Entity Relationship diagram:
+- **Models** are represented in **Blue**.
+- **Views** are represented in **Green**.
+
+<Note>
+  Deploy your changes after creating or deleting views to ensure the Prov Engine is updated.
+</Note>

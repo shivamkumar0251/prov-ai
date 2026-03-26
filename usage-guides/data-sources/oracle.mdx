@@ -1,0 +1,92 @@
+---
+title: "Oracle"
+description: "Connecting Prov AI to your Oracle database"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+## IP Whitelist for Prov AI Cloud
+
+Prov AI needs to access your Oracle database via its outbound IP address. Please add the Prov AI service IP to your Oracle database's firewall.
+
+<Tip>
+  Scroll to the bottom of the data source connection page in Prov AI to find the specific IP address for your instance.
+</Tip>
+
+To add an Oracle connection, select the **Oracle** option in the "Connect a data source" section.
+
+---
+
+## Required Permissions
+
+To ensure full compatibility and stability, the Oracle user account used by Prov AI requires the following permissions on your target database:
+
+- `SELECT` on tables and views.
+- `CREATE VIEW`
+- `DROP VIEW`
+
+Prov AI automatically creates and drops temporary views during query execution to support advanced analytics and modeling features. These views use unique, system-generated names and will not conflict with your existing views.
+
+---
+
+## Connect
+
+### Connection Details
+
+- **Display Name**: The display name for the database in Prov AI.
+- **Host**: Your Oracle database's IP address or domain name.
+- **Port**: Standard Oracle port (default: `1521`).
+- **Username**: The database username for the account you want to use.
+- **Password**: The password for the username specified above.
+- **Database Name**: The service name or SID of the database.
+
+---
+
+### DSN (Data Source Name)
+
+A **DSN** is a connection string that defines how to connect to an Oracle database. When provided, it overrides other connection arguments.
+
+#### Example: Basic DSN
+```sql
+(DESCRIPTION =
+  (ADDRESS = (PROTOCOL = TCP)(HOST = your-hostname)(PORT = 1521))
+  (CONNECT_DATA =
+    (SERVICE_NAME = FREE)
+  )
+)
+```
+
+#### Example: DSN with SSL
+```sql
+(DESCRIPTION =
+  (ADDRESS = (PROTOCOL = TCPS)(HOST = db.example.com)(PORT = 2484))
+  (CONNECT_DATA =
+    (SERVICE_NAME = FREE)
+  )
+  (SECURITY =
+    (SSL_SERVER_CERT_DN = "CN=db.example.com,OU=DB,O=Example Corp,L=City,ST=State,C=US")
+  )
+)
+```
+
+<Note>
+  `PROTOCOL = TCPS` specifies a secure connection. The default Oracle SSL port is **2484**.
+</Note>
+
+---
+
+## Select Tables
+
+All tables in your connected Oracle dataset will be listed. Select the tables you want to use in Prov AI. Each selected table will be created as a **Data Model**.
+
+---
+
+## Define Relationships
+
+Define the relationships among selected tables. Prov AI will suggest relationships based on existing primary and foreign keys in your Oracle schema.
+
+<Card title="Modeling Reference" icon="diagram-project" href="/modeling/overview">
+  Learn more about data models and relationships in Prov AI.
+</Card>

@@ -1,0 +1,50 @@
+---
+title: "Google Analytics 4"
+description: "Connecting GA4 via BigQuery to Prov AI Cloud (Legacy)"
+---
+
+<Warning>
+  **Retire Plan Notice**: This feature is only available in Prov AI Cloud (Essential Plan and above). It is no longer available to new users effective immediately. Service for existing users will end in **March 2026**.
+</Warning>
+
+Analyze your **Google Analytics (GA4)** data in Prov AI Cloud using our boilerplate. This template provides a structured framework for importing and analyzing web engagement, saving you time and effort.
+
+---
+
+## Prerequisites
+
+- **GCP Account & Project ID** with BigQuery enabled.
+- **GA4 Account Editor** permissions.
+- **BigQuery Dataset** populated with GA4 data.
+
+### Exporting GA4 to BigQuery
+1. In your **Google Analytics Project**, go to **Admin > Product Links > BigQuery Links**.
+2. Link your BigQuery Project.
+3. Select the data streams and events for export.
+
+<Note>
+  You must enable the **BigQuery API** in your Google Cloud Developer Console first.
+</Note>
+
+---
+
+## Setup Steps
+
+1. Select **Google Analytics** in the "Start with a Data Boilerplate" section.
+2. Provide **BigQuery Data Viewer** permissions to the Prov AI service account principal address displayed on your project page.
+3. Enter your **GCP Project ID** and **Dataset ID**.
+4. Click **Continue**.
+
+<Info>
+  The **Viewer** role is read-only. Prov AI will never modify or delete your GCP resources.
+</Info>
+
+---
+
+## Review & Analyze
+
+- **Pre-filled Fields**: The modeling page will display events, orders, traffic sources, and device info.
+- **Ask Questions**: Use the thread view to ask about engagement, acquisition, and monetization.
+
+### What is `user_pseudo_id`?
+In GA4, this is a unique identifier assigned by Google to track interactions anonymized from PII. You can customize this implementation for more specific tracking needs.

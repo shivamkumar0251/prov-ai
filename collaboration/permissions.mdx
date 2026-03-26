@@ -1,0 +1,50 @@
+---
+title: "Role Permissions"
+description: "Customizing workspace access for project roles in Prov AI"
+---
+
+<Info>
+  **Plan Support**: Available in **Enterprise / Business Plan** and above.
+</Info>
+
+The **Role Permissions** feature allow Project Owners to customize the level of access team members have within the workspace. This ensures stakeholders see exactly what they need while securing sensitive modeling structures.
+
+---
+
+## Default Role Capabilities
+
+Prov AI categorizes users into three primary roles. The table below outlines their default access levels:
+
+| Function | Project Owner | Project Contributor | Project Viewer |
+| :--- | :--- | :--- | :--- |
+| Update Project Settings | Yes | No | No |
+| Manage Project Members | Yes | No | No |
+| Modeling | CRUD | RU (Read, Update) | R (Read Only) |
+| Knowledge | CRUD | CRUD | R (Read Only) |
+| Dashboard | CRUD | CRUD | CRUD |
+| Spreadsheet | CRUD | CRUD | CRUD |
+| CSV Download | Yes | Yes | Yes |
+
+---
+
+## Customizing Viewer Permissions
+
+Project Owners can further restrict **Viewer** access to the **Modeling** and **Knowledge** modules:
+
+1. Go to **Settings → Access Control**.
+2. Click the **Role Permissions** tab at the top.
+3. Find the **Viewer** row and click **Change Permission**.
+4. Choose an access level:
+   - **No Permission**: The module will be completely hidden from the user's interface.
+   - **Read Only**: The user can view structures but cannot make any edits.
+5. Click **Submit** to apply the changes.
+
+---
+
+## Tips & Notes
+
+- **Immediate Effect**: Permission updates apply immediately. Users will see their interface refresh upon the next login or page update.
+- **Default Baseline**: If not configured, Viewers default to **Read Only** for Modeling and Knowledge.
+- **Organization Isolation**: Use these settings to simplify the experience for non-technical stakeholders (e.g., hiding the SQL modeling layer).
+
+[Learn more about Manage Members & Roles](/collaboration/members-roles)

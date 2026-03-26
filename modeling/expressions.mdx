@@ -1,0 +1,66 @@
+---
+title: "List of Expressions"
+description: "Standard expressions and functions supported in Prov AI calculated fields"
+---
+
+This page lists all expressions available for creating calculated fields. For an introduction to the setup process, see [Working with Calculated Fields](/modeling/calculated-fields).
+
+---
+
+## Aggregations
+
+Aggregations summarize data by combining multiple values into a single insight.
+
+| Function | Syntax | Result Type | Description |
+| :--- | :--- | :--- | :--- |
+| **Average** | `avg(column)` | Double | Returns the average of the values. |
+| **Count** | `count(column)` | BigInt | Returns the count of non-null rows. |
+| **Max** | `max(column)` | Input Typed | Returns the largest value in the column. |
+| **Min** | `min(column)` | Input Typed | Returns the smallest value in the column. |
+| **Sum** | `sum(column)` | Input Typed | Adds up all values in the column. |
+
+---
+
+## Math Functions
+
+Transform and manipulate numerical data to extract patterns.
+
+| Function | Syntax | Result Type | Description |
+| :--- | :--- | :--- | :--- |
+| **Absolute** | `abs(column)` | Input Typed | Returns the positive value of the specified column. |
+| **Cube Root** | `cbrt(column)` | Double | Returns the cube root of the number. |
+| **Ceil** | `ceil(column)` | Input Typed | Rounds a decimal up to the nearest integer. |
+| **Exponential**| `exp(column)` | Double | Returns Euler's number (e) raised to the power. |
+| **Floor** | `floor(column)` | Input Typed | Rounds a decimal down to the nearest integer. |
+| **Ln** | `ln(column)` | Double | Returns the natural logarithm. |
+| **Log10** | `log10(column)`| Double | Returns the base 10 log of the number. |
+| **Round** | `round(column)`| Input Typed | Rounds to the nearest integer. |
+| **Signum** | `sign(column)` | Input Typed | Returns the signum function of the number. |
+
+---
+
+## String Functions
+
+Efficiently manipulate and analyze text values.
+
+| Function | Syntax | Result Type | Description |
+| :--- | : :--- | :--- | :--- |
+| **Length** | `length(column)` | BigInt | Returns the number of characters in a string. |
+| **Reverse** | `reverse(column)`| Varbinary | Returns the string characters in reverse order. |
+
+---
+
+## Data Type Overview
+
+Common data types used across Prov AI modeling:
+
+| Data Type | Definition | Example |
+| :--- | :--- | :--- |
+| **BOOLEAN** | Logical True or False. | `True`, `False` |
+| **BIGINT** | 64-bit integer values. | `9223372036854775807` |
+| **DOUBLE** | Double-precision floating point. | `3.14159` |
+| **INT** | Whole numbers without fractions. | `123`, `-5` |
+| **DATE** | Calendar dates without time. | `2024-08-26` |
+| **TIMESTAMP** | Date and time to the second. | `2024-08-26 14:23:05` |
+| **STRING** | Sequence of characters or text. | `Hello World` |
+| **VARCHAR** | Variable-length character strings. | `User123` |

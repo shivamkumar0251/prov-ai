@@ -1,0 +1,83 @@
+---
+title: "Amazon EMR (Spark)"
+description: "Connecting Prov AI to Amazon EMR using the Apache Spark engine"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+## IP Whitelist for Prov AI Cloud
+
+Prov AI Cloud must be able to reach the EMR Spark primary node from its outbound IP address. Please add the Prov AI service IP to your EMR cluster's firewall or security group.
+
+<Tip>
+  Scroll to the bottom of the data source connection page in Prov AI to find the specific IP address for your instance.
+</Tip>
+
+## Spark Connector
+
+Prov AI requires a **Spark Connect Server** to be running on your EMR primary node.
+
+---
+
+## Before You Begin
+
+Before connecting Prov AI to EMR Spark, ensure:
+1. Your EMR cluster is in the **WAITING** or **RUNNING** state.
+2. The **Spark Connect Server** is running on the cluster.
+3. Network access is configured (see the Troubleshooting section below).
+
+### EMR & Spark Version Compatibility
+
+Currently, only EMR versions from **7.3.0 to 7.12.0** are supported. EMR 6.x and earlier EMR 7.x releases are not compatible.
+
+| EMR Release | Support Status |
+| :--- | :--- |
+| EMR 7.3.0 - 7.12.0 | ✅ Supported |
+| EMR 6.x and earlier | ❌ Not Supported |
+
+---
+
+## Connect
+
+To add an EMR Spark connection, select the **EMR Spark** option in Prov AI.
+
+### Connection Details
+
+- **Display Name**: The display name for this connection in Prov AI.
+- **Spark Connect Hostname**: The EMR Spark primary node DNS name.
+- **Port**: The port used by Spark Connect (default: `15002`).
+
+---
+
+## Troubleshooting
+
+### Start Spark Connect Server
+If the server is not running, add a step to your cluster via the EMR Console:
+
+1. **Add Step**: Go to the **Steps** tab and click **Add step**.
+2. **Configuration**:
+   - **Step type**: Custom JAR
+   - **Name**: Spark Connect Server
+   - **JAR location**: `command-runner.jar`
+   - **Arguments**: `spark-submit --packages org.apache.spark:spark-connect_2.12:3.5.0 --class org.apache.spark.sql.connect.service.SparkConnectServer /usr/lib/spark/jars/spark-connect_2.12-3.5.0.jar`
+
+### Connection Failures
+Ensure the security group for the EMR primary EC2 instance allows inbound traffic on port **15002** from the Prov AI Cloud outbound IP.
+
+---
+
+## Select Tables
+
+All tables in your connected EMR Spark dataset will be listed. Select the tables you want to use in Prov AI. Each selected table will be created as a **Data Model**.
+
+---
+
+## Define Relationships
+
+Define the relationships among selected tables. Prov AI will suggest relationships based on existing schema information.
+
+<Card title="Modeling Best Practices" icon="brain" href="/getting-started/best-practice">
+  Learn how to scope your projects for optimal AI analysis.
+</Card>

@@ -1,0 +1,94 @@
+---
+title: "Collaborate in Folders"
+description: "Organizing and sharing your analysis threads in Prov AI"
+---
+
+<Info>
+  **Plan Support**: Available in **Essential / Business Plan** and above.
+</Info>
+
+Folders allow you to organize your analysis threads and share them with specific team members or the entire project.
+
+---
+
+## Creating a New Folder
+
+You can create a new folder directly from the folder switcher menu in the sidebar.
+
+1. Click the **Folder Dropdown** at the top of the left sidebar.
+2. Select **New Folder** from the menu.
+3. Enter your folder name in the pop-up window.
+4. Click **Submit**.
+
+<Warning>
+  **Role Restrictions**: Viewers cannot create new folders. Contributors can create folders but cannot make them public. See [Members and Roles](/collaboration/members-roles) for details.
+</Warning>
+
+---
+
+## Manage Access
+
+Once a folder is created, you can control visibility via the **Manage Access** option:
+
+- **Anyone in the project**: Visible to everyone. Role-based permissions still apply for editing.
+- **Private**: Visible only to you.
+- **Specific people**: Access is restricted to selected users with individual role assignments.
+
+---
+
+## Permissions Matrix
+
+Permissions are applied per item. Your capabilities (Owner, Contributor, Viewer) determine available actions for folders, spreadsheets, dashboards, and threads.
+
+### Folder & General Permissions
+
+| Action | Owner | Contributor | Viewer |
+| :--- | :--- | :--- | :--- |
+| Add threads | Yes | Yes | No |
+| Move items into folder | Yes | Yes | No |
+| Manage access | Yes | No | No |
+| Delete folder | Yes | No | No |
+| Create folder | Yes | Yes | No |
+
+### Spreadsheet Permissions
+
+| Action | Owner | Contributor | Viewer |
+| :--- | :--- | :--- | :--- |
+| Update title | Yes | Yes | No |
+| Change matched question | Yes | Yes | No |
+| Delete spreadsheet | Yes | No | No |
+| AI Assistant (Filter/Group/Clean) | Yes | Yes | No |
+| Undo / Redo / Save | Yes | Yes | No |
+| View history | Yes | Yes | Yes |
+| Rename column | Yes | Yes | No |
+| View SQL | Yes | Yes | Yes |
+
+### Dashboard Permissions
+
+| Action | Owner | Contributor | Viewer |
+| :--- | :--- | :--- | :--- |
+| Update title | Yes | No | No |
+| Edit chart (Name/Desc/Layout) | Yes | Yes | No |
+| View chart details | Yes | Yes | Yes |
+| Refresh cache | Yes | Yes | Yes |
+| Delete chart | Yes | No | No |
+| Edit cache settings | Yes | Yes | No |
+
+### Thread Permissions
+
+| Action | Owner | Contributor | Viewer |
+| :--- | :--- | :--- | :--- |
+| Update thread title | Yes | Yes | No |
+| Save to Knowledge / View | Yes | Yes | No |
+| Download CSV / View SQL | Yes | Yes | Yes |
+| Adjust Chart / Generate | Yes | Yes | No |
+| Follow-up Questions | Yes | Yes | No |
+| Delete threads | Yes | Yes | No |
+
+<Note>
+  **Thread Ownership**: Being the creator of a thread does not override your assigned project role. Permissions are strictly enforced based on your Role (Owner/Contributor/Viewer).
+</Note>
+
+---
+
+[Learn more about Member Roles](/collaboration/members-roles)

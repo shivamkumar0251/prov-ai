@@ -1,0 +1,45 @@
+---
+title: "Connect Data Sources"
+description: "Overview of supported data sources and how to connect them to Prov AI"
+---
+
+Prov AI supports a wide variety of data sources. We send queries directly to your database to retrieve real-time data without synchronizing or storing your raw data within Prov AI. This means you maintain full control and ownership of your data at all times.
+
+Connection settings vary by data source. Select your data source below for specific connection details:
+
+<CardGroup cols={3}>
+  <Card title="BigQuery" icon="google" href="/usage-guides/data-sources/bigquery" />
+  <Card title="PostgreSQL" icon="database" href="/usage-guides/data-sources/postgresql" />
+  <Card title="MySQL" icon="database" href="/usage-guides/data-sources/mysql" />
+  <Card title="SQL Server" icon="microsoft" href="/usage-guides/data-sources/sql-server" />
+  <Card title="Oracle" icon="database" href="/usage-guides/data-sources/oracle" />
+  <Card title="ClickHouse" icon="database" href="/usage-guides/data-sources/clickhouse" />
+  <Card title="Trino" icon="database" href="/usage-guides/data-sources/trino" />
+  <Card title="Starburst" icon="star" href="/usage-guides/data-sources/starburst" />
+  <Card title="Snowflake" icon="snowflake" href="/usage-guides/data-sources/snowflake" />
+  <Card title="Databricks" icon="database" href="/usage-guides/data-sources/databricks" />
+  <Card title="Amazon Athena" icon="aws" href="/usage-guides/data-sources/athena" />
+  <Card title="Amazon Redshift" icon="aws" href="/usage-guides/data-sources/redshift" />
+</CardGroup>
+
+---
+
+## Choose Your Data Source Type
+
+To add a new connection:
+1. Navigate to the **Connect a data source** section in your project.
+2. Click on your specific data source provider.
+3. Follow the on-screen prompts to provide credentials and connection strings.
+
+---
+
+## Update Connection
+
+To update an existing data source's properties (such as rotating credentials or updating the host):
+1. Go to **Settings**.
+2. Navigate to the **Data source** tab.
+3. Modify the necessary fields and save your changes.
+
+<Note>
+  Updating connection properties may trigger a schema re-sync to ensure Prov AI is aware of any structure changes in your database.
+</Note>

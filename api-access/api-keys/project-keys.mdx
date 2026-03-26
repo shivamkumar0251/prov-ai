@@ -1,0 +1,41 @@
+---
+title: "Project API Keys"
+description: "Managing project-specific API access for data querying and modeling in Prov AI"
+---
+
+**Project API Keys** are the most common way to authenticate with the Prov AI API. These keys are scoped to a single project, providing a secure way to analyze data without exposing your organization-level settings.
+
+---
+
+## Capabilities
+
+| Action | Supported | Description |
+| :--- | :--- | :--- |
+| **Ask Question** | Yes | Query models using natural language. |
+| **Manage Models** | Yes | Programmatically update MDL or refresh schemas. |
+| **Generate Charts** | Yes | Create Vega-Lite visualizations. |
+| **Knowledge Base** | Yes | Add or update trusted questions and instructions. |
+| **Billing Mode** | No | Project keys cannot access billing or organization settings. |
+
+---
+
+## Generating a Project Key
+
+1. Open your specific project in Prov AI.
+2. Navigate to **Settings > Project > API Access**.
+3. Click **Generate New Key**.
+4. Give it a name that reflects the integration (e.g., "Slack-Bot-Integration").
+5. Click **Confirm** and copy the key immediately.
+
+---
+
+## Revoking Access
+
+If a key is no longer needed or has been leaked:
+1. Go to the **Project Keys** list in your settings.
+2. Click the **Bin icon (Delete)** next to the key name.
+3. Access will be revoked immediately for all applications using that key.
+
+<Tip>
+  Use different keys for each integration (e.g., one for your Slack bot and another for your internal dashboard) to improve audit visibility in the **API History** logs.
+</Tip>

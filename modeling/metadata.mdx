@@ -1,0 +1,54 @@
+---
+title: "Model Metadata"
+description: "Viewing and editing metadata for models in Prov AI"
+---
+
+Understanding your data's metadata is key to effective modeling. You can view and edit metadata directly from the Entity Relationship (ER) diagram.
+
+---
+
+## Viewing Model Metadata
+
+Click on any model in the ER diagram to access the sidebar metadata view:
+
+| Field | Description |
+| :--- | :--- |
+| **Name** | The model's identifier used in SQL queries. |
+| **Alias** | A user-friendly name for the model. |
+| **Description** | A natural language description of the data. |
+| **Columns** | List of columns with their names, aliases, and types. |
+| **Calculated Fields** | Defined expressions within the model. |
+| **Relationships** | Logical connections to other models. |
+
+---
+
+## Data Preview
+
+To verify your data structure, click **Preview Data** to view up to **100 rows** of live data from the chosen source.
+
+---
+
+## Editing Metadata
+
+To modify a model's properties:
+
+1. Click the **Edit** button in the metadata sidebar.
+2. You can update the following:
+   - **Model Alias & Description**
+   - **Column Aliases & Descriptions**
+   - **Relationship Descriptions**
+   - **Calculated Field Descriptions**
+3. Click **Submit**.
+
+<Tip>
+  **Pro Tip**: Accurate descriptions in your metadata significantly improve the quality of AI-generated answers.
+</Tip>
+
+---
+
+## Deploy Changes
+
+All metadata updates must be deployed to synchronize with the Prov Engine.
+
+- The navigation bar will display an **Undeployed changes** message if there are pending updates.
+- Click **Deploy** to finalize. Status will change to **Synced** upon completion.

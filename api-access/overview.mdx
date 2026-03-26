@@ -1,0 +1,44 @@
+---
+title: "API Access Overview"
+description: "Introduction to Prov AI's external API and integration capabilities"
+---
+
+The **Prov AI API** enables you to integrate natural language data analysis directly into your own applications, internal tools, and automated workflows.
+
+---
+
+## Core Capabilities
+
+| Capability | Description | Best For |
+| :--- | :--- | :--- |
+| **Natural Language** | Convert text into verified SQL queries. | Chatbots, search bars. |
+| **Visualization** | Generate Vega-Lite chart configurations. | Dashboards, reporting tools. |
+| **Security (RLS)** | Pass session properties for secure access. | Multi-tenant SaaS apps. |
+| **Audit Logs** | Retrieve detailed usage and history logs. | Compliance, monitoring. |
+
+---
+
+## Authentication Modes
+
+Prov AI supports two primary types of API authentication:
+
+### 1. Project Keys
+Used for most standard integrations. These keys are scoped to a single data project and allow querying of its specific models and relationships.
+
+### 2. Organization Keys
+Used for administrative tasks. These keys can manage multiple projects, update billing, and invite new members to the organization.
+
+---
+
+## Integration Workflow
+
+1. **Setup**: Generate an API Key in the Prov AI dashboard.
+2. **Authenticate**: Pass the key in the `Authorization` header of your requests.
+3. **Query**: Call the `/threads` or `/ask` endpoints with your user's natural language question.
+4. **Enforce**: (Optional) Include `X-Prov-Session-Properties` to dynamically apply data security policies.
+
+<Tip>
+  Always use **HTTPS** for API requests. All legacy HTTP endpoints are disabled to ensure data privacy.
+</Tip>
+
+[Get started with the Quickstart Guide](/api-access/quickstart)

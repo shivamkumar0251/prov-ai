@@ -1,0 +1,72 @@
+---
+title: "Quick Start with Azure OpenAI"
+description: "Connecting Azure OpenAI models to Prov AI"
+---
+
+<Info>
+  **Plan Support**: This capability is available on the **Business Plan** for the Prov AI Self-Hosted Version.
+</Info>
+
+Connect your Azure-hosted models directly to Prov AI for enterprise-grade security and performance.
+
+---
+
+## Prerequisites
+
+- **Azure AI Foundry**: Active access to the AI Foundry portal.
+- **Model Deployments**: Deploy the following models in your Azure resource:
+  - **LLM**: `gpt-4o` or `gpt-4o-mini`.
+  - **Embedding**: `text-embedding-3-large`.
+- **API Credentials**: Locate your **API Base URL** and **API Key** in the Azure portal.
+
+---
+
+## Setup Steps
+
+### 1. Initial Connection
+During onboarding, select **Quick Setup** and choose **Azure OpenAI**. Enter your API Base and API Key.
+
+### 2. Add Embedding Model
+Under **Review & Configure**, click **Add Embedding Model**. Enter your deployment name exactly as defined in Azure.
+
+**Configuration Example**:
+```json
+{
+  "kwargs": {
+    "timeout": 120,
+    "api_version": "2024-05-01-preview"
+  },
+  "dimension": 3072
+}
+```
+
+### 3. Add LLM Model
+Click **Add Model** and provide the deployment name and configuration matching your settings in Azure AI Foundry.
+
+**Configuration for GPT-4o**:
+```json
+{
+    "kwargs": {
+        "api_version": "2024-05-01-preview",
+        "temperature": 0,
+        "n": 1,
+        "seed": 0,
+        "max_tokens": 4096,
+        "timeout": 120
+    },
+    "context_window_size": 128000
+}
+```
+
+### 4. Pipeline Assignment
+Assign your models to pipelines. Prov AI recommends:
+- **Advanced Capabilities**: `gpt-4o`
+- **Standard Tasks**: `gpt-4o-mini`
+
+Click **Complete Setup** to finalize.
+
+---
+
+<Note>
+  Ensure the `api_version` in your JSON configuration matches the supported API versions in your Azure region.
+</Note>

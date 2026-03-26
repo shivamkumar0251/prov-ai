@@ -1,0 +1,50 @@
+---
+title: "Session Property Management"
+description: "Capturing and assigning user context for security policies in Prov AI"
+---
+
+<Info>
+  **Plan Support**: Data Security features are available in **Enterprise Plan** and above.
+</Info>
+
+**Session Properties** capture user context (e.g., user ID, organization, region, roles) and are referenced by policies during query evaluation. 
+
+---
+
+## 1. Manage Properties
+Navigate to **Data Security → Session Property**.
+
+- **Create/Edit**: Define the property name, type (string, number, boolean), and optional default value.
+- **Audit**: Review which policies are currently referencing each property.
+- **Stability**: Keep property names stable to avoid breaking existing policies.
+
+---
+
+## 2. Assign to Users
+Navigate to the **Assign to Users** tab to set value overrides for specific project members.
+
+- This list contains only users currently added to the project.
+- **Can't see a user?** Add them via **Settings → Project → Access Control**.
+
+---
+
+## 3. Assign to Groups
+Navigate to the **Assign to Groups** tab for team-based security.
+
+- Ideal for roles or regions that apply to many users.
+- Set a property value once for a group, and it automatically applies to all members.
+- **Can't see a group?** Add the group to the project first via **Access Control**.
+
+---
+
+## Property Behavior
+
+| Type | Behavioral Logic |
+| :--- | :--- |
+| **Required** | Users without this property will see errors when querying protected data. |
+| **Optional** | If missing, the property falls back to the defined **Default Value**. |
+| **Empty Strings** | Treated as values. Use "Set to Null" for truly empty contexts. |
+
+<Tip>
+  Use descriptive names like `user_org_id` or `region_ids` to ensure clarity for your team.
+</Tip>

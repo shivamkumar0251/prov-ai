@@ -1,0 +1,70 @@
+---
+title: "Access Control Best Practices"
+description: "Setting up secure access boundaries in Prov AI"
+---
+
+This guide explains how to set up access control in Prov AI so users only see authorized data, while keeping your data warehouse (e.g., Redshift, Snowflake) as the primary security boundary.
+
+---
+
+## Design Principles
+
+### 1. Warehouse-First Boundary
+Your data warehouse is the ultimate enforcement point. Prov AI should not be configured to expand access beyond your intended warehouse roles.
+
+### 2. Defense in Depth
+Prov AI adds additional guardrails on top of warehouse controls:
+- **Prov SQL Parsing**: Users cannot submit arbitrary SQL directly.
+- **Prov Engine Planning**: Queries are planned against the Semantic Layer's explicit allowlist.
+- **Semantic Allowlist**: Non-modeled tables and columns are completely inaccessible.
+
+---
+
+## How Access Control Works
+
+| Component | Security Role |
+| :--- | :--- |
+| **Connection Role** | Defines what Prov AI can discover (schemas/tables). |
+| **Semantic Layer** | Explicit allowlist for the AI model. |
+| **Prov Engine Enforcement** | Rejects references to non-modeled objects during query planning. |
+| **RLS / CLS** | Enforces fine-grained user restrictions (rows and columns). |
+
+---
+
+## Recommended Setup Patterns
+
+### Pattern A: Single Connection + RLS/CLS
+**Best for**: Consistent dataset access where users primarily need row-level (tenant/region) or column-level (PII) restrictions.
+- **Setup**: One warehouse role with least-privilege.
+- **Cons**: Broad object access requirements rely heavily on semantic allowlisting.
+
+### Pattern B: Multiple Connections by Access Domain
+**Best for**: Strict isolation between departments (e.g., Finance vs. HR).
+- **Setup**: Separate warehouse roles (`prov_finance_role`, `prov_hr_role`) and separate Prov AI connections.
+- **Cons**: Smaller blast radius and strongest warehouse-level enforcement.
+
+### Pattern C: Warehouse Views as Boundaries
+**Best for**: Centralized complex joins or data masking at the warehouse level.
+- **Setup**: Create secure views per domain and grant Prov AI access only to these curated views.
+- **Cons**: Minimal modeling needed in Prov AI, but extra warehouse maintenance required.
+
+---
+
+## Choosing Between RLS and CLS
+
+| Use Case | Recommended Control |
+| :--- | :--- |
+| **Tenant / Org / Region** | Row-Level Security (RLS) |
+| **Salary / SSN / Email** | Column-Level Security (CLS) |
+| **Audit Logs** | Row-Level Security (RLS) |
+| **Internal vs. External Users** | Both RLS and CLS |
+
+---
+
+## FAQ
+
+### Why not rely only on the Semantic Layer?
+The Semantic Layer is an abstraction and allowlist. For true defense-in-depth, always combine it with warehouse RBAC and fine-grained RLS/CLS policies.
+
+### How do we map Tableau RLS to Prov AI?
+Use **Pattern B or C** to scope your initial datasets, then apply **RLS/CLS in Prov AI** for consistent, per-user restrictions.

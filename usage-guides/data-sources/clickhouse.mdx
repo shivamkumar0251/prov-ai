@@ -1,0 +1,82 @@
+---
+title: "ClickHouse"
+description: "Connecting Prov AI to your ClickHouse database"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+## IP Whitelist for Prov AI Cloud
+
+Prov AI needs to access your ClickHouse database via its outbound IP address. Please add the Prov AI service IP to your ClickHouse database's firewall.
+
+<Tip>
+  Scroll to the bottom of the data source connection page in Prov AI to find the IP address for your instance.
+</Tip>
+
+To add a ClickHouse connection, select the **ClickHouse** option in the "Connect a data source" section.
+
+---
+
+## Required Permissions
+
+To ensure full compatibility and stability, the ClickHouse user account used by Prov AI requires the following permissions on your target database:
+
+- `SELECT` on tables and views.
+- `CREATE VIEW`
+- `DROP VIEW`
+
+Prov AI automatically creates and drops temporary views during query execution to support advanced analytics and modeling features. These views use unique, system-generated names and will not conflict with your existing views.
+
+**To grant the necessary permissions:**
+Execute the following SQL statements, replacing `<your-database>` with your database name and `prov_user` with the appropriate user:
+
+```sql
+GRANT SELECT ON <your-database>.* TO prov_user;
+GRANT CREATE VIEW ON <your-database>.* TO prov_user;
+GRANT DROP VIEW ON <your-database>.* TO prov_user;
+```
+
+---
+
+## Connect
+
+Fill in the following connection settings:
+
+### Display Name
+The display name for the database in the Prov AI interface.
+
+### Host
+IP address or domain name of your ClickHouse database.
+
+### Port
+Your ClickHouse database port.
+
+### Username
+The database username for the account you want to use.
+
+### Password
+The password for the username specified above.
+
+---
+
+## Cross Database Support
+
+Prov AI supports cross-database table selection in ClickHouse. You do not need to specify a database name. In the **Select Tables** step, tables from all available databases will be listed.
+
+---
+
+## Select Tables
+
+All tables in your connected ClickHouse dataset will be listed. Select the tables you want to use in Prov AI. Each selected table will be created as a **Data Model**.
+
+---
+
+## Define Relationships
+
+Define the relationships among selected tables. Prov AI will suggest relationships based on existing primary and foreign keys.
+
+<Card title="Relationships Reference" icon="diagram-project" href="/modeling/relationships">
+  Learn more about defining relationships between your tables.
+</Card>

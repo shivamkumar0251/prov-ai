@@ -1,0 +1,62 @@
+---
+title: "Column-Level Security (CLS)"
+description: "Protecting sensitive attributes while enabling broad data analysis in Prov AI"
+---
+
+<Info>
+  **Plan Support**: Data Security features are available in **Enterprise Plan** and above.
+</Info>
+
+**Column-Level Security (CLS)** ensures that users only see the columns they are authorized to view. This protects sensitive attributes (e.g., PII, salaries, costs) while still allowing broader analysis on non-sensitive fields.
+
+---
+
+## How CLS Works
+
+CLS makes the same query return different columns for different users, based on their identity and assigned permissions.
+
+| Component | Description |
+| :--- | :--- |
+| **Applied Columns** | The specific models and columns protected by the policy. |
+| **Access Rule** | Compares a session property (e.g., `role`) to a required value. |
+| **Session Property** | Contextual attributes (e.g., `country`, `is_internal`) used in rules. |
+| **Runtime Enforcement** | Queries referencing blocked columns fail with a "Restricted by policy" error. |
+
+---
+
+## Defining a Policy
+
+### 1. Create a Policy
+Navigate to **Data Security → Column-Level Security → Add Policy**. Enter a policy name and select the models/columns you wish to protect.
+
+### 2. Define the Access Rule
+Define the rule that controls visibility. The rule compares a single session property against a value using a selected operator (e.g., `=`).
+
+<Example>
+  **Goal**: Allow access to `order_items` → `price` only when `@country = 'US'`.
+  - **Property**: `country`
+  - **Operator**: `Equals`
+  - **Comparison Value**: `US`
+</Example>
+
+### 3. Preview and Simulate
+Before saving, use the **Policy Preview** tool to confirm the expected outcomes.
+1. Select a model or recent question.
+2. Set the session property value (e.g., `UK`).
+3. Click **Preview** to verify the columns are masked.
+
+---
+
+## Applying the Policy
+
+### 1. Assign Session Properties
+Navigate to **Data Security → Session Properties**. Select **Assign to Users** or **Assign to Groups** and edit the values for your team.
+
+### 2. Verify Execution
+Ask a question on the **Home** page. If a blocked column is referenced and the access rule is not met, a clear permission error will display.
+
+<Warning>
+  **Error Message**: "Restricted by policy: [column_name]" — This indicates that the current user context does not satisfy the CLS rule for the requested data.
+</Warning>
+
+[Learn more about CLS Examples](/data-security/cls-examples)

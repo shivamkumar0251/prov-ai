@@ -1,0 +1,57 @@
+---
+title: "Airtable"
+description: "Connecting Airtable data to Prov AI Cloud (Legacy)"
+---
+
+<Warning>
+  **Retire Plan Notice**: This feature is only available in Prov AI Cloud (Essential Plan and above). It is no longer available to new users effective immediately. Service for existing users will end in **March 2026**.
+</Warning>
+
+Airtable is a collaborative workspace that can enhance your data analysis within Prov AI Cloud. By integrating Airtable data, you can unify your spreadsheets with other databases and gain deeper insights through natural language.
+
+<Info>
+  **Language Support**: If your Airtable tables have titles in Chinese, Japanese, or Korean, we recommend renaming them to English to avoid modeling difficulties.
+</Info>
+
+---
+
+## Prerequisites
+
+- An active Airtable account.
+- **Personal Access Token (PAT)**: Generate a PAT in your Airtable account settings.
+- **Required Scopes**:
+  - `data.records:read`
+  - `data.recordComments:read`
+  - `schema.bases:read`
+
+<Tip>
+  **Security Best Practice**: We recommend creating unique Airtable PATs for each Prov AI project.
+</Tip>
+
+---
+
+## Setup Steps
+
+1. Go to **Settings** (lower left corner).
+2. Select **Data Connection** and click **Connect a data source**.
+3. Select **Airtable** from the menu.
+4. Enter a **Display Name** and your **Airtable PAT**.
+
+<Note>
+  Currently, the HubSpot boilerplate is required to integrate Airtable data sources into your project.
+</Note>
+
+---
+
+## Modeling Airtable Data
+
+1. Navigate to the **Modeling** page.
+2. Click the **+** button next to **Models**.
+3. Select the Airtable table and columns you wish to include.
+4. Click **Create** to finalize your data model.
+
+<Tip>
+  Add detailed descriptions to each column. This helps Prov AI understand the context of your fields, leading to more accurate AI analysis.
+</Tip>
+
+[Learn more about data modeling](/modeling/overview)

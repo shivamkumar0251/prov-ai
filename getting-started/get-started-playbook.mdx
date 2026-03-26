@@ -1,0 +1,125 @@
+---
+title: "Get Started Playbook"
+description: "A day-by-day guide to mastering Prov AI and Context Engineering"
+---
+
+Welcome! This playbook is designed to guide you through your first week with Prov AI, focusing on the core concept of **Context Engineering**.
+
+## What “Context Engineering” Means in Prov AI
+
+In Prov AI, you shape the AI’s behavior mainly through three layers:
+
+1.  **Semantics (Data Modeling & MDL)**: How tables, columns, joins, and metrics are described so the AI understands your business logic.
+2.  **Instructions**: Reusable rules that dictate SQL generation, chart styles, and summaries.
+3.  **Question-SQL Pairs**: "Gold-standard" examples that link natural language questions directly to verified SQL.
+
+<Info>
+  **Pro Tip**: 
+  - **Semantics** = The Dictionary
+  - **Instructions** = The House Rules
+  - **Question-SQL Pairs** = The Worked Examples
+</Info>
+
+Your job as a context engineer is to push as much knowledge as possible into these three layers, so ad-hoc questions become safe, consistent, and predictable.
+
+---
+
+## Project Scoping & Domain Boundaries
+
+Avoid the “One Giant Graph” trap!
+
+<Tip>
+  **Best Practice**: Create separate Prov AI projects per business use case / domain, instead of building one huge, mixed graph for the entire company.
+</Tip>
+
+### Why separate projects?
+- **Avoid Collisions**: "Revenue" means different things to Finance and Marketing.
+- **Reduce Hallucinations**: Smaller, focused projects reduce the chance of the AI picking the wrong metrics.
+- **Improved Governance**: Easier to manage specific Instructions and Question-SQL Pairs per domain.
+
+---
+
+## How to Scope Projects
+
+Use separate projects for things like:
+- **Marketing & Growth**: Campaigns, Attribution, CAC, ROAS.
+- **Product**: Events, Feature Usage, Retention, Funnels.
+- **Sales & Revenue**: Pipeline, Bookings, MRR, ARR.
+- **Operations / Supply chain**: Lead times, Yield, Utilization.
+
+---
+
+## Rule of Thumb
+
+If you see these signs, your project is likely too large:
+- Long lists of tables that no one understands.
+- Multiple conflicting metric definitions colliding.
+- Instructions that only apply to a specific team but are global.
+
+---
+
+## First-Time User Checklist
+
+Use this as a mini playbook for your first Prov AI project:
+
+### Day 1–2: Connect & Model
+- Connect your main warehouse (Snowflake / BigQuery / etc.).
+- Select 5–10 key tables (Orders, Customers, Subscriptions, Events, etc.).
+- Use the **Modeling AI Assistant** to generate initial semantics and relationships.
+- **Refine descriptions** for:
+  - Targets vs actuals.
+  - Key metrics and entity IDs.
+  - All main date fields.
+
+<Card title="Best Practice: Building Semantics" icon="book" iconType="light" href="/modeling/overview">
+  Learn how to build a semantic layer that speaks your business language.
+</Card>
+
+---
+
+### Day 3: Configure Instructions
+- **Global Instructions**: Set status exclusions, default date field/ranges, and numeric formatting.
+- **Question-Matching**: Add logic for specific business terms like “late delivery” or “YoY comparison”.
+
+<Card title="Best Practice: Global Rules" icon="gavel" iconType="light" href="/usage-guides/global-instructions">
+  Add instructions as your "Universal Rules".
+</Card>
+
+---
+
+### Day 4–5: Seed Question-SQL Pairs
+- Identify 5–10 critical metrics (AOV, LTV, MRR, Churn, etc.).
+- Import their **"Gold SQL"** from your existing verified reports.
+- Map each metric to a straightforward natural-language question.
+
+<Card title="Best Practice: Gold Queries" icon="database" iconType="light" href="/usage-guides/querying/question-sql-pairs">
+  Capture gold-standard queries as Question-SQL Pairs.
+</Card>
+
+---
+
+### Day 6: Iterate with Real Questions (Human-in-the-Loop)
+
+Now let real users drive context improvement by asking actual questions from stakeholders (via Slack or the Prov AI UI).
+
+| Answer Type | Resolution |
+| :--- | :--- |
+| **Correct & Useful** | Save as a Question-SQL Pair immediately. |
+| **Correct but poor UX** | Add/refine **Instructions** for charts or summaries. |
+| **Wrong or Incomplete** | Fix the root cause in **Semantics** or add a specific **Question-SQL Pair**. |
+
+---
+
+## Feedback Loop
+
+Encourage users to give lightweight feedback:
+- *"This should exclude X"* → turn that into an Instruction.
+- *"This is correct"* → save it to your Knowledge.
+
+Treat Day 6 as the first feedback loop day—Knowledge should grow based on what users actually ask.
+
+---
+
+<Card title="Next Steps" icon="circle-check" iconType="light" href="/usage-guides/querying/question-sql-pairs">
+  Capture gold-standard queries as Question-SQL Pairs.
+</Card>

@@ -1,0 +1,37 @@
+---
+title: "Data Modeling Overview"
+description: "Understanding models, views, and ER diagrams in Prov AI"
+---
+
+Prov AI’s modeling layer provides a conceptual framework that defines data structure and relationships. This blueprint ensures that your data is organized efficiently to meet complex business requirements.
+
+---
+
+## Core Components
+
+| Component | Description |
+| :--- | :--- |
+| **Models** | The fundamental unit combining schema, metadata, and semantics from your tables. |
+| **Views** | Virtual tables that present data retrieved from underlying models based on predefined queries. |
+| **ER Diagram** | A visual map of your models and their logical connections (relationships). |
+
+---
+
+## Models vs. Views
+
+**Models** are direct representations of your data source tables refined with Prov AI semantics. 
+
+**Views** are "Trusted Results." When you save a result SQL statement as a view, Prov AI stores it as a reference. If a user asks a similar question later, the Prov Engine uses the saved view instead of regenerating SQL, ensuring consistent and rapid responses.
+
+---
+
+## Entity Relationship Diagram (ERD)
+
+The Modeling page features a dynamic ERD that visualizes your entire data landscape:
+- **Blue Blocks**: Represent **Models**.
+- **Green Blocks**: Represent **Views**.
+- **Lines**: Visualize relationships and data flow between items.
+
+<Note>
+  The ERD is the primary workspace for managing calculated fields, editing metadata, and defining new relationships.
+</Note>

@@ -1,0 +1,48 @@
+---
+title: "API History & Logs"
+description: "Monitoring and auditing API requests in Prov AI"
+---
+
+The **API History** page provides a centralized view of all requests made to the Prov AI API. This tool is essential for debugging integrations and auditing usage across your organization.
+
+---
+
+## Viewing API Logs
+
+1. Navigate to **Settings > API Access > History**.
+2. You can view a chronological list of recent API calls:
+   - **Method**: The HTTP method (e.g., `POST`, `GET`).
+   - **Endpoint**: The specific API resource accessed.
+   - **Status**: Success or failure code (e.g., `200`, `401`, `500`).
+   - **User / Key**: The identity used to authorize the request.
+   - **Timestamp**: The exact time of execution.
+
+---
+
+## Detailed Request View
+
+Click on any log entry to view the full request and response payload:
+
+| Detail | Description |
+| :--- | :--- |
+| **Request Headers** | Includes auth tokens and custom headers (e.g., `X-Prov-Session-Properties`). |
+| **Request Body** | The raw JSON sent to the API. |
+| **Response Body** | The full result set or error message returned by Prov AI. |
+| **Execution Time** | Total time taken by the Prov Engine to process the request. |
+
+---
+
+## Monitoring Consumption
+
+Each successful API call to the `/ask` or `/generate` endpoints consumes **API Credits**.
+
+- **Ask Question**: 1 Credit
+- **Generate Chart**: 1 Credit
+
+<Tip>
+  Use the **Filtered Search** in the history page to isolate requests from a specific API Key or User ID during debugging.
+</Tip>
+
+<Note>
+  Logs are retained for 30 days. For long-term auditing, we recommend exporting your logs periodically via the **History API**.
+</Note>

@@ -1,0 +1,63 @@
+---
+title: "Trino & Starburst"
+description: "Connecting Prov AI to your Trino or Starburst database"
+---
+
+<Info>
+  **Plan Support**: Included in all plans.
+</Info>
+
+## IP Whitelist for Prov AI Cloud
+
+Prov AI needs to access your Trino database via its outbound IP address. Please add the Prov AI service IP to your Trino database's firewall.
+
+<Tip>
+  Scroll to the bottom of the data source connection page in Prov AI to find the specific IP address for your instance.
+</Tip>
+
+To add a Trino connection, select the **Trino** option in the "Connect a data source" section.
+
+---
+
+## Connect
+
+Fill in the following connection settings:
+
+### Connection Details
+- **Display Name**: The display name for the database in Prov AI.
+- **Host**: Your Trino database's IP address or domain name.
+- **Port**: Standard Trino port (default: `8080`).
+- **Catalog**: The specific catalog you want to connect to.
+- **Schemas**: Specify the schemas you wish to connect. Enter a comma-separated list in the format `catalog.schema` (e.g., `hive.default`, `tpch.sf1`).
+- **Username**: Your Trino database username.
+- **Password**: The password for your Trino user.
+
+---
+
+## Connecting to Starburst
+
+Starburst is a managed Trino instance. To find your connection details:
+
+1. **Partner Connect**: Click **Partner Connect** in the Starburst sidebar.
+2. **Select Ibis**: Since Prov AI uses **Ibis** under the hood, select the Ibis connection to find your host, port, and catalog information.
+3. **Copy Details**: Copy and paste these credentials into the Prov AI Trino connection form.
+
+<Note>
+  Ensure you specify the correct schema (e.g., `sample.burstbank`) to start analyzing your Starburst data.
+</Note>
+
+---
+
+## Select Tables
+
+All tables in your connected Trino database will be listed. Select the tables you want to use in Prov AI. Each selected table will be created as a **Data Model**.
+
+---
+
+## Define Relationships
+
+Define the relationships among selected tables. Prov AI will allow you to add relationships manually or suggest them based on existing schema metadata.
+
+<Card title="Relationships Reference" icon="diagram-project" href="/modeling/relationships">
+  Learn more about defining relationships between your tables.
+</Card>

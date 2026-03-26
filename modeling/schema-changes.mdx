@@ -1,0 +1,47 @@
+---
+title: "Data Source Schema Changes"
+description: "Detecting and resolving database schema changes in Prov AI"
+---
+
+When you connect a data source, its schema is imported into Prov AI. If the database schema changes later, Prov AI will detect these changes when you click the **Refresh** icon in the sidebar.
+
+---
+
+## Detecting Schema Changes
+
+Click the **Refresh** icon to compare your current Prov AI models with the data source schema. If changes are detected, a **Warning Sign** will appear in the sidebar. Click it to view the **Schema Changes** page.
+
+---
+
+## Types of Changes
+
+| Change Type | Impact | Resolution Flow |
+| :--- | :--- | :--- |
+| **Source Table Deleted** | Affects all models, relationships, and calculated fields referencing the table. | Click **Resolve** to automatically delete affected items. |
+| **Source Column Deleted** | Affects models and logic using that specific column. | Click **Resolve** to automatically delete affected logic. |
+| **Column Type Changed** | Data type mismatch between Prov Engine and Warehouse. | **Manual Resolution**: Update columns and redefine relationships. |
+
+---
+
+## Viewing Impact
+
+When a table or column is deleted, expand the change row to see:
+- **Models Affected**: Projects using the data.
+- **Dependencies**: Relationships or calculated fields that will break due to the deletion.
+
+---
+
+## Resolving Changes
+
+### Automatic Resolution
+For **Deleted Tables or Columns**, click the **Resolve** button. Prov AI will automatically remove the affected models and logic to re-sync the schema. A success notification will appear once complete.
+
+### Manual Resolution (Type Changed)
+For column type changes, Prov AI does not provide an automatic fix.
+1. Click **Update Columns** on the model diagram.
+2. Reselect the changed column.
+3. Manually redefine any broken relationships or calculated fields.
+
+<Warning>
+  **Proactive Check**: Always refresh and check for schema changes after performing migrations on your data warehouse.
+</Warning>
