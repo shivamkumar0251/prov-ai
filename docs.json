@@ -29,7 +29,8 @@
                   {
                     "group": "Overview",
                     "pages": [
-                      "overview/welcome-to-prov"
+                      "overview/welcome-to-prov",
+                      "overview/platform-overview"
                     ]
                   },
                   {
